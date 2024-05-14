@@ -1,8 +1,12 @@
 # This is the CMake build file for the test directory of NCEPLIBS-w3emc.
 
-# Kyle Gerheiser, Ed Hartnett
+# Kyle Gerheiser, Ed Hartnett, Alex Richert
 
-# This function builds, links, and runs a test program.
+execute_process(COMMAND cmake -E create_symlink
+  "${CMAKE_CURRENT_SOURCE_DIR}/data"
+  "${CMAKE_CURRENT_BINARY_DIR}/data"
+)
+
 function(create_test name kind)
   add_executable(${name}_${kind} ${name}.F90)
   target_link_libraries(${name}_${kind} PRIVATE w3emc_${kind})
@@ -32,6 +36,7 @@ foreach(kind ${kinds})
 #  create_test(test_w3fi72 ${kind})
   create_test(test_w3fi73 ${kind})
   create_test(test_w3fi74 ${kind})
+  create_test(test_aea ${kind})
   create_test_sh(test_errexit ${kind})
   create_test_sh(test_errmsg ${kind})
 endforeach()  
