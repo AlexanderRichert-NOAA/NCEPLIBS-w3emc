@@ -12,12 +12,6 @@ on:
     branches:
     - develop
 
-# Use custom shell with -l so .bash_profile is sourced which loads intel/oneapi/setvars.sh
-# without having to do it in manually every step
-defaults:
-  run:
-    shell: bash -leo pipefail {0}
-
 jobs:
   Intel:
     runs-on: ubuntu-latest
@@ -27,69 +21,25 @@ jobs:
 
     steps:
 
-    # See https://software.intel.com/content/www/us/en/develop/articles/oneapi-repo-instructions.html
-    - name: install-intel
-      run: |
-        cd /tmp
-        wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-        sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-        rm GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-        echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
-        sudo apt-get update
-        sudo apt-get install intel-oneapi-dev-utilities intel-oneapi-mpi-devel intel-oneapi-openmp intel-oneapi-compiler-fortran intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
-        echo "source /opt/intel/oneapi/setvars.sh" >> ~/.bash_profile
+    - name: "Install Intel"
+      uses: NOAA-EMC/ci-install-intel-toolkit@develop
 
-    - name: checkout-bacio
-      uses: actions/checkout@v3
+    - name: "Build dependencies"
+      uses: NOAA-EMC/ci-build-nceplibs@develop
       with:
-        repository: NOAA-EMC/NCEPLIBS-bacio
-        path: bacio
-        ref: v2.6.0
-    
-    - name: build-bacio
-      run: |
-        cd bacio
-        mkdir build && cd build
-        ${{ matrix.compilers }} cmake .. -DCMAKE_INSTALL_PREFIX=~/bacio
-        make -j2
-        make install
+        bacio-version: v2.6.0
+        bufr-version: bufr_v12.0.0
 
-    - name: checkout-bufr
-      uses: actions/checkout@v3
-      with:
-        repository: NOAA-EMC/NCEPLIBS-bufr
-        path: bufr
-        ref: bufr_v12.0.0
-    
-    - name: cache-bufr
-      id: cache-bufr
-      uses: actions/cache@v3
-      with:
-        path: ~/bufr
-        key: bufr-intel-${{ matrix.compilers }}-${{ runner.os }}-v12.0.0
-
-    - name: build-bufr
-      if: steps.cache-bufr.outputs.cache-hit != 'true'
-      run: |
-        cd bufr
-        mkdir build && cd build
-        ${{ matrix.compilers }} cmake -DCMAKE_INSTALL_PREFIX=~/bufr ..
-        make -j2
-        make install
-
-    - name: checkout
+    - name: "Checkout modified code"
       uses: actions/checkout@v3
       with: 
         path: w3emc
 
-    - name: build
+    - name: "Build w3emc"
       run: |
-        cd w3emc
-        mkdir build && cd build
-        ${{ matrix.compilers }} cmake -DCMAKE_PREFIX_PATH="~/bacio;~/bufr" ..
-        make -j2
+        ${{ matrix.compilers }} cmake -DCMAKE_PREFIX_PATH="~/bacio;~/bufr" -B w3emc/build -S w3emc
+        cmake --parallel 2 --build w3emc/build
 
-    - name: test-w3emc
+    - name: "Test w3emc"
       run: |
-        cd w3emc/build
-        ctest --output-on-failure --rerun-failed --verbose
+        ctest --test-dir w3emc/build --output-on-failure --rerun-failed --verbose
