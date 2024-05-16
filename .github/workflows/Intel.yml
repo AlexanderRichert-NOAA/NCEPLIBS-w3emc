@@ -34,7 +34,7 @@ jobs:
         key-prefix: Intel-
 
     - name: "Checkout modified code"
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with: 
         path: w3emc
 
