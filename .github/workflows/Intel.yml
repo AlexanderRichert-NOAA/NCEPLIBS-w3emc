@@ -37,7 +37,7 @@ jobs:
 
     - name: "Build w3emc"
       run: |
-        ${{ matrix.compilers }} cmake -DCMAKE_PREFIX_PATH="~/bacio;~/bufr" -B w3emc/build -S w3emc
+        ${{ matrix.compilers }} cmake -DCMAKE_PREFIX_PATH="$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bacio;$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bufr" -B w3emc/build -S w3emc
         cmake --parallel 2 --build w3emc/build
 
     - name: "Test w3emc"
