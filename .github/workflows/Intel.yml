@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        compilers: ["CC=icc FC=ifort","CC=icx FC=ifx"]
+        compilers: ["oneapi", "classic"]
 
     steps:
 
@@ -37,7 +37,7 @@ jobs:
 
     - name: "Build w3emc"
       run: |
-        ${{ matrix.compilers }} cmake -DCMAKE_PREFIX_PATH="$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bacio;$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bufr" -B w3emc/build -S w3emc
+        cmake -DCMAKE_PREFIX_PATH="$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bacio;$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bufr" -B w3emc/build -S w3emc
         cmake --build w3emc/build --parallel 2 --verbose
 
     - name: "Test w3emc"
