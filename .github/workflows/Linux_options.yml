@@ -46,4 +46,4 @@ jobs:
     - name: test-w3emc
       run: |
         ctest --test-dir w3emc/build --output-on-failure --rerun-failed --verbose
-        cmake --build w3emc/build --install
+        cmake --install w3emc/build
