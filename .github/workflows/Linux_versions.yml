@@ -28,7 +28,7 @@ jobs:
     - name: "Build dependencies"
       uses: NOAA-EMC/ci-build-nceplibs@develop
       with:
-        bacio-version: ${{ matrix.bacio-version }}
+        bacio-version: v${{ matrix.bacio-version }}
         bufr-version: v12.0.1
 
     - name: checkout-w3emc
