@@ -28,7 +28,7 @@ iw3jdn.f iw3pds.f ixgb.f lengds.f makwmo.f mkfldsep.f
 pdsens.f pdseup.f putgbe.f putgben.f putgbex.f putgb.f putgbn.f
 q9ie32.f r63w72.f sbytec.f sbyte.f sbytesc.f sbytes.f skgb.f w3ai00.f
 w3ai01.f w3ai08.f w3ai15.f w3ai18.f w3ai19.f w3ai24.f w3ai38.f
-w3ai39.f w3aq15.f w3difdat.f w3doxdat.f w3fi01.f w3fi04.f
+w3ai39.f w3aq15.f w3as00.f w3difdat.f w3doxdat.f w3fi01.f w3fi04.f
 w3fi58.f w3fi59.f w3fi62.f w3fi63.f w3fi64.f w3fi68.f w3fi69.f
 w3fi71.f w3fi72.f w3fi73.f w3fi74.f w3fi75.f w3fi76.f w3fi82.f
 w3fi83.f w3fi88.f w3fi92.f w3fp11.f w3fp12.f w3fp13.f w3fs13.f
@@ -43,7 +43,7 @@ endif()
 
 # These functions call external, mysterious dependencies.
 if(BUILD_WITH_EXTRA_DEPS)
-  set(fortran_src ${fortran_src} args_mod.f w3as00.f w3fi52.f w3fq07.f)
+  set(fortran_src ${fortran_src} w3fi52.f w3fq07.f)
 endif()
 
 # This is the C source code.

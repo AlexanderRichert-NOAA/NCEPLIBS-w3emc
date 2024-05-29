@@ -78,7 +78,7 @@ C      -------------------------------------------------------------
        character*112  cwork
        equivalence   (jwork,cwork)
 
-       integer(4)     nargsinline,iargc,iar
+       integer(4)     nargsinline,iar
        integer        nchars
        integer        lmt_txt
        integer        non_parm
@@ -119,7 +119,7 @@ C
 
        narg_got = 0
 C
-       nargsinline = iargc()
+       nargsinline = command_argument_count()
 
        write(6,115) nargsinline
   115  format(1h ,'W3AS00: count of args found in command line =', I3)
@@ -132,14 +132,15 @@ C        ...    starts with "PARM="
 
            cwork(1:) = ' '
 
-           call getarg(iar,cwork)
+           call get_command_argument(iar,cwork)
 
            narg_got = narg_got + 1
            nchars = lastch(cwork)
 
            if(nchars .le. 0) then
              write(6,125)iar
-  125        format(1h ,'W3AS00:getarg() returned an empty arg for',
+  125        format(1h ,'W3AS00:get_command_argument()',
+     A                  'returned an empty arg for',
      A                  ' no.',I3 )
            else
 C            ... SOME TEXT EXISTS IN THIS ARG ...
