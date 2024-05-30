@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest"]
-        pic_shared_extradeps: ["+pic +shared", "+pic ~shared +extradeps", "+pic ~shared ~extradeps", "~pic +extradeps", "~pic ~extradeps"]
+        pic_shared: ["+pic +shared", "+pic ~shared", "~pic ~shared"]
         precision: ["precision=d", "precision=4", "precision=8"]
         bufr: ["+bufr", "~bufr"]
 
@@ -43,7 +43,7 @@ jobs:
         cp $GITHUB_WORKSPACE/w3emc/spack/package.py $SPACK_ROOT/var/spack/repos/builtin/packages/w3emc/package.py
         mv $GITHUB_WORKSPACE/w3emc $SPACK_ENV/w3emc
         spack develop --no-clone w3emc@develop
-        spack add w3emc@develop%gcc@11 ${{ matrix.pic_shared_extradeps }} ${{ matrix.precision }} ${{ matrix.bufr }}
+        spack add w3emc@develop%gcc@11 ${{ matrix.pic_shared }} ${{ matrix.precision }} ${{ matrix.bufr }}
         spack external find cmake gmake
         spack concretize
         # Run installation and run CTest suite
