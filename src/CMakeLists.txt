@@ -36,11 +36,6 @@ if(BUILD_WITH_BUFR)
   set(fortran_src ${fortran_src} w3miscan.f iw3unp29.f w3unpk77.f)
 endif()
 
-# These functions call external, mysterious dependencies.
-if(BUILD_WITH_EXTRA_DEPS)
-  set(fortran_src ${fortran_src} w3fq07.f)
-endif()
-
 # This is the C source code.
 set(c_src summary.c)
 add_library(c_obj_lib OBJECT ${c_src})
