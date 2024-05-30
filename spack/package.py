@@ -37,15 +37,16 @@ class W3emc(CMakePackage):
         description="Set precision (_4/_d/_8 library versions)",
         when="@2.10:",
     )
-    variant("shared", default=False, description="Build shared library", when="@2.10: +pic")
+    variant("shared", default=False, description="Build shared library", when="@2.10:")
     variant(
         "extradeps",
         default=False,
         description="Build w3emc with subprograms which call unknown dependencies",
-        when="@2.10:",
+        when="@2.10:2.11",
     )
 
     conflicts("+shared +extradeps", msg="Shared library cannot be built with unknown dependencies")
+    conflicts("+shared ~pic", msg="Shared library requires PIC")
 
     depends_on("bufr", when="@2.10: +bufr")
     depends_on("bacio", when="@2.9.2:")

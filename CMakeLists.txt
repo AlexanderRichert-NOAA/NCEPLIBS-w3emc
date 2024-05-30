@@ -15,15 +15,7 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 option(BUILD_4 "Build the 4-byte real version of the library, libw3emc_4.a" ON)
 option(BUILD_D "Build the 8-byte real version of the library, libw3emc_d.a" ON)
 option(BUILD_8 "Build the 8-byte integer version of the library, libsp_8.a" OFF)
-option(BUILD_WITH_EXTRA_DEPS "Build w3emc with subprograms which call unknown dependencies" OFF)
 option(BUILD_WITH_BUFR "Build w3emc with subprograms which call NCEPLIBS-bufr" OFF)
-
-# If building shared, extra dependencies must be eliminated.
-if(BUILD_SHARED_LIBS)
-  if(BUILD_WITH_EXTRA_DEPS)
-      message(FATAL_ERROR "Shared libraries cannot be built without setting -DBUILD_WITH_EXTRA_DEPS=OFF.")
-  endif()
-endif()
 
 # Figure whether user wants _4, _d, _8 kinds of library.
 if(BUILD_4)
