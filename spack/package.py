@@ -42,7 +42,7 @@ class W3emc(CMakePackage):
         "extradeps",
         default=False,
         description="Build w3emc with subprograms which call unknown dependencies",
-        when="@2.10:",
+        when="@2.10:2.11",
     )
 
     conflicts("+shared +extradeps", msg="Shared library cannot be built with unknown dependencies")
