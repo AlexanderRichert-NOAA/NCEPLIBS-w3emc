@@ -2,13 +2,15 @@ C> @file
 C> @brief Makes TOC Flag Field Separator Block
 C> @author Stephen Gilbert @date 2002-09-16
 
-C> Generates a TOC Flag Field Separator Block used to separate
-C> WMO Bulletins within a transmission file to be ingested in TOC's
-C> FTP Input Service, which can be used to disseminate WMO buletins.
-C> (see http://weather.gov/tg/ftpingest.html)
+C> Generates a TOC Flag Field Separator Block used to separate WMO
+C> Bulletins within a transmission file to be ingested in TOC's FTP Input
+C> Service, which can be used to disseminate WMO buletins. See [File
+C> Transfer Input Service Guide - Input examples and how to FTP files to
+C> the Gateway] (https://www.weather.gov/tg/ftpingest).
 C>
 C> This routine can generate different flag field separator blocks
-C> depending on the value of variable iopt.
+C> depending on the value of variable iopt. For details see [GATEWAY File
+C> Standards & Content Structures] (https://www.weather.gov/tg/fstandrd).
 C>
 C> Bulletin "Flag Field Separator" block - OPTION 1 (old)
 C> - bytes:
@@ -73,6 +75,7 @@ C           Create OPTION 1 separator block
             csep(1:4)=clb
             write(csep(5:7),fmt='(I3.3)') nnn
             write(csep(8:18),fmt='(I11.11)') lenbull
+            ! In docs, these bytes are "reserved for future use".
             csep(19:nnn-5)='0'
             csep(nnn-4:nnn-1)=clb
             csep(nnn:nnn)=char(10)
