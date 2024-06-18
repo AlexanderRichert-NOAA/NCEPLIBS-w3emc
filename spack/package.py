@@ -19,6 +19,7 @@ class W3emc(CMakePackage):
     maintainers("AlexanderRichert-NOAA", "Hang-Lei-NOAA", "edwardhartnett")
 
     version("develop", branch="develop")
+    version("2.12.0", sha256="77c0732541ade1deb381f5a208547ccc36e65efa91c8f7021b299b20a6ae0d27")
     version("2.11.0", sha256="53a03d03421c5da699b026ca220512ed494a531b83284693f66d2579d570c43b")
     version("2.10.0", sha256="366b55a0425fc3e729ecb9f3b236250349399fe4c8e19f325500463043fd2f18")
     version("2.9.3", sha256="9ca1b08dd13dfbad4a955257ae0cf38d2e300ccd8d983606212bc982370a29bc")
@@ -48,7 +49,7 @@ class W3emc(CMakePackage):
         "build_deprecated",
         default=False,
         description="Build deprecated subroutines",
-        when="@develop",
+        when="@2.12:",
     )
 
     conflicts("+shared +extradeps", msg="Shared library cannot be built with unknown dependencies")
