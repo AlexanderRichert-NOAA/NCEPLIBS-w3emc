@@ -448,7 +448,7 @@
         end function
 
 !> Generates random indices in interactive mode.
-!> @param [input] imax Integer maximum index input.
+!> @param[in] imax Integer maximum index input.
 !> @param[out] iharvest Integer(:) numbers output.
 !> @param[in] inseed Integer seed input.
 !>
