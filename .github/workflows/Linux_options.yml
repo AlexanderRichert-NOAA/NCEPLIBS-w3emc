@@ -14,16 +14,22 @@ on:
 
 jobs:
   Linux_options:
-    runs-on: ubuntu-latest
-    env:
-      FC: gfortran-11
-      CC: gcc-11
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
         options: ['-DBUILD_D=OFF', '-DBUILD_4=OFF -DBUILD_DEPRECATED=ON -DBUILD_WITH_BUFR=ON', '-DBUILD_SHARED_LIBS=ON']
+        gcc-version: [12]
+        include:
+        - gcc-version: 14
 
     steps:
-    
+
+    - name: get-gcc
+      run: |
+        if [ -z $(type -P gcc-${{ matrix.gcc-version }}) ]; then
+          sudo apt-get install gcc-${{ matrix.gcc-version }} gfortran-${{ matrix.gcc-version}}
+        fi
+
     - name: "Build dependencies"
       uses: NOAA-EMC/ci-build-nceplibs@develop
       with:
@@ -40,6 +46,7 @@ jobs:
     - name: build-w3emc
       run: |
         set -x
+        export CC=gcc-${{ matrix.gcc-version }} ; export FC=gfortran-${{ matrix.gcc-version }}
         cmake -S w3emc -B w3emc/build -DCMAKE_PREFIX_PATH="$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bacio;$GITHUB_WORKSPACE/nceplibs/NCEPLIBS-bufr" -DCMAKE_INSTALL_PREFIX="~/w3emc/install" ${{ matrix.options }}
         cmake --build w3emc/build --parallel 2 --verbose
 
