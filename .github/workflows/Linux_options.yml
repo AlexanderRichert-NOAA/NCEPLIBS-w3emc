@@ -39,6 +39,7 @@ jobs:
         bacio-cmake-args: -DBUILD_TESTING=OFF ${{ matrix.options == '-DBUILD_SHARED_LIBS=ON' && matrix.options || '' }}
         bufr-version: bufr_v12.0.0
         bufr-cmake-args: -DBUILD_TESTING=OFF ${{ matrix.options == '-DBUILD_SHARED_LIBS=ON' && matrix.options || '' }}
+        key-suffix: -gcc${{ matrix.gcc-version }}
 
     - name: checkout-w3emc
       uses: actions/checkout@v4
