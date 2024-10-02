@@ -19,7 +19,7 @@ jobs:
       FC: ${{ matrix.compiler }}
     strategy:
       matrix:
-        compiler: [gfortran-11, gfortran-12]
+        compiler: [gfortran-12]
         bacio-version: [2.4.1, 2.5.0, 2.6.0]
 
     steps:
