@@ -17,10 +17,11 @@ jobs:
     runs-on: ubuntu-24.04
     strategy:
       matrix:
-        options: ['-DBUILD_D=OFF', '-DBUILD_4=OFF -DBUILD_DEPRECATED=ON -DBUILD_WITH_BUFR=ON', '-DBUILD_SHARED_LIBS=ON']
+        options: ['-DBUILD_D=OFF -DBUILD_8=ON', '-DBUILD_4=OFF -DBUILD_DEPRECATED=ON -DBUILD_WITH_BUFR=ON', '-DBUILD_SHARED_LIBS=ON']
         gcc-version: [12]
         include:
         - gcc-version: 14
+          options: '-DBUILD_8=ON'
 
     steps:
 
