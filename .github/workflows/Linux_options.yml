@@ -14,16 +14,25 @@ on:
 
 jobs:
   Linux_options:
-    runs-on: ubuntu-latest
-    env:
-      FC: gfortran-11
-      CC: gcc-11
+    runs-on: ubuntu-24.04
     strategy:
       matrix:
-        options: ['-DBUILD_D=OFF', '-DBUILD_4=OFF -DBUILD_DEPRECATED=ON -DBUILD_WITH_BUFR=ON', '-DBUILD_SHARED_LIBS=ON']
+        options: ['-DBUILD_D=OFF -DBUILD_8=ON', '-DBUILD_4=OFF -DBUILD_DEPRECATED=ON -DBUILD_WITH_BUFR=ON', '-DBUILD_SHARED_LIBS=ON']
+        gcc-version: [12]
+        include:
+        - gcc-version: 14
+          options: '-DBUILD_8=ON'
 
     steps:
-    
+
+    - name: get-gcc
+      run: |
+        if [ -z $(type -P gcc-${{ matrix.gcc-version }}) ]; then
+          sudo apt-get install gcc-${{ matrix.gcc-version }} gfortran-${{ matrix.gcc-version}}
+        fi
+        echo "CC=gcc-${{ matrix.gcc-version }}" >> $GITHUB_ENV
+        echo "FC=gfortran-${{ matrix.gcc-version }}" >> $GITHUB_ENV
+
     - name: "Build dependencies"
       uses: NOAA-EMC/ci-build-nceplibs@develop
       with:
@@ -31,6 +40,7 @@ jobs:
         bacio-cmake-args: -DBUILD_TESTING=OFF ${{ matrix.options == '-DBUILD_SHARED_LIBS=ON' && matrix.options || '' }}
         bufr-version: bufr_v12.0.0
         bufr-cmake-args: -DBUILD_TESTING=OFF ${{ matrix.options == '-DBUILD_SHARED_LIBS=ON' && matrix.options || '' }}
+        key-suffix: -gcc${{ matrix.gcc-version }}
 
     - name: checkout-w3emc
       uses: actions/checkout@v4
