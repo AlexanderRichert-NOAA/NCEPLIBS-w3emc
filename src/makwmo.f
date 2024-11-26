@@ -2,14 +2,6 @@ C> @file
 C> @brief FORMS THE WMO HEADER FOR A GIVEN BULLETIN.
 C> @author Farley @date 1984-07-06
 
-C> Program history log:
-C> - Farley 1984-07-06
-C> - Ralph Jones 1994-10-10 Changes for cray.
-C> - Ralph Jones 1995-10-18 Add parameter KWBX to call.
-C> - Stephen Gilbert 1998-06-16 Changed argument list to pass in day and hour
-C> instead of the old O.N. 84 date word.
-C> - Stephen Gilbert 2003-03-28 Removed equivalences.
-C>
 C> @param[in] BULHED TTAAII bulletin header.                    FT10
 C> @param[in] IDAY Day of Month.
 C> @param[in] IHOUR Hour of Day.

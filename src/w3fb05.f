@@ -8,10 +8,6 @@ C> tion true at 60 degrees n or s latitude to the natural coordinate
 C> system of latitude/longitude on the earth. w3fb05() is the reverse
 C> of w3fb04().
 C>
-C> Program history log:
-C> - Ralph Jones 1986-07-17
-C> - Ralph Jones 1989-11-01 Change to cray cft77 fortran.
-C>
 C> @param[in] XI I of the point relative to the north or s. pole
 C> @param[in] XJ J of the point relative to the north or s. pole
 C> @param[in] XMESHL Mesh length of grid in km at 60 degrees(<0 if sh)

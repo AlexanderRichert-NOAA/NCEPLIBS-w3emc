@@ -6,35 +6,6 @@ C> Converts an array of 25, or 27 integer words into a
 C> grib product definition section (pds) of 28 bytes , or 30 bytes.
 C> if pds bytes > 30, they are set to zero.
 C>
-C> Program history log:
-C> - Ralph Jones 1991-05-08
-C> - Ralph Jones 1992-09-25 Change to 25 words of input, level
-C> can be in two words. (10,11)
-C> - Ralph Jones 1993-01-08 Change for time range indicator if 10,
-C> store time p1 in pds bytes 19-20.
-C> - Ralph Jones 1993-01-26 Correction for fixed height above
-C> ground level
-C> - Ralph Jones 1993-03-29 Add save statement
-C> - Bill Cavanaugh 1993-06-24 Modified program to allow for generation
-C> of pds greater than 28 bytes (the desired
-C> pds size is in id(1).
-C> - Farley 1993-09-30 Change to allow for subcenter id; put
-C> id(24) into pds(26).
-C> - Ralph Jones 1993-10-12 Changes for on388 rev. oct 9,1993, new
-C> levels 125, 200, 201.
-C> - Ralph Jones 1994-02-23 Take out sbytes, replace with do loop
-C> - Ralph Jones 1994-04-14 Changes for on388 rev. mar 24,1994, new
-C> levels 115,116.
-C> - Ralph Jones 1994-12-04 Change to add id words 26, 27 for pds
-C> bytes 29 and 30.
-C> - Ralph Jones 1995-09-07 Change for new level 117, 119.
-C> - Mark Iredell 1995-10-31 REmoved saves and prints
-C> - Ebisuzaki 1998-06-30 Linux port
-C> - Stephen Gilbert 2001-06-05 Changed fortran intrinsic function OR() to
-C> f90 standard intrinsic IOR().
-C> - Mark Iredell 2003-02-25 Recognize level type 126
-C> - D. C. Stokes 2005-05-06 Recognize level types 235, 237, 238
-C>
 C> @param[in] ID 25,27 word integer array.
 C> @param[out] PDS 28 30 or greater character pds for edition 1.
 C>

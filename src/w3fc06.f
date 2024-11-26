@@ -9,10 +9,6 @@ C> must be consistent with WMO conventions, and output components
 C> will follow those conventions.
 C> (See office note 241 for WMO definition.)
 C>
-C> Program history log:
-C> - John Stackpole 1981-12-30
-C> - Ralph Jones 1991-03-06 Change to cray cft77 fortran.
-C>
 C> @param[in] DIR REAL*4 Wind direction, degrees
 C> @param[in] SPD REAL*4 Wind speed, any units
 C> @param[out] U REAL*4 Earth-oriented U-component.

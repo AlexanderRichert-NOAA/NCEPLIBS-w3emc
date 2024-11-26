@@ -5,17 +5,6 @@ C> @author Ralph Peterson @date 1994
 C> Subroutine thickens one thinned wafs grib grid to a
 C> real array of 5329 numbers (73,73) 1.25 degree grid.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1994-??-?? | Ralph Peterson
-C> 1994-11-07 | Ralph Jones | Add doc block, change call to 3 parameters.
-C> Replace cos with table lookup.
-C> 1995-06-02 | Ralph Peterson | Changes to correct miss-position
-C> between + or - 8.75 n/s.
-C> 1995-06-03 | Ralph Jones | Changes so 8 rows with 73 values
-C> are not thickened, 10% faster.
-C>
 C> @param[in] AIN Real 3447 word array with unpacked thinned wafs
 C> grib type 37-44.
 C> @param[in] NSFLAG Integer = 1 AIN is wafs grib grid 37-40 n. hemi.

@@ -12,12 +12,6 @@ C> ( and therefore -qsmp) option is used when compiling.
 C> This function can be used for all values 0 <= ICHAR(a) <= 255 and
 C> will work with or without the -qhot compiler option.
 C>
-C> Program history log:
-C> - Stephen Gilbert 1998-12-15
-C> - Stephen Gilbert 2001-06-11 Added a step to fill an 8-byte character
-C> array with the same value so that the f90 transfer function is more
-C> predictable. All bytes will now contain the desired value.
-C>
 C> @param[in] a Character*1 variable that holds the bitstring to extract.
 C> @return mova2i() Integer value of the bitstring in character a.
 C>

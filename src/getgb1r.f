@@ -2,10 +2,6 @@ C> @file
 C> @brief Reads and unpacks a grib message.
 C> @author Mark Iredell @date 1995-10-31
 
-C> Program history log:
-C> - Mark Iredell 1995-10-31
-C> - Chuang 2004-07-22 Add packing bit number nbitss in the argument
-C> list because eta grib files need it to repack grib file.
 C> @param[in] LUGB Integer unit of the unblocked grib data file.
 C> @param[in] LSKIP Integer number of bytes to skip.
 C> @param[in] LGRIB Integer number of bytes to read.

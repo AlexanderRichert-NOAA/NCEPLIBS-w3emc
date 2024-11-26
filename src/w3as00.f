@@ -6,10 +6,6 @@ C> To get the one command-line argument which starts with
 C> "parm="; returning the parm field (without the keyword "parm=")
 C> as a null-terminated string in the character string:cparm.
 C>
-C> Program history log:
-C> - David Shimomura 1995-05-23
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive
-C>
 C> @param[out] NCH_PARM No. of characters in the parm field
 C> @param[out] CPARM C*(*) cparm -- the destination for the parmfield
 C> obtained from the command line; user should define the character string for

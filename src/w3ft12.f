@@ -7,13 +7,6 @@ C> latitude from 31 complex fourier coefficients. This subroutine
 C> is special purpose for converting coefficients to a 2.5 degree
 C> lat,lon grid.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1980-11-21 | Joe Sela | Initial.
-C> 1984-06-21 | Ralph Jones | Change to ibm vs fortran.
-C> 1993-04-12 | Ralph Jones | Change to cray cft77 fortran.
-C>
 C> @param[in] COEF 31 complex fourier coefficients.
 C> @param[in] TRIGS 216 trig functions assumed precomputed by w3fa13() before
 C> first call to w3ft12().

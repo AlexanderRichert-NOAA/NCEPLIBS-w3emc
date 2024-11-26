@@ -7,85 +7,6 @@ C> place information extracted from the BUFR message into selected
 C> arrays for the user. Those arrays are described in the output
 C> argument list. This routine does not include ifod processing.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-08-31
-C> - Bill Cavanaugh 1990-12-07 Now utilizing gbyte routines to gather
-C> and separate bit fields. This should improve
-C> (decrease) the time it takes to decode any
-C> BUFR message. Have entered coding that will
-C> permit processing BUFR editions 1 and 2.
-C> Improved and corrected the conversion into
-C> ifod format of decoded BUFR messages.
-C> - Bill Cavanaugh 1991-01-18 Program/routines modified to properly handle
-C> serial profiler data.
-C> - Bill Cavanaugh 1991-04-04 Modified to handle text supplied thru
-C> descriptor 2 05 yyy.
-C> - Bill Cavanaugh 1991-04-17 Errors in extracting and scaling data
-C> corrected. Improved handling of nested queue descriptors is added.
-C> - Bill Cavanaugh 1991-05-10 Array 'data' has been enlarged to real*8
-C> to better contain very large numbers more accurately. The preious size
-C> real*4 could not contain sufficient significant digits. Coding has been
-C> introduced to process new table c descriptor 2 06 yyy which permits in
-C> line processing of a local descriptor even if the descriptor is not
-C> contained in the users table b. A second routine to process ifod messages
-C> (ifod0) has been removed in favor of the improved processing of the one
-C> remaining (ifod1). New coding has been introduced to permit processing of
-C> BUFR messages based on BUFR edition up to and including edition 2. Please
-C> note increased size requirements for arrays ident(20) and iptr(40).
-C> - Bill Cavanaugh 1991-07-26 Add array mtime to calling sequence to
-C> permit inclusion of receipt/transfer times to ifod messages.
-C> - Bill Cavanaugh 1991-09-25 All processing of decoded BUFR data into
-C> ifod (a local use reformat of BUFR data) has been isolated from this set of
-C> routines. For those interested in the ifod form, see w3fl05 in the w3lib
-C> routines.
-C> - Processing of BUFR messages containing delayed replication has been
-C> altered so that single subsets (reports) and and a matching descriptor list
-C> for that particular subset will be passed to the user will be passed to the
-C> user one at a time to assure that each subset can be fully defined with a
-C> minimum of reprocessing.
-C> - Processing of associated fields has been tested with messages containing
-C> non-compressed data.
-C> - In order to facilitate user processing a matching list of scale factors
-C> are included with the expanded descriptor list (mstack).
-C> - Bill Cavanaugh 1991-11-21 Processing of descriptor 2 03 yyy
-C> has corrected to agree with fm94 standards.
-C> - Bill Cavanaugh 1991-12-19 Calls to fi6703() and fi6704() have been
-C> corrected to agree called program argument list. Some additional entries
-C> have been included for communicating with data access routines. Additional
-C> error exit provided for the case where table b is damaged.
-C> - Bill Cavanaugh 1992-01-24 Routines fi6701(), fi6703() and fi6704()
-C> have been modified to handle associated fields all descriptors are set to
-C> echo to mstack(1,n)
-C> - Bill Cavanaugh 1992-05-21 Further expansion of information collected from
-C> within upper air soundings has produced the necessity to expand some of the
-C> processing and output arrays. (see remarks below)
-C> - Bill Cavanaugh 1992-06-29 Corrected descriptor denoting height of
-C> each wind level for profiler conversions.
-C> - Bill Cavanaugh 1992-07-23 Expansion of table b requires adjustment
-C> of arrays to contain table b values needed to assist in the decoding process.
-C> - Arrays containing data from table b:
-C>  - kdesc descriptor
-C>  - aname descriptor name
-C>  - aunits units for descriptor
-C>  - mscale scale for value of descriptor
-C>  - mref reference value for descriptor
-C>  - mwidth bit width for value of descriptor
-C>  - Bill Cavanaugh 1992-09-09 First encounter with operator descriptor
-C> 2 05 yyy showed error in decoding. That error is corrected with this
-C> implementation. Further testing of upper air data has encountered the
-C> condition of large (many level) soundings arrays in the decoder have been
-C> expanded (again) to allow for this condition.
-C> - Bill Cavanaugh 1992-10-02 Modified routine to reformat profiler data
-C> (fi6709) to show descriptors, scale value and data in proper order.
-C> Corrected an error that prevented user from assigning the second dimension
-C> of kdata(500,*).
-C> - Bill Cavanaugh 1992-10-20 Removed error that prevented full implementation
-C> of previous corrections and made corrections to table b to bring it up to
-C> date. Changes include proper reformat of profiler data and user capability
-C> for assigning second dimension of kdata array.
-C> - Bill Cavanaugh 1993-01-26 Added routine fi6710() to permit reformatting
-C> profiler data in BUFR edition 2.
-C>
 C> @param[in] MSGA Array containing supposed bufr message.
 C> @param[out] ISTACK Original array of descriptors extracted from
 C> source bufr message.
@@ -600,14 +521,6 @@ C> @author Bill Cavanaugh @date 1988-09-01
 C> Control the extraction of data from section 4 based on
 C> data descriptors.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C> - Bill Cavanaugh 1991-01-18 Corrections to properly handle non-compressed
-C> data.
-C> - Bill Cavanaugh 1991-09-23 Coding added to handle single subsets with
-C> delayed replication.
-C> - Bill Cavanaugh 1992-01-24 Modified to echo descriptors to mstack(1,n)
-C>
 C> @param[in] IPTR See w5fi67 routine docblock.
 C> @param[in] IDENT See w3fi67 routine docblock.
 C> @param[in] MSGA Array containing bufr message.
@@ -912,10 +825,6 @@ C> @author Bill Cavanaugh @date 1988-09-01
 C> Process a standard descriptor (f = 0) and store data
 C> in output array.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C> - Bill Cavanaugh 1991-04-04 Changed to pass width of text fields in bytes.
-C>
 C> @param[in] IPTR See w3fi67 routine docblock.
 C> @param[in] IDENT See w3fi67 routine docblock.
 C> @param[in] MSGA Array containing bufr message.
@@ -1061,15 +970,6 @@ C> @brief Process compressed data and place individual elements into output
 C> array
 C> @author Bill Cavanaugh @date 1988-09-01
 
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C> - Bill Cavanaugh 1991-04-04 Text handling portion of this routine
-C> modified to hanle width of fields in bytes.
-C> - Bill Cavanaugh 1991-04-17 Tests showed that the same data in compressed
-C> and uncompressed form gave different results. This has been corrected.
-C> - Bill Cavanaugh 1991-06-21 Processing of text data has been changed to
-C> provide exact reproduction of all characters.
-C>
 C> @param[in] IPTR See w3fi67() routine docblock.
 C> @param[in] IDENT See w3fi67() routine docblock.
 C> @param[in] MSGA Array containing bufr message, mstack.
@@ -1318,15 +1218,6 @@ C1800         FORMAT (2X,I4,2X,3A4)
 C> @brief Process data that is not compressed.
 C> @author Bill Cavanaugh @date 1988-09-01
 
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C> - Bill Cavanaugh 1991-01-18 Modified to properly handle non-compressed
-C> data.
-C> - Bill Cavanaugh 1991-04-04 Text handling portion of this routine
-C> modified to handle field width in bytes.
-C> - Bill Cavanaugh 1991-04-17 Tests showed that the same data in compressed
-C> and uncompressed form gave different results. This has been corrected.
-C>
 C> @param[in] IPTR See w3fi67 routine docblock
 C> @param[in] MSGA Array containing bufr message
 C> @param[inout] IVALS Array of single parameter values
@@ -1484,9 +1375,6 @@ C> @author Bill Cavanaugh @date 1988-09-01
 C> Process a replication descriptor, must extract number
 C> of replications of n descriptors from the data stream.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C>
 C> @param[in] IWORK Working descriptor list
 C> @param[in] IPTR See w3fi67 routine docblock
 C> @param[in] IDENT See w3fi67 routine docblock
@@ -1635,16 +1523,6 @@ C> @author Bill Cavanaugh @date 1988-09-01
 C> Extract and save indicated change values for use
 C> until changes are rescinded, or extract text strings indicated
 C> through 2 05 yyy.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C> - Bill Cavanaugh 1991-04-04 Modified to handle descriptor 2 05 yyy
-C> - Bill Cavanaugh 1991-05-10 Coding has been added to process proposed
-C> table c descriptor 2 06 yyy.
-C> - Bill Cavanaugh 1991-11-21 Coding has been added to properly process
-C> table c descriptor 2 03 yyy, the change
-C> to new reference value for selected
-C> descriptors.
 C>
 C> @param[in] IPTR See w3fi67 routine docblock.
 C> @param[in] LX X portion of current descriptor.
@@ -1799,12 +1677,6 @@ C> @author Bill Cavanaugh @date 1988-09-01
 
 C> Substitute descriptor queue for queue descriptor
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C> - Bill Cavanaugh 1991-04-17 Improved handling of nested queue descriptors.
-C> - Bill Cavanaugh 1991-05-28 Improved handling of nested queue descriptors.
-C> based on tests with live data.
-C>
 C> @param[in] IWORK Working descriptor list.
 C> @param[in] IPTR See w3fi67 routine docblock.
 C> @param[in] ITBLD Array containing descriptor queues.
@@ -1905,9 +1777,6 @@ C                                RESET POINTERS
 C> @brief Subroutine FI6708
 C> @author Bill Cavanaugh @date 1989-01-17
 
-C> Program history log:
-C> - Bill Cavanaugh 1988-09-01
-C>
 C> @param[inout] IPTR See w3fi67() routine docblock.
 C> @param[in] IWORK Working descriptor list.
 C> @param LF
@@ -1941,9 +1810,6 @@ C> @author Bill Cavanaugh @date 1990-02-14
 
 C> Reformat decoded profiler data to show heights instead of
 C> height increments.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1990-02-14
 C>
 C> @param[in] IDENT Array contains message information extracted from
 C> BUFR message:
@@ -2326,9 +2192,6 @@ C> @brief Reformat profiler edition 2 data
 C> @author Bill Cavanaugh @date 1993-01-27
 
 C> Reformat profiler data in edition 2
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-01-27
 C>
 C> @param[in] IDENT Array contains message information extracted from
 C> BUFR message:

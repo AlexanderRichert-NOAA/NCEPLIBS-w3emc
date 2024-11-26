@@ -3,9 +3,6 @@
 !> of year, and julian day given an NCEP absolute date and time.
 !> @author Mark Iredell @date 1998-01-05
 
-!> Program history log:
-!> - Mark Iredell 1998-01-05
-!>
 !> @param[in] IDAT Integer (8) NCEP absolute date and time
 !> (year, month, day, time zone, hour, minute, second, millisecond)
 !> @param[out] JDOW Integer day of week (1-7, where 1 is sunday)

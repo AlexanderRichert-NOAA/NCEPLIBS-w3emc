@@ -7,11 +7,6 @@ C> format into a nas-9050 label. All ASCII characters are
 C> converted into EBCDIC characters. Binary or coded labels
 C> can be converted.
 C>
-C> Program history log:
-C> - Ralph Jones 1985-07-31
-C> - Ralph Jones 1989-10-24 Convert to cray cft77 fortran.
-C> - Boi Vuong 2002-10-15 Replaced function ichar with mova2i.
-C>
 C> @param[in] ILABEL 4 64 bit words or 32 characters
 C> characters are in ASCII or binary.
 C> @param[out] NLABEL 4 64 bit words or 32 characters,

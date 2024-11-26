@@ -6,15 +6,6 @@ C> Reads argument lines from standard input and obtains subdirectory, bufr
 C> tankname, characters to append for adding an orbit, and options for limiting
 C> the time window.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-09-03 | B. KATZ   | Original author
-C> 1998-11-27 | B. KATZ   | Changes for y2k and fortran 90 compliance
-C> 2002-02-11 | D. KEYSER | If "tlflag" is not specified, it defaults to
-C> "notimlim" rather than "timlim" and gross time limits will not be
-C> calculated and returned in "iymdhb" and "iymdhe"
-C>
 C> @param[in] SUBDIR Name of sub-directory including bufr data type where
 C> bufr data tank is located.
 C> @param[in] LSUBDR Number of characters in 'subdir'.

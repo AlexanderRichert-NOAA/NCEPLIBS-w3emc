@@ -6,13 +6,6 @@ C> Subroutine computes word size, the type of character
 C> set, ASCII or EBCDIC, and if the computer is big-endian, or
 C> little-endian.
 C>
-C> Program history log:
-C> - Relph Jones 1994-10-07
-C> - Stephen Gilbert 1998-07-08 Removed the Fortran SAVE Statement.
-C> The SAVE statement is not needed for this outine, and may have been
-C> causing errors using the f90 compiler under the 2.0 Programming Environment.
-C> - Boi Vuong 2002-10-15 Replaced Function ICHAR with mova2i
-C>
 C> @param[out] IENDN Integer for big-endian or little-endian
 C> - =0 big-endian
 C> - =1 little-endian

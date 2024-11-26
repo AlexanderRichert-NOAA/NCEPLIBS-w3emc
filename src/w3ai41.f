@@ -6,14 +6,6 @@ C> Unpack consecutive binary strings of the same size from
 C> one user supplied array and store them in the same order right
 C> aligned in another array. W3AI41() is the reverse of W3AI40().
 C>
-C> Program history log:
-C> - Robert Allard 1980-04-01  R.ALLARD (ORIGINAL AUTHOR)  ASMEMBLER LANGUAGE VERSION.
-C> - Ralph Jones 1984-07-05 Recompiled for NAS-9050
-C> - Ralph Jones 1988-07-05 Wrote fortran version of w3ai41 to unpack
-C> variable size binary strings, added code to reverse orfer of bytes.
-C> - Ralph Jones 1989-11-04 Convert to craf CFT77 FORTRAN
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive.
-C>
 C> @param[in] KFLD Integer array contining binary string(s).
 C> @param[in] KLEN Integer number of bits per string (0 < klen < 65).
 C> @param[in] KNUM Integer number of strings to unpack. this value must

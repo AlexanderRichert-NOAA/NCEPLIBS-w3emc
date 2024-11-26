@@ -7,14 +7,6 @@ C> packing replaces bits in the part of the output array indicated
 C> by the offset value. W3AI40 is the reverse of W3AI41. (see W3AI32
 C> to pack variable size binary strings.)
 C>
-C> Program history log:
-C> - Robert Allard 1980-04-01 Asmembler language version.
-C> - Ralph Jones 1984-07-05 Recompiled for nas-9050.
-C> - Ralph Jones 1989-11-04 Wrote fortran version of w3ai40 to pack
-C> constant size binary strings.
-C> - Ralph Jones 1989-11-05 Convert to cray cft77 fortran.
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive.
-C>
 C> @param[in] KFLD Integer input array of right adjusted strings.
 C> @param[in] KLEN Integer number of bits per string (0 < klen < 33).
 C> @param[in] KNUM Integer number of strings in 'kfld' to pack.

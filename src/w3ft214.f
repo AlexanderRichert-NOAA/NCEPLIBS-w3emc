@@ -8,11 +8,6 @@ C> stereographic map projection is true at 60 deg. n. , The mesh
 C> length is 47.625 km. and the oriention is 150 deg. w.
 C> awips grid 214  regional - alaska - double resolution
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1993-10-19 | Ralph Jones | Initial.
-C>
 C> @param[in] ALOLA 361*91 grid 1.0 deg. lat,lon grid n. hemi.
 C> 32851 point grid. 360 * 181 one degree grib grid 3 was flipped, greenwish added
 C> to right side and cut to 361 * 91.

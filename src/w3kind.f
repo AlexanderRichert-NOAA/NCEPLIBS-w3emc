@@ -5,11 +5,6 @@
 !> This subprogram returns the real kind and the integer kind that the w3 lib
 !> is compiled with.
 !>
-!> ### Program History Log:
-!> Date | Programmer | Comment
-!> -----|------------|--------
-!> 2011-06-24 | Jun Wang | Initial
-!>
 !> @param[out] KINDREAL Kind of real number in w3 lib
 !> @param[out] KINDINT Kind of integer number in w3 lib
 !>

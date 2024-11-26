@@ -4,13 +4,6 @@ C> @author A. Desmarais @date 1984-06-21
 
 C> Calculates the number of minutes since 0000, 1 January 1978.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1984-06-21 | A. Desmarais | Initial.
-C> 1989-07-14 | Ralph Jones | Convert to cyber 205 fortran 200, change logic so it will work in 21 century.
-C> 1989-11-02 | Ralph Jones | Convert to cray cft77 fortran.
-C>
 C> @param[in] IDATE (INTEGER Size 5) Array containing year of century, month,
 C> day, hour and minute. IDATE(1) may be a two digit year or 4. If 2 digits
 c> and GE than 78 1900 is added to it. If LT 78 then 2000 is added to it. If 4

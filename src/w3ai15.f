@@ -7,13 +7,6 @@ C> Converts a set of binary numbers to an equivalent set
 C> of ascii number fields in core. This is an alternate procedure
 C> to the use of the 360/195 version of encode.
 C>
-C> Program history log:
-C> - R. Allard 1974-01-15
-C> - Ralph Jones 1989-02-06 Change from assembler to fortran
-C> this subroutine should be rewritten in intel 8088 assembly language.
-C> - Ralph Jones 1990-08-13 Change to cray cft77 fortran.
-C> - Boi Vuong 2012-11-05 Change variable zero fill for little-endian.
-C>
 C> @param[in] NBUFA Input array (integer*4).
 C> @param[in] N1 Number of integers in nbufa to be converted.
 C> @param[in] N2 Desired character width of ascii number field.

@@ -6,11 +6,6 @@ C> Subroutine computes double precision  coefficients
 C> used in generating  legendre polynomials in subr. w3fa12.
 C> on a cray double precision is changed to real, dsqrt to sqrt.
 C>
-C> Program history log:
-C> - Joe Sela 1980-10-28
-C> - Ralph Jones 1984-06-01 0change to ibm vs fortran.
-C> - Ralph Jones 1993-04-12 0changes for cray, double precision to real.
-C>
 C> @param[out] EPS Real coefficients used in computing legendre polynomials.
 C> dimension of eps is (jcap+2)*(jcap+1)
 C> @param[in] JCAP Zonal wave number thirty, etc.

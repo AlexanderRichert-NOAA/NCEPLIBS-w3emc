@@ -15,13 +15,6 @@ C> the unpacked pds and gds parameters, the unpacked bitmap (if any),
 C> and the unpacked data. If the grib message is not found, then the
 C> return code will be nonzero.
 C>
-C> Program history log:
-C>  - Mark Iredell 1994-04-01
-C>  - Mark Iredell 1995-10-31  Modularized portions of code into subprograms
-C>  and allowed for unspecified index file
-C>  - Chuang 2004-07-22 add packing bit number nbitss in the argument
-C>  list because eta grib files need it to repack grib file
-C>
 C> @param[in] lugb integer unit of the unblocked grib data file.
 C> @param[in] lugi integer unit of the unblocked grib index file
 C> (=0 to get index buffer from the grib file).

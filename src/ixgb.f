@@ -17,11 +17,6 @@ C> Byte 113-172: (optional) bytes 41-100 of the pds.
 C> Byte 173-184: (optional) bytes 29-40 of the pds.
 C> Byte 185-320: (optional) bytes 43-178 of the gds.
 C>
-C> Program history log:
-C> - Mark iredell 1995-10-31
-C> - Mark iredell 1996-10-31 Augmented optional definitions to byte 320.
-C> - Mark iredell 2001-06-05 Apply linux port by ebisuzaki.
-C>
 C> @param[in] LUGB Integer logical unit of input grib file.
 C> @param[in] LSKIP Integer number of bytes to skip before grib message.
 C> @param[in] LGRIB Integer number of bytes in grib message.

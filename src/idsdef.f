@@ -5,9 +5,6 @@ C> @author Mark Iredell @date 1992-10-31
 C> Sets decimal scalings defaults for various parameters.
 C> A decimal scaling of -3 means data is packed in kilo-si units.
 C>
-C> Program history log:
-C> - Mark Iredell 1992-10-31
-C>
 C> @param[in] IPTV parameter table version (only 1 or 2 is recognized).
 C> @param[out] IDS integer (255) decimal scalings
 C> (unknown decimal scalings will not be set).

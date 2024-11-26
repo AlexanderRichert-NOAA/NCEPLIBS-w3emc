@@ -9,12 +9,6 @@ C> gives programmer more control of how many waves are summed
 C> and how many points in each wave. A programmer can simulate
 C> 24-mode, 12-mode, etc.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1981-11-19 | Ralph Jones | Initial.
-C> 1984-06-01 | Ralph Jones | Change to ibm vs fortran.
-C>
 C> @param[in] FLN 961 complex coeff.
 C> @param[in] PLN 992 real space for legendre polynomials
 C> @param[in] EPS 992 real space for coeffs. used in computing pln.

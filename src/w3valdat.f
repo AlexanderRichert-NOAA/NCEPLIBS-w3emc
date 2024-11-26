@@ -4,11 +4,6 @@
 
 !> This logical function returns true if the input is a valid NCEP absolute date and time.
 !>
-!> ### Program History Log:
-!> Date | Programmer | Comment
-!> -----|------------|--------
-!> 1998-01-05 | Mark Iredell | Initial.
-!>
 !> @param[in] IDAT NCEP absolute date and time (year, month, day, time zone,
 !> hour, minute, second, millisecond)
 !> @return W3VALDAT True if idat is a valid NCEP date and time

@@ -7,11 +7,6 @@ C> 91 grid to a polar stereographic 65 by 43 grid. The polar
 C> stereographic map projection is true at 60 deg. n. , The mesh
 C> length is 190.5 km. and the oriention is 105 deg. w.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1994-05-18 | Ralph Jones | Initial.
-C>
 C> @param[in] ALOLA 361*91 grid 1.0 lat,lon grid n. hemisphere 32851 point
 C> grid is o.n. 84 type ?? or ?? hex
 C> @param[in] INTERP 1 linear interpolation , ne.1 biquadratic

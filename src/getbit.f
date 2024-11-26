@@ -8,9 +8,6 @@ C> The minimum and maximum rounded field values are also returned.
 C> For particular binary and decimal scalings is computed.
 C> Grib bitmap masking for valid data is optionally used.
 C>
-C> Program history log:
-C> - Mark Iredell 1996-09-16
-C>
 C> @param[in] IBM Integer bitmap flag (=0 for no bitmap).
 C> @param[in] IBS Integer binary scaling (e.g. ibs=3 to round field
 C> to nearest eighth value).

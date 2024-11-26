@@ -5,14 +5,6 @@ C> @author Ralph Jones @date 1990-06-04
 C> Convert ibm370 32 bit floating point numbers to ieee
 C> 32 bit task 754 floating point numbers.
 C>
-C> Program history log:
-C> - Ralph Jones 1990-06-04 Change to sun fortran 1.3
-C> - Ralph Jones 1990-07-14 Change ishft to lshift or lrshft
-C> - Ralph Jones 1991-03-09 Change to silicongraphics fortran
-C> - Ralph Jones 1992-07-20 Change to ibm aix xl fortran
-C> - Ralph Jones 1995-11-15 Add save statement
-C> - Stephen Gilbert 1998-11-15 Specified 4-byte integers for IBM SP
-C>
 C> @param[in] A REAL*4 Array of ibm370 32 bit floating point numbers.
 C> @param[out] N Number of points to convert.
 C> @param[out] B REAL*4 Array of ieee 32 bit floating point numbers.

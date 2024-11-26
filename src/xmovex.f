@@ -2,11 +2,6 @@ C> @file
 C> @brief Assembler language to move data
 C> @author Unknown @date Unknown
 
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> Unkonwn | Unknonw | Initial.
-C>
 C> @param[out] OUT
 C> @param[in] IN
 C> @param IBYTES

@@ -6,11 +6,6 @@ C> Convert a n. s. hemisphere 1.0 degree lat.,lon. 361 by
 C> 181 grid to a national - hawaii (mercator) 93*68 awips 204
 C> grid.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1994-05-18 | Ralph Jones | Initial.
-C>
 C> @param[in] ALOLA 361*181 grid 1.0 deg. lat,lon grid n. hemi.
 C> 65341 point grid. 360 * 181 one degree grib grid 3 was flipped, greenwish added
 C> to right side.

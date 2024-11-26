@@ -5,13 +5,6 @@ C> @author John Hennessy @date 1985-09-15
 C> Converts floating point number from machine
 C> representation to grib representation (ibm370 32 bit f.p.).
 C>
-C> Program history log:
-C> - John Hennessy 1985-09-15
-C> - Ralph Jones 1992-09-23 Change name, add doc block
-C> - Ralph Jones 1993-10-27 Change to agree with hennessy changes
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive
-C>
 C> @param[in] PVAL Floating point number to be converted
 C> @param[in] KBITS Number of bits in computer word (32 or 64)
 C> @param[out] KEXP 8 Bit signed exponent

@@ -6,10 +6,6 @@ C> Converts i,j grid coordinates to the corresponding
 C> latitude/longitude on a southern hemisphere polar stereographic
 C> map projection.
 C>
-C> Program history log.
-C> - Ralph Jones 1986-07-17 Convert to fortran 77.
-C> - Ralph Jones 1990-08-31 Convert to cray cft77 fortran.
-C>
 C> @param[in] XI Real i coordinate.
 C> @param[in] XJ Real j coordinate.
 C> @param[in] XMESHL Real grid interval in km.

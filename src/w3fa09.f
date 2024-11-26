@@ -4,16 +4,6 @@ C> @author P. Chase @date 1978-10-01
 
 C> Computes saturation vapor pressure in kilopascals given temperataure in kelvins.
 C>
-C> Program history log:
-C> - P. Chase 1978-10-01  P.CHASE
-C> - Ralph Jones 1984-06-26 Change to ibm vs fortran.
-C> - Ralph Jones 1984-06-26 Change to microsoft fortran 4.10.
-C> - Ralph Jones 1990-06-08 Change to sun fortran 1.3.
-C> - Ralph Jones 1991-03-29 Convert to silicongraphic fortran.
-C> - Ralph Jones 1993-03-29 Add save statement.
-C> - Ralph Jones 1995-09-25 Change tk to cray 64 bit real, change double.
-C> precision to cray 64 bit real.
-C>
 C> @param[in] TK REAL*8 Temperature in kelvins. if tk < 223.16, the value
 C> 223.16 will be used.  if tk > 323.16, the value 323.16
 C> will be used as the argument. 'tk' itself is unchanged.

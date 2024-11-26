@@ -8,10 +8,6 @@ C> coordinate system overlaid on a polar stereographic map pro-
 C> jection true at 60 degrees n or s latitude. w3fb06() is the reverse
 C> of w3fb07(). uses grib specification of the location of the grid
 C>
-C> Program history log:
-C> - John Stackpole 1988-01-01
-C> - Ralph Jones 1990-04-12 Convert to cray cft77 fortran.
-C>
 C> @param[in] ALAT Latitude in degrees (negative in southern hemis)
 C> @param[in] ALON East longitude in degrees, real*4
 C> @param[in] ALAT1 Latitude of lower left point of grid (point (1,1))

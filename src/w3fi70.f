@@ -6,12 +6,6 @@ C> Computes the four scaling constants used by grdprt, w3fp03,
 C> or w3fp05 from the 28 byte (pds) product definition section of
 C> grib edition one.
 C>
-C> Program history log:
-C> - Ralph Jones 1991-10-26
-C> - Ralph Jones 1993-03-29 Add save statement
-C> - Ralph Jones 1993-08-08 Add 156 (cin), 158 (tke) to tables
-C> - Ralph Jones 1993-10-16 Changes for o.n. 388  ver. oct. 8,1993
-C>
 C> @param[in] PDS 28 byte (pds) grib product definition section.
 C> @param[out] CNST 4 constant's used by grdprt(), w3fp05(), or w3fp03().
 C> @param[out] IER 0 = normal return | 1 = .

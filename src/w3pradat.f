@@ -5,11 +5,6 @@
 !> This subprogram forms various character strings useful
 !> in describing an NCEP absolute date and time.
 !>
-!> ### Program History Log:
-!> Date | Programmer | Comment
-!> -----|------------|--------
-!> 1998-01-05 | Mark Iredell | Initial.
-!>
 !> @param[in] IDAT NCEP absolute date and time (year, month, day, time zone,
 !> hour, minute, second, millisecond)
 !> @param[out] CDAT Strings describing date and time:

@@ -4,11 +4,6 @@ C> @author Dr. Robert C. Gammill @date 1972-05-DD
 
 C> This is the fortran version of gbyte
 C>
-C> Program history log:
-C> - Russell E. Jones 1991-03-DD
-C> Changes for SiliconGraphics IRIS-4D/25
-C> SiliconGraphics 3.3 FORTRAN 77.
-C>
 C> To unpack a byte into a target word. The unpacked byte is right-justified
 C> in the target word, and the remainder of the word is zero-filled.
 C>

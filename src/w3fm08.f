@@ -7,11 +7,6 @@ C> equivalent linear smoother with stencil (.25 .5 .25) and the
 C> desmoother uses stencil (-.25 1.5 -.25). Two grid interval waves
 C> are annihilated, four grid interval waves have a .75 response.
 C>
-C> Program history log:
-C> - J. Howcroft 1971-02-01
-C> - Ralph Jones 1984-07-01 Change to ibm vs fortran.
-C> - Ralph Jones 1994-07-27 Change to cray cft77 fortran.
-C>
 C> @param[inout] A
 C> - [in] Real size (li,lj) array to hold field to be smoothed.
 C> - [out] Array holding smoothed field.

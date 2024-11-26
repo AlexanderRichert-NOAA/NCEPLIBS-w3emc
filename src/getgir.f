@@ -19,10 +19,6 @@ C> - byte 113-172: (optional) bytes 41-100 of the pds.
 C> - byte 173-184: (optional) bytes 29-40 of the pds.
 C> - byte 185-320: (optional) bytes 43-178 of the gds.
 C>
-C> Program history log:
-C> - Mark Iredell 1995-10-31
-C> - Mark Iredell 1996-10-31 Augmented optional definitions to byte 320.
-C>
 C> @param[in] lugb integer unit of the unblocked grib file.
 C> @param[in] msk1 integer number of bytes to search for first message.
 C> @param[in] msk2 integer number of bytes to search for other messages.

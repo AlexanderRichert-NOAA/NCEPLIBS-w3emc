@@ -7,12 +7,6 @@
 !> of a program is invoked as well as the minimum, maximum
 !> and total wall-clock time spent in the given section.
 !>
-!> Program history log:
-!> - Mark Iredell 1998-07-16
-!> - Frimel and Kalina 2019-09-17
-!> Decompose return statistcs if statement
-!> - Boi Vuong 2020-04-02 Check for ka > 0 and modifiled ifblock statement
-!> into two separate ifblock statements.
 !> @param[in] K Integer positive section number
 !> or maximum section number in the first invocation
 !> or zero to reset all wall-clock statistics

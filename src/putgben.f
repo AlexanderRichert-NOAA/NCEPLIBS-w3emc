@@ -4,11 +4,6 @@ C> @author Mark Iredell @date 1994-04-01
 
 C> This subprogram is nearly the inverse of getgbe.
 C>
-C> Program history log:
-C> - Mark Iredell 1994-04-01
-C> - Mark Iredell 1995-10-31 Removed saves and prints.
-C> - Mark Iredell 2001-03-16 Corrected argument list to include ibs.
-C>
 C> @param[in] lugb Integer unit of the unblocked grib data file.
 C> @param[in] kf Integer number of data points.
 C> @param[in] kpds Integer (200) pds parameters.

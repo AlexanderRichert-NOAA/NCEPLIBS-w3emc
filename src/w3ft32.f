@@ -7,16 +7,6 @@ C> field (in office note 84) to any other field. Can do bilinearly
 C> or biquadratically. Will not rotate wind components.
 C> Input and output fields are real*4 unpacked
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1974-06-15 | John Stackpole |
-C> 1987-07-15 | Bill Cavanaugh | Add grid type 100, 101 to tables.
-C> 1990-08-08 | John. Stackpole | Correct rotation error wrt 100, 101
-C> 1990-08-31 | Ralph Jones | Change name from polate to w3ft32
-C> 1993-01-26 | Dennis Keyser | Added grid types 87, 105, 106, 107 to
-C> tables (as both input and output).
-C>
 C> @param[in] FIELD REAL*4 Two dimensional array.
 C> @param[in] MAPIN INTEGER*4 Nmc map number (k) for given input field.
 C> @param[in] MAPOUT INTEGER*4 Nmc map number (k) for wanted output field.

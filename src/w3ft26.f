@@ -7,15 +7,6 @@ C> 360x91 1-degree grid. This nh/sh grid is flipped for grib
 C> purposes and then converted to the desired 1.25 degree
 C> wafs (quadrant) thinned grid.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1993-04-28 | FARLEY | Original author.
-C> 1994-04-01 | Ralph Jones | Corrections for 1 deg. displacement of grids and
-C> error in flipping of southern hemisphere.
-C> 1994-05-05 | Ralph Jones | Replace subr. w3ft01() with w3ft16() and w3ft17().
-C> 1994-06-04 | Ralph Jones | Change subroutine name from wfstrp to w3ft26().
-C>
 C> @param[in] MAPNUM Number of grid, 37 to 44.
 C> @param[in] FLD Northern or southern hem. spectral field.
 C> @param[in] HI Interpolated wafs field (3447 points)

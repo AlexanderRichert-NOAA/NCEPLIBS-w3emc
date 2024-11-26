@@ -5,14 +5,6 @@ C> @author Bill Cavanaugh @date 1991-06-21
 C> Using information from the user, build a 40 character
 C> communications prefix and place in indicated location.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-06-21
-C> - Ralph Jones 1991-09-20 Changes for silicongraphics 3.3 fortran 77.
-C> - Ralph Jones 1993-03-29 Add save statement.
-C> - Ralph Jones 1994-04-28 Change for cray 64 bit word size and
-C> for ASCII character set computers.
-C> - Boi Vuong 2002-10-15 Replaced function ichar with mova2i.
-C>
 C> @param[in] ICAT Catalog number.
 C> @param[in] AREG AFOS regional addressing flags (6 positions)
 C> select any or all of the following. Selections

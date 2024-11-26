@@ -4,11 +4,6 @@ C> @author Mark Iredell @author 1994-04-01
 
 C> This subprogram is nearly the inverse of getgb.
 C>
-C> Program history log:
-C> - Mark Iredell 1994-04-01
-C> - Mark Iredell 1995-10-31 Removed saves and prints.
-C> - George Gayno 2009-10-15 Increased maxbit from 16 to 32.
-C>
 C> @param[in] LUGB Integer unit of the unblocked grib data file.
 C> @param[in] KF Integer number of data points.
 C> @param[in] KPDS Integer (200) pds parameters.

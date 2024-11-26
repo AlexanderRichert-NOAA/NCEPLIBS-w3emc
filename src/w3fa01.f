@@ -7,14 +7,6 @@ C> an air parcel at some point in the atmosphere, calculate the
 C> dewpoint temperature and the pressure and temperature of the
 C> lifting condensation level.
 C>
-C> Program history log:
-C> - James Howcroft 1979-07-01
-C> - Ralph Jones 1989-01-24 Change to microsoft fortran 4.10.
-C> - Ralph Jones 1990-06-11 Change to sun fortran 1.3.
-C> - Ralph Jones 1991-03-29 Convert to silicongraphics fortran.
-C> - Ralph Jones 1993-03-29 Add save statement.
-C> - Ralph Jones 1995-09-25 Put in cray w3 library.
-C>
 C> @param[in] P Parcel pressure in millibars.
 C> @param[in] T Parcel temperature in degrees celsius.
 C> @param[in] RH Parcel relative humidity in percent.

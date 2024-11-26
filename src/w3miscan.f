@@ -22,20 +22,6 @@ C> program will check to see if the b. temps are over land or ice,
 C> and if they are it will also return missing values since these
 C> data are valid only over ocean.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-07-30 | Dennis Keyser | Original author - subroutine is a modified version of w3lib w3fi86 which read one scan line from the 30-orbit shared processing data sets
-C> 1997-05-22 | Dennis Keyser | Crisis fix to account for clon now returned from bufr as -180 to 0 (west) or 0 to 180 (east), used to return as 0 to 360 east which was not the bufr standard
-C> 1998-01-28 | Dennis Keyser | Replaced neural net 2 algorithm which calculated only wind speed product with neural net 3 algorithm which calculates both wind speed and total precipitable water products (among others) but, unlike nn2, does not return a rain flag value (it does set all retrievals to missing that fail rain flag and ice contamination tests)
-C> 1998-03-30 | Dennis Keyser | Modified to handle neural net 3 ssm/i products input in a products bufr data dump file; now prints out number of scans processed by satellite number in final summary
-C> 1998-10-23 | Dennis Keyser | Subroutine now y2k and fortran 90 compliant
-C> 1999-02-18 | Dennis Keyser | Modified to compile and run properly on ibm-sp
-C> 2000-06-08 | Dennis Keyser | Corrected mnemonic for rain rate to "reqv" (was "prer" for some unknown reason)
-C> 2001-01-03 | Dennis Keyser | Changed units of returned rain rate from whole mm/hr to 10**6 mm/sec, changed units of returned surface temp from whole kelvin to 10**2 kelvin (to incr. precision to that orig. in input bufr file)
-C> 2004-09-12 | Dennis Keyser | Now decodes sea-surface temperature if valid into same location as surface temperature, quantity is surface temperature if surface tag is not 5, otherwise quantity is sea-surface temperature (ncep products data dump file now contains sst); checks to see if old or new version of mnemonic table bufrtab.012 is being used here (old version had "ph2o" instead of "tpwt", "sndp" instead of "tosd", "wsos" instead of "wspd" and "ch2o" instead of the sequence "metfet vilwc metfet"), and decodes using whichever mnemonics are found {note: a further requirement for "vilwc" is that the first "metfet" (meteorological feature) in the sequence must be 12 (=cloud), else cloud water set to missing, regardless of "vilwc" value}
-C> 2011-08-04 | Dennis Keyser | Add ibdate (input bufr message date) to output argument list (now used by calling program prepobs_prepssmi)
-C>
 C> @param[in] INDTA Unit number of ncep bufr ssm/i dump data set
 C> @param[in] INLSF Unit number of direct access nesdis land/sea file
 C> (valid only if lbrit and either nnalg or gbalg true).
@@ -972,23 +958,6 @@ C> calculate either the wind speed product for the goodberlet
 C> algorithm (if requested) or the wind speed and tpw products for
 C> the neural net 3 algorithm (if requested).
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> ????-??-?? | W. Gemmill | (w/nmc21) -- original author
-C> 1995-01-04 | Dennis Keyser | -- incorporated into w3miscan and
-C> streamlined code
-C> 1996-05-07 | Dennis Keyser | (np22) -- in-line neural network 1 algoritm
-C> replaced by neural network 2 algorithm
-C> 1996-07-30 | Dennis Keyser | (np22) -- can now process wind speed from
-C> both algorithms if desired
-C> 1998-01-28 | Dennis Keyser | (np22) -- replaced neural net 2 algorithm
-C> which calculated only wind speed product with neural net 3
-C> algorithm which calculates both wind speed and total
-C> precipitable water products (among others) but, unlike nn2,
-C> does not return a rain flag value (it does set all retrievals
-C> to missing that fail rain flag and ice contamination tests)
-C>
 C> @param[in] NNALG Process wind speed and tpw via neural net 3 algorithm if true
 C> @param[in] GBALG Process wind speed via goodberlet algorithm if true
 C> @param[in] KDATA 7-word array containing 7 channels of brightness temperature (kelvin x 100)
@@ -1080,11 +1049,6 @@ C> algorithm. Transfer function is described and compared with
 C> cal/val and other algorithms in omb technical note no. 137. See
 C> remarks for detailed info on this algorithm. This is an improved
 C> version of the earlier neural network 2 algorithm.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1997-02-02 | V. Krasnopolsky | Initial.
 C>
 C> @param[in] XT 7-word array containing brightness temperature in the order:
 C> t19v (word 1), t19h (word 2), t22v (word 3), t37v (word 4), t37h (word 5),
@@ -1217,11 +1181,6 @@ C> sst (in deg c). This nn was trained on blended f11 data set
 C> (ssmi/buoy matchups plus ssmi/ows matchups 15 km x 15 min) under
 C> clear + cloudy conditions.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-07-15 | V. Krasnopolsky | Initial.
-C>
 C> @param[in] X 5-word array containing brightness temperature in the
 C> order: t19v (word 1), t19h (word 2), t22v (word 3),
 C> t37v (word 4), t37h (word 5) (all in kelvin)
@@ -1331,12 +1290,6 @@ C> separation into subsets. It gives rms = 1.64 m/s for training set
 C> and 1.65 m/s for testing set. This is an improved version of the
 C> earlier neural network 1 algorithm.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1994-03-20 | V. Krasnopolsky | Initial.
-C> 1995-05-07 | V. Krasnopolsky | Replaced with neural net 2 algorithm.
-C>
 C> @param[in] X 5-Word array containing brightness temperature in the
 C> order: t19v (word 1), t22v (word 2), t37v (word 3),
 C> t37h (word 4), t85v (word 5) (all in kelvin)
@@ -1396,11 +1349,6 @@ C> @author W. Gemmill @date 1994-08-15
 C> Calculates a single goodberlet output for wind speed.
 C> This is a linear regression algorithm from 1989.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1994-08-15 | W. Gemmill | Initial.
-C>
 C> @param[in] X 4-word array containing brightness temperature in the
 C> order: t19v (word 1), t22v (word 2), t37v (word 3),
 C> t37h (word 4) (all in kelvin)
@@ -1423,14 +1371,6 @@ C> @author Dennis Keyser @date 1995-01-04
 
 C> Finds and returns the low resolution land/sea tag nearest
 C> to the requested latitude and longitude.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1978-01-20 | J. K. Kalinowski (S11213) | Original author
-C> 1978-10-03 | J. K. Kalinowski (S1214) | Changes unknown
-C> 1985-03-01 | N. Digirolamo (SSAI) | Conversion to vs fortran
-C> 1995-01-04 | Dennis Keyser | Incorporated into w3miscan and streamlined code
 C>
 C> @param[in] INLSF Unit number of direct access nesdis land/sea file
 C> @param[in] BLAT Latitude (whole degrees: range is 0. to +90. north,
@@ -1499,14 +1439,6 @@ C> @author Dennis Keyser @date 195-01-04
 
 C> Reads two records from a low resolution land/sea database and stores into common.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1978-01-20 | J. K. Kalinowski (S11213) | Original author
-C> 1995-01-04 | Dennis Keyser | Incorporated into w3miscan and
-C> streamlined code; modified to be machine independent thru
-C> use of standard fortran direct access read
-C>
 C> @param[in] INLSF Unit number of direct access nesdis land/sea file
 C> @param[in] NUMRGN The region (1,2 or 3) of the database to be accessed
 C> (dependent on latitude band)
@@ -1544,16 +1476,6 @@ C> @brief Reads in nh and sh 1-deg. sea-sfc temps.
 C> @author Dennis Keyser @date 200-02-18
 
 C> Reads in global sea-surface temperature field on a one-degree grid from grib file.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> ????-??-?? | W. Gemmill (NP21) | Original author
-C> 1995-01-04 | Dennis Keyser | Incorporated into w3miscan and
-C> streamlined code; converted sst input file from vsam/on84 to
-C> grib to allow code compile and run on the cray machines.
-C> 2000-02-18 | Dennis Keyser | Modified to call w3lib routine "getgb",
-C> this allows code to compile and run properly on ibm-sp
 C>
 C> @param[in] INGBI Unit number of grib index file for grib file
 C> containing global 1-degree sea-surface temp field

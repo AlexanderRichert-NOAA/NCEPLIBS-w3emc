@@ -9,11 +9,6 @@ C> are at the north pole, the output components will be made
 C> consistent with the WMO standards for reporting winds at the
 C> north pole. (see office note 241 for WMO definition.)
 C>
-C> Program history log:
-C> - John Stackpole 1981-12-30
-C> - P. Chase 1988-10-13 Allow input and output to be the same
-C> - Ralph Jones 1991-03-06 Change to cray cft77 fortran
-C>
 C> @param[in] FFID REAL I-displacement from point to north pole
 C> @param[in] FFJD REAL J-displacement from point to north pole
 C> @param[in] FGV REAL Grid-oriented V-component

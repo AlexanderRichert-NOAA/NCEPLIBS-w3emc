@@ -7,13 +7,6 @@ C> 37 grid to a polar stereographic 65 by 65 grid. The polar
 C> stereographic map projection is true at 60 deg. s.; The mesh
 C> length is 381 km. and the oriention is 260 deg. w.(100e).
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1984-06-18 | Ralph Jones | Initial.
-C> 1991-07-30 | Ralph Jones | Convert to cray cft77 fortran.
-C> 1992-05-02 | Ralph Jones | Add save.
-C>
 C> @param[in] ALOLA 145*37 deg 2.5 lat,lon grid s. hemi.
 C> 5365 point grid is type 30 or 1e hex o.n. 84.
 C> @param[in] LINEAR 1 linear interpolation , ne.1 biquadratic.

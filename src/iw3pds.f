@@ -10,15 +10,6 @@ C> tested. If key = 2, 11 of 1st 12 bytes are tested. Byte 4 is
 C> is not tested, so table version number can change and your
 C> program will still work. If key=3, test bytes 1-3, 7-12.
 C>
-C> Program history log:
-C> - Ralph Jones 1988-02-22
-C> - Ralph Jones 1989-08-29 Add entry iw3pds, an alias name.
-C> - Ralph Jones 1989-08-29 Change to cray cft77 fortran, make iw3pds
-C> the function name, iw3pdb the alias.
-C> - Ralph Jones 1994-02-10 Add key=2, test only 11 of 1st 12 bytes.
-C> Byte 4 (table version no.) is not tested.
-C> - Ralph Jones 1994-07-07 Add key=3, test bytes 1-3, 7-12.
-C>
 C> USAGE:  II = IW3PDS(L1,L2,KEY)
 C>         II = IW3PDB(L1,L2,KEY)    ALIAS
 C>

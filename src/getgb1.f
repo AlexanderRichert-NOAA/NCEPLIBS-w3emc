@@ -14,11 +14,6 @@ C> the unpacked pds and gds parameters, the unpacked bitmap (if any),
 C> and the unpacked data. If the grib message is not found, then the
 C> return code will be nonzero.
 C>
-C> Program history log:
-C>  - Mark Iredell 1994-04-01
-C>  - Ralph Jones 1995-05-10  Add one more parameter to getgb and
-C> change name to getgb1.
-C>
 C> @param[in] lugb logical unit of the unblocked grib data file.
 C> @param[in] lugi logical unit of the unblocked grib index file.
 C> @param[in] jf integer maximum number of data points to unpack.

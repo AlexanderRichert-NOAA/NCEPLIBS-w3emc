@@ -7,14 +7,6 @@ C> differences.  return the original first value and the first
 C> first-difference as separate values. align data in
 C> boustrephedonic style, (alternate row reversal).
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-07-14
-C> - Bill Cavanaugh 1994-01-27 Added reversal of even numbered rows
-C> (boustrophedonic processing)
-C> - Bill Cavanaugh 1994-03-02 Corrected improper ordering of even
-C> numbered rows
-C> - Ebisuzaki 1999-12-06 Linux port
-C>
 C> @param[inout] IFLD
 C> - [in] Integer input array
 C> - [out] Second differenced field

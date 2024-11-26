@@ -13,22 +13,6 @@ C> with blanks. This library is similar to w3ai02() except w3ai02()
 C> was written in assembler and could not handle internal read errors
 C> (program calling w3ai02() would fail in this case w/o explanation).
 C>
-C> Program history log:
-C> - L. Marx 1990-01 Converted code from assembler
-C> to vs fortran; Expanded error return codes in 'NEXT'
-C> - Dennis Keyser 1991-07-22 Use same arguments as w3ai02() ;
-C> Streamlined code; Docblocked and commented; Diag-
-C> nostic print for errors; Attempts to skip to NEXT
-C> report in same record rather than exiting record.
-C> - Dennis Keyser 1991-08-12 Slight changes to make sub-
-C> program more portable; Test for absence of end-
-C> of-record indicator, will gracefully exit record.
-C> - Dennis Keyser 1992-06-29 Convert to cray cft77 fortran
-C> - Dennis Keyser 1992-08-06 Corrected error which could
-C> lead to the length for a concatenation operator
-C> being less than 1 when an input parameter spans
-C> across two 10-character words.
-C>
 C> @param[in] COCBUF Character*10 array containing a block of packed
 C> reports in nmc office note 29/124 format.
 C> @param[in] NEXT Marker indicating relative location (in bytes) of

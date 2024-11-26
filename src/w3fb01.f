@@ -8,10 +8,6 @@ C> jection true at 60 n to the natural coordinate system of latitude
 C> /longitude on the Earth. A preferable more flexible subroutine to
 C> use is w3fb05(). w3fb01() is the reverse of w3fb00().
 C>
-C> PROGRAM HISTORY LOG:
-C> - A. Heermann 1969-08-01  A. HEERMANN
-C> - Ralph Jones 1990-08-31 Change to cray cft77 fortran.
-C>
 C> @param[in] XI I of the point relative to north pole.
 C> @param[in] XJ J of the point relative to north pole.
 C> @param[in] XMESHL Mesh length of grid in kilometers at 60n.

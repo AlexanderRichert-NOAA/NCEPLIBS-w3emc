@@ -12,12 +12,6 @@ C> Contours are indicated by alphabetic characters ranging from a to
 C> h or numeric characters from 0 to 9. Contour origin and interval
 C> are specified by the programmer in terms of printed values.
 C>
-C> ### Program History Log
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1989-09-08 | Ralph Jones | Initial
-C> 1992-05-02 | Ralph Jones | Convert to cray cft77 fortran, add save.
-C>
 C> @param[in] RDATA Real array of grid data to be printed.
 C> @param[in] KTBL Integer array with shape of array.
 C> @param[in] CNST Real array of four elements, used in

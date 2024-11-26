@@ -8,11 +8,6 @@ C> stereographic map projection is true at 60 deg. n. , the mesh
 C> length is 381 km. and the oriention is 105 deg. w. This is the
 C> same as w3ft43v() except the oriention is 105 deg. w.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1993-03-29 | Ralph Jones | Add save statement.
-C>
 C> @param[in] ALOLA 361*181 grid 1.0 deg. lat,lon grid
 C> 65341 point grid. 360 * 181 one degree grib grid 3 was flipped, greenwish added
 C> to right side to make 361 * 181.

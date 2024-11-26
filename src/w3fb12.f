@@ -9,11 +9,6 @@ C> natural coordinate system of latitude/longitude
 C> w3fb12() is the reverse of w3fb11().
 C> Uses grib specification of the location of the grid
 C>
-C> PROGRAM HISTORY LOG:
-C> - John Stackpole 1988-11-25
-C> - Ralph Jones 1990-04-12 Convert to cft77 fortran.
-C> - Ralph Jones 1994-04-28 Add save statement.
-C>
 C> @param[in] XI I coordinate of the point real*4
 C> @param[in] XJ J coordinate of the point real*4
 C> @param[in] ALAT1 Latitude of lower left point of grid (point 1,1)

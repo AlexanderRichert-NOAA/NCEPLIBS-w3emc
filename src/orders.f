@@ -45,15 +45,6 @@ C>                  1001        |        |        |
 C>-----------------------------------------------------------------------
 C> </pre>
 C>
-C> PROGRAM HISTORY LOG:
-C> - Jack Woollen 1998-02-21 Original version for implementation
-C> - Boi Vuong 1998-04-11 Replaced operand .and. with intrinsic iand
-C> - D. Keyser 1999-06-03 Modified to port to ibm sp and run in 4 or
-C> 8 Byte storage
-C> - Jack Woollen 1999-06-09 Added potential for four or eight byte keys
-C> in either a four or eight byte environment
-C> - Jack Woollen 2012-09-16 Made sorting characters work on little endian
-C>
 C> INPUT ARGUMENTS:
 C> @param[in] IN Indicator of key form and index state.
 C> - IN = 0 Initialize indexes and sort characters.

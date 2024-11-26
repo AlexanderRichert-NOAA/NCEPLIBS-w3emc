@@ -16,20 +16,6 @@ C> possibility exists of the last block of data producing an oversized
 C> message. the user must verify that isect3(6) does in fact equal
 C> zero to assure that all of the data has been included as output.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-09-29
-C> - J. Hoppa 1994-03-22 Corrected an error when writing the
-C> descriptors into the bufr message
-C> - J. Hoppa 1994-03-31 Added the subset number to the parameter list
-C> of subroutine fi8501()
-C> - J. Hoppa 1994-04-15 Added kbufr to the parameter list of
-C> subroutine fi8502()
-C> - J. Hoppa 1994-04-20 Added the kdata parameter counter to the
-C> parameter list of subroutine fi8501()
-C> - J. Hoppa 1995-04-29 Changed nq and n to kary(2) changed jk to kary(11)
-C> added an assignment to kary(2) so have something to pass to subroutines
-C> deleted jk and ll from call to fi8501()
-C>
 C> @param[in] ISTEP Key for selection of processing step
 C> - 1  = Process integer/text array into kdata.
 C> - 2  = Process real/text array into kdata.
@@ -947,22 +933,6 @@ C> Have encountered a replication descriptor. It may include
 C> delayed replication or not. That decision should have been
 C> made prior to calling this routine.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C> - J. Hoppa 1994-03-25 Added line to initialize nxtptr to correct
-C> an error in the standard replication.
-C> - J. Hoppa 1994-03-28 Corrected an error in the standard replication
-C> that was adding extra zeros to the bufr message after the replicated data.
-C> - J. Hoppa 1994-03-31 Added the subset number to the parameter list.
-C> corrected the equation for the number of replications with delayed replication.
-C> (istart and k don't exist)
-C> - J. Hoppa 1994-04-19 Switched the variables next and nxtprt
-C> - J. Hoppa 1994-04-20 Added the kdata parameter counter to the parameter
-C> list. In the assignment of nreps when have delayed replication, changed index
-C> in kdata from n to k.
-C> - J. Hoppa 1994-04-29 Removed n and k from the input list changed n to
-C> kary(11) and k to kary(2)
-C>
 C> @param[in] ISTEP
 C> @param[in] KCLASS
 C> @param[in] KSEG
@@ -1083,16 +1053,6 @@ C> @brief Process an operator descriptor.
 C> @author Bill Cavanaugh @date 193-12-03
 
 C> Have encountered an operator descriptor.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C> - J. Hoppa 1994-04-15 Added kbufr to input parameter list.
-C> added block of data to correctly use sbyte when writing a 205yyy descriptor to the
-C> bufr message. The previous way didn't work because kdata was getting incremeted
-C> by the ksub value, not the param value.
-C> - J. Hoppa 1994-04-29 Changed k to kary(2) removed a line that became obsolete with
-C> above change
-C> - J. Hoppa 1994-05-18 Added a kary(2) increment
 C>
 C> @param[in] KCLASS
 C> @param[in] KSEG
@@ -1288,9 +1248,6 @@ C> @author Bill Cavanaugh @date 1993-12-03
 C> Have encountered a sequence descriptor. must perform proper replacment of
 C> descriptors in line.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C>
 C> @param[inout] I Current position in descriptor list
 C> @param[inout] KDESC List (modified [out]) of descriptors
 C> @param[inout] NRDESC Number (new [out]) of descriptors in kdesc
@@ -1380,9 +1337,6 @@ C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Construct decimal descriptor values from f x and y segments
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C>
 C> @param[in] MIF input flag
 C> @param[inout] MDESC list of descriptors in f x y (decimal [out]) form
 C> @param[in] NR number of descriptors in mdesc
@@ -1415,31 +1369,6 @@ C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Process data into non-compressed format for inclusion into
 C> section 4 of the bufr message
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C> - J. Hoppa 1994-03-24 Changed the inner loop from a do loop to a
-C> goto loop so nrdesc isn't a set value.
-C> corrected a value in the call to fi8503().
-C> - J. Hoppa 1994-03-31 Corrected an error in sending the subset
-C> number rather than the descriptor number
-C> to subroutine fi8501(). Added the subset number to the fi8501() parameter list.
-C> - J. Hoppa 1994-04015 Added line to keep the parameter pointer
-C> kary(2) up to date.  this variable is used
-C> in subroutine fi8502().
-C> added kbufr to the parameter list in the call
-C> to subroutine fi8502().
-C> corrected an infinite loop when have an
-C> operator descriptor that was caused by
-C> a correction made 94-03-24
-C> - J. Hoppa 1994-04-20 Added k to call to subroutine w3fi01
-C> - J. Hoppa 1994-04-29 Changed n to kary(11) and k to kary(2)
-C> removed k and n from the call to fi8501()
-C> - J. Hoppa 1994-05-03 Added an increment to kary(11) to prevent
-C> and infinite loop when have a missing value
-C> - J. Hoppa 1994-05-18 Changed so increments kary(2) after each
-C> call to sbyte and deleted
-C> kary(2) = kary(11) + kary(18)
 C>
 C> @param[in] ISTEP
 C> @param[in] ISECT3
@@ -1710,16 +1639,6 @@ C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Construct integer subset from real and text data
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C> - J. Hoppa 1994-03-31 added ksub to fi8501() parameter list.
-C> - J. Hoppa 1994-04-18 added dummy variable idum to fi8502() parameter list.
-C> - J. Hoppa 1994-04-20 added dummy variable ll to fi8501() parameter list.
-C> - J. Hoppa 1994-04-29 changed i to kary(11) added a kary(2) assignment so have something
-C> to pass to subroutines ** test this ** removed i and ll from call to fi8501()
-C> - J. Hoppa 1994-05-13 added code to calculate kwords when kfunc=2
-C> - J. Hoppa 1994-05-18 deleted kary(2) assignment
-C>
 C> @param[in] ISTEP
 C> @param[in] IUNITB Unit number of device containing table b
 C> @param[in] IDATA Integer working array
@@ -1934,15 +1853,6 @@ C> @brief Convert real/text input to integer
 C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Construct integer subset from real and text data.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C> - J. Hoppa 1994-03-31 Added ksub to the fi8501 parameter list.
-C> - J. Hoppa 1994-04-18 Added dummy variable idum to fi8502 parameter list.
-C> - J. Hoppa 1994-04-20 Added dummy variable ll to fi8501 parameter list.
-C> - J. Hoppa 1994-04-29 Changed i to kary(11) added a kary(2) assignment so have something
-C> to pass to subroutines ** test this ** removed i and ll from call to fi8501
-C> - J. Hoppa 1994-05-18 Deleted kary(2) assignment
 C>
 C> @param[in] IUNITB unit number of device containing table b
 C> @param[in] RDATA real working array
@@ -2184,9 +2094,6 @@ C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Construct working descriptor list from list of descriptors in section 3.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C>
 C> @param[in] ISECT3
 C> @param[in] KARY Utility - array see main routine
 C> @param[in] JIF Descriptor input form flag
@@ -2236,14 +2143,6 @@ C> @brief Read in table B
 C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Read in tailored set of table B descriptors.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
-C> - J. Hoppa 1994-04-18 An error has been corrected to prevent later
-C> searching table b if there are only operator
-C> descriptors in the descriptor list.
-C> - J. Hoppa 1994-05-17 Changed the loop for expanding sequence
-C> descriptors from a do loop to a goto loop
 C>
 C> @param[in] IUNITB Unit where table b entries reside
 C> @param[in] KDESC Working descriptor list
@@ -2407,9 +2306,6 @@ C> @brief Read in table D
 C> @author Bill Cavanaugh @date 1993-12-03
 
 C> Read in table D
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-12-03
 C>
 C> @param[in] IUNITD Unit number of input device
 C> @param[out] KSEQ Key for sequence descriptors

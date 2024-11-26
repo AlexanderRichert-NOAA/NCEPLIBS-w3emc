@@ -5,11 +5,6 @@ C> @author Ralph Jones @date 1994-05-03
 C> Convert a southern hemisphere 1.0 degree lat.,lon. 95 by
 C> 91 grid to a wafs 1.25 degree thinned 3447 point grid.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1994-05-03 | Ralph Jones | Initial.
-C>
 C> @param[in] ALOLA 95 * 91 grid 1.0 deg. lat,lon grid southern hemisphere 8645 point grid.
 C> @param[in] INTERP 1 linear interpolation , ne.1 biquadratic
 C> @param[out] BTHIN  3447 point thinned grid of s. hemispere 3447 grid is for grib grids 41-44.

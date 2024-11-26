@@ -6,10 +6,6 @@ C> Computes trig functions used in 2.5 by 2.5 lat,lon
 C> mapping routines. w3fa13() must be called at least once before
 C> calls to w3ft08(), w3ft09(), w3ft10(), w3ft11().
 C>
-C> Program history log:
-C> - Joe Sela 1980-11-21
-C> - Ralph Jones 1984-06-01 Change to vs fortran
-C>
 C> @param[out] TRIGS 216 trig values, used by subroutine w3fa12().
 C> @param[out] RCOS 37 colatitudes used by subroutines w3ft09() ,w3ft11()
 C>

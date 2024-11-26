@@ -4,11 +4,6 @@ C> @author Joe Sela @date 1980-10-28
 
 C> Subroutine computes legendre polynomials at a given latitude.
 C>
-C> Program history log:
-C> - Joe Sela 1980-10-20
-C> - Ralph Jones 1984-06-01 Change to ibm vs fortran.
-C> - Ralph Jones 1993-04-12 Changes for cray, double precision to real.
-C>
 C> @param[out] PLN Real locations contain legendre
 C> polynomials, size is (jcap+2)*(jcap+1)
 C> @param[in] COLRAD Colatitude in radians of desired point.

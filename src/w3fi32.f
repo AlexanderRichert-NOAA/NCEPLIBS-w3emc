@@ -7,13 +7,6 @@ C> an array of the first 8 identification words of the format de-
 C> scribed in NMC office note 84 (89-06-15, page-35). On a cray
 C> they will fit into four 64 bit integer words.
 C>
-C> Program history log:
-C> - Alan Nierow 1986-02-07
-C> - Ralph Jones 1989-10-24 Convert to cray cft77 fortran.
-C> - Ralph Jones 1991-03-19 Changes for big records.
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive.
-C> - Stephen Gilbert 1999-03-15 Specified 8-byte integer array explicitly.
-C>
 C> @param[in] LARRAY Integer array containing 27 data field
 C> identifiers (see o.n. 84)
 C> @param[out] KIDNT Integer array of 6 words, 12 office note 84 32 bit

@@ -4,9 +4,6 @@ C> @author Luke Lin @date 1994-08-31
 
 C> Test two strings. If all equal; Otherwise .false.
 C>
-C> Program history log:
-C> - Luke Lin 1994-08-31
-C>
 C> @param[in] STRING1 Character array to match with string2
 C> @param[in] STRING2 Character array to match with string1
 C> @param[in] LENGTH Integer length of string1 and string2

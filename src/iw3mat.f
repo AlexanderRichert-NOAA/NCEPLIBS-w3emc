@@ -3,10 +3,6 @@ C> @brief Test n words starting at l1, l2 for equality, return .true.
 C> if all equal; otherwise .false.
 C> @author J.D. Stackpole @date 1986-01-13
 
-C> Program history log:
-C> - J.D. Stackpole 1986-01-13
-C> - Ralph Jones 1990-03-15 Convert to cray cft77 fortran.
-C>
 C> @param[in] L1 Integer array to match with l2.
 C> @param[in] L2 Integer array to match with l1.
 C> @param[in] N Number of integer words to test for match.

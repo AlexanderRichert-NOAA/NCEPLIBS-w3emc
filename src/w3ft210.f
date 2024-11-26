@@ -5,11 +5,6 @@ C> @author Ralph Jones @date 1993-10-19
 C> Convert a northern hemisphere 1.0 degree lat.,lon. 361 by
 C> 91 grid to a regional - puerto rico (mercator) 25*25 awips 210
 C> grid.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1993-10-19 | Ralph Jones | Initial.
 
 C> @param[in] ALOLA 361*91 grid 1.0 deg. lat,lon grid n. hemi.
 C> 32851 point grid. 360 * 181 one degree grib grid 3 was flipped, greenwish added

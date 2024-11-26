@@ -5,15 +5,6 @@ C> @author Bill Cavanaugh @date 1993-08-18
 C> Restore delta packed data to original values
 C> restore from boustrephedonic alignment.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-07-14
-C> - John Satckpole 1993-07-22 Additions to fix scaling.
-C> - Bill Cavanaugh 1994-01-27 Added reversal of even numbered rows
-C> (boustrophedonic processing) to restore
-C> data to original sequence.
-C> - Bill Cavanaugh 1994-03-02 Corrected reversal of even numbered rows.
-C> - Mark Iredell 1995-10-31 Removed saves and prints.
-C>
 C> @param[inout] DATA
 C> - [in] Second order differences.
 C> - [out] Expanded original data values.

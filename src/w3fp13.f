@@ -6,19 +6,6 @@ C> Converts GRIB version 1 formatted product definition
 C> section to an office note 84 id label. Formats all that is appli-
 C> cable in the first 8 words of O.N. 84. (caution ****see remarks)
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1991-10-07 | A.J. McClees | Initial
-C> 1992-01-06 | Ralph Jones | Convert to silicongraphics 3.3 fortran 77
-C> 1993-03-29 | Ralph Jones | Add save statement
-C> 1994-04-17 | Ralph Jones | Complete rewrite to use sbyte, make code portable, upgrade to on388
-C> 1994-05-05 | Ralph Jones | Correction in two tables
-C> 1996-08-02 | Ralph Jones | Error using T marker
-C> 1996-09-03 | Ralph Jones | Add mercator grids 8 and 53 to tables
-C> 1999-02-15 | B. Facey | Replace w3fs04 with w3movdat().
-C> 2002-10-15 | Boi Vuong | Replaced function ichar with mova2i()
-C>
 C> @param[in] GRIB GRIB section 0 read as character*8
 C> @param[in] PDS GRIB PDS section 1 read as character*1 PDS(*)
 C> @param[out] ID8 12 Integer*4 formatted O.N. 84 ID. 6 integer 64 bit words on cray

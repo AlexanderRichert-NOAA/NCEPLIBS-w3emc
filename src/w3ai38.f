@@ -8,16 +8,6 @@ C> uscctc. See manual sr-2079 page 3-15. cray utility tr
 C> can also be used for ASCII, EBCDIC conversion. See manual sr-2079
 C> page 9-35.
 C>
-C> Program history log:
-C> - Armand Desmarais 1982-11-29
-C> - Ralph Jones 1988-03-31 Change logic so it works like a
-C> ibm370 translate instruction.
-C> - Ralph Jones 1988-08-22 Changes for microsoft fortran 4.10.
-C> - Ralph Jones 1988-09-04 Change tables to 128 character set.
-C> - Ralph Jones 1990-01-31 Convert to cray cft77 fortran
-C> cray does not allow char*1 to be set to hex.
-C> - Stephen Gilbert 98-12-21 Replaced Function ICHAR with mova2i.
-C>
 C> @param[inout] IE (in) Character*1 array of EBCDIC data (out) ASCII data
 C> @param[in] NC Integer, contains character count to convert.
 C>

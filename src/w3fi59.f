@@ -7,16 +7,6 @@ C> an array of positive scaled differences (number(s) - minimum value),
 C> in integer format and packs the argument-specified number of
 C> significant bits from each difference.
 C>
-C> Program history log:
-C> - Robert Allard 1984-08-01  ALLARD
-C> - Ralph Jones 1990-05-17 Convert to cray cft77 fortran.
-C> - Ralph Jones 1990-05-18 Change name pakmag to w3lib name w3fi59().
-C> - Ralph Jones 1993-07-06 Add nint to do loop 2000 so numbers are
-C> rounded to nearest integer, not truncated.
-C> - Mark Iredell 1994-01-05 Computation of iscale fixed with respect to
-C> the 93-07-06 change.
-C> - Ebisuzaki 1998-06-30 Linux port.
-C>
 C> @param[in] FIELD Array of floating point data for processing (real)
 C> @param[in] NPTS Number of data values to process in field (and nwork)
 C> where, npts > 0
