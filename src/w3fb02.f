@@ -6,10 +6,6 @@ C> Computes i and j coordinates for a latitude/longitude
 C> point on the southern hemisphere polar stereographic map
 C> projection.
 C>
-C> Program history log:
-C> - Ralph Jones 1985-09-13 Convert to fortran 77.
-C> - Ralph Jones 1990-08-31 Convert to cray cft77 fortran.
-C>
 C> @param[in] ALAT Real*4 latitude (s.h. latitudes are negative)
 C> @param[in] ALONG Real*4 west longitude.
 C> @param[in] XMESHL Real*4 grid interval in km.

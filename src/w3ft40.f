@@ -6,13 +6,6 @@ C> Computes 2.5 x 2.5 s. hemi. grid of 145 x 37 points
 C> from spectral coefficients in a rhomboidal 30 resolution
 C> representing a scaler field.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1993-07-23 | Ralph Jones | New version of w3ft10(), takes out w3fa12()
-C> makes pln 3 dimensions, pln is computed one time in main program, trades memory
-C> for more speed. w3fa12() used 70% of cpu time.
-C>
 C> @param[in] FLN 961 complex coeff.
 C> @param[in] PLN (32,31,37) real space with legendre polynomials
 C> computed by w3fa12().

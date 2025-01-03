@@ -8,9 +8,6 @@ C> The field is rounded off to the decimal scaling for packing.
 C> The minimum and maximum rounded field values are also returned.
 C> Grib bitmap masking for valid data is optionally used.
 C>
-C> Program history log:
-C> - Mark Iredell 1992-10-31
-C>
 C> @param[in] ibm integer bitmap flag (=0 for no bitmap).
 c> @param[in] ids integer decimal scaling
 c> (e.g. ids=3 to round field to nearest milli-value).

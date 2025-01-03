@@ -66,11 +66,6 @@
 !>      RINC(5) is arbitrary.
 !>   (This format should not express time intervals longer than one hour.)
 !>
-!> ### Program History Log:
-!> Date | Programmer | Comment
-!> -----|------------|--------
-!> 1998-01-05 | Mark Iredell | Initial.
-!>
 !> @param[in] IT Relative time interval format type
 !> - (-1 for first reduced type (hours always positive),
 !> - 0 for second reduced type (hours can be negative),

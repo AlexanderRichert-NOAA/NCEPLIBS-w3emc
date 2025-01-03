@@ -6,11 +6,6 @@ C> Convert a northern hemisphere 1.0 degree lat.,lon. 361 by
 C> 91 grid to a regional - hawaii (mercator) 29*27 awips 208
 C> grid.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1993-10-19 | Ralph Jones | Initial
-C>
 C> @param[in] ALOLA 361*91 GRID 1.0 DEG. LAT,LON GRID N. HEMI.
 C> 32851 point grid. 360 * 181 one degree grib grid 3 was flipped, greenwish added
 C> to right side and cut to 361 * 91.

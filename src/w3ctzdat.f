@@ -5,9 +5,6 @@
 !> THis subprogram converts an ncep absolute date and time
 !> to another time zone.
 !>
-!> Program history log:
-!> - Mark Iredell 1998-01-05
-!>
 !> @param[in] NTZ Integer new time zone differential from utc in signed hh
 !> or hhmm format (if ntz is invalid, no change is made.)
 !> @param[in] IDAT Integer (8) ncep absolute date and time

@@ -8,10 +8,6 @@ C> coordinate system overlaid on a mercator map projection
 C> w3fb08() is the reverse of w3fb09()
 C> uses grib specification of the location of the grid.
 C>
-C> Program history log:
-C> - John Stackpole 1988-03-01
-C> - Ralph Jones 1990-04-12 Convert to cray cft77 fortran.
-C>
 C> @param[in] ALAT Latitude in degrees (negative in southern hemis).
 C> @param[in] ALON East longitude in degrees, real*4.
 C> @param[in] ALAT1 Latitude of lower left corner of grid (point (1,1)).

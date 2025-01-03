@@ -6,16 +6,6 @@ C> Computes 2.5 x 2.5 n. hemi. grid of 145 x 37 points
 C> from spectral coefficients in a rhomboidal 30 resolution
 C> representing a scaler field.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1988-06-20 | Joe Sela | Initial.
-C> 1988-06-20 | Ralph Jones | Change to microsoft fortran 4.10.
-C> 1990-06-12 | Ralph Jones | Change to sun fortran 1.3.
-C> 1991-03-30 | Ralph Jones | Convert to silicongraphics fortran.
-C> 1993-03-29 | Ralph Jones | Add save statement.
-C> 1993-07-22 | Ralph Jones | Change double precision to real for cray.
-C>
 C> @param[in] FLN 961 complex coeff.
 C> @param[in] PLN 992 real space for legendre polynomials.
 C> @param[in] EPS 992 real space for

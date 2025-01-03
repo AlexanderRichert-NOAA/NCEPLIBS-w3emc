@@ -6,13 +6,6 @@ C> Provides a title for data fields formulated according to
 C> nmc o.n. 84. the extracted information is converted into up to
 C> 81 words and stored at a user provided location.
 C>
-C> Program history log:
-C> - Ralph Jones 1988-11-28
-C> - Ralph Jones 1990-02-12 Convert to cray cft77 fortran
-C> - Ralph Jones 1991-04-26 Add q type 23, 136, 137, 71, 159, 75, 118,
-C> 119, 24 to tables, changes for big records.
-C> - Ralph Jones 1993-02-23 Add q type 157 & 158 (core & tke) to tables
-C>
 C> @param[in] N Integer number of lines of output desired
 C> - = 1  First 88 char. the abbreviated title (line 1 starts at arg2(1))
 C> - = 2  First 216 char. decimal values of the parameters
@@ -56,10 +49,6 @@ C> @author Ralph Jones @date 1988-09-02
 
 C> Creates the fist line of the title from the id words.
 C> call by w3fp06() to make 1st line of title. Words 1 to 22.
-C>
-C> Program history log:
-C> - Ralph Jones 1988-09-02
-C> - Ralph Jones 1993-02-23 Add q type 157 & 158 (core & tke) to tables.
 C>
 C> @param[in] ID Id words (6 integer words) office note 84.
 C> @param[in] MASK Mask for unpacking id words (8 integer words).
@@ -733,10 +722,6 @@ C> @author Ralph Jones @date 1988-11-28
 C> Creates the numerical value for the surface
 C> to be built into the first line of the title.
 C>
-C> Program history log:
-C> - Ralph Jones 1988-11-28
-C> - Ralph Jones 1989-11-01 Convert to cray cft77 fortran.
-C>
 C> @param[in] S Integer number of surface.
 C> @param[in] C,E  Numerical value of the surface (SURFACE = S * 10 ** E).
 C> @param[out] NUM 7 character value of the surface for the title.
@@ -793,11 +778,6 @@ C> @author Ralph Jones @date 1988-11-28
 
 C> Creates the second line of the title from the id words.
 C> called by w3fp06. words 23 to 54.
-C>
-C> Program history log:
-C> - Ralph Jones 1988-11-28
-C> - Ralph Jones 1989-11-01 Convert to cray cft77 fortran.
-C> - Ralph Jones 1991-03-01 Changes for big records.
 C>
 C> @param[in] ID Id words (6 integer words) office note 84
 C> @param[in] MASK Mask for unpacking id words (8 words)
@@ -884,10 +864,6 @@ C> @author Ralph Jones @date 1988-11-28
 C> Creates the third line of the title from the id words.
 C> called by w3fp06 to create words 55 to 81 of the title.
 C>
-C> Program history log:
-C> - Ralph Jones 1988-11-28
-C> - Ralph Jones 1990-02-03 Convert to cray cft77 fortran.
-C>
 C> @param[in] ID ID words (6 integer) office note 84.
 C> @param[out] KTITLE Character*324 array.
 C>
@@ -920,10 +896,6 @@ C> @author Ralph Jones @date 1988-11-28
 
 C> Fills in the first thirteen characters in the title
 C> to make the title a time-averaged title.
-C>
-C> Program history log:
-C> - Ralph Jones 1988-11-28
-C> - Ralph Jones 1989-11-01 Convert to cray cft77 fortran.
 C>
 C> @param[in] CF1 Forecast period length.
 C> @param[in] CF2 Length of the average.
@@ -997,10 +969,6 @@ C> @author Ralph Jones @date 1988-11-28
 
 C> Encodes the first thirteen characters in the title
 C> to make the title a time-averaged title.
-C>
-C> Program history log:
-C> - Ralph Jones 1988-11-28
-C> - Ralph Jones 1989-11-01 Convert to cray cft77 fortran.
 C>
 C> @param[in] CF2 Length of the forecast period
 C> @param[in] UNIT Units for cf2

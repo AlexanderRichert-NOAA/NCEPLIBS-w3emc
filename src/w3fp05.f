@@ -12,10 +12,6 @@ C> contours are indicated by alphabetic characters ranging from a to
 C> h or numeric characters from 0 to 9. contour origin and interval
 C> are specified by the programmer in terms of printed values.
 C>
-C> Program history log:
-C> - Ralph Jones 1989-10-13
-C> - Ralph Jones 1992-05-02 Add save
-C>
 C> @param[in] RDATA  Real array of grid data to be printed.
 C> @param[in] KTBL Integer array with shape of array.
 C> @param[in] CNST Real array of four elements, used in

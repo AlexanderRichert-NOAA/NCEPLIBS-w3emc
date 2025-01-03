@@ -5,12 +5,6 @@ C> @author Robert Allard @date 1974-02-01
 C> Build a line of information composed of user specified
 C> character strings.
 C>
-C> Program history log:
-C> - Robert Allard 1974-02-02
-C> - Ralph Jones 1984-07-05 Recompile
-C> - Ralph Jones 1996-08-06 Convert from ibm370 assembler to fortran
-C> for the cray, workstations, and pc's.
-C>
 C> @param[in] ITEM Character string to be added to line array.
 C> @param[in] I1 Number of character strings to be added to line array.
 C> @param[in] I2 Number of characters per string to add to line.

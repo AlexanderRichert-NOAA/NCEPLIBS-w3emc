@@ -5,18 +5,6 @@ C> @author Ralph Jones @date 1987-02-09
 C> Updates or backdates a fullword date/time word (o.n. 84) by a specified
 C> number of hours.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> Unknown | Robert Allard | Initial.
-C> 1987-02-19 | Ralph Jones | Clean up code
-C> 1987-02-19 | Ralph Jones | Change to microsoft fortran 4.10
-C> 1989-05-12 | Ralph Jones | Correct order of bytes in date word for pc
-C> 1989-08-04 | Ralph Jones | Clean up code, get rid of assign, correction for memory set to indefinite.
-C> 1989-10-25 | Ralph Jones | Change to cray cft77 fortran
-C> 1995-11-15 | Ralph Jones | Add save statement
-C> 2002-10-15 | Boi Vuong | Replaced function ichar with mova2i
-C>
 C> @param[in] IDATE Packed binary date/time as follows:
 C> Byte | Variable | Range
 C> -----|----------|------

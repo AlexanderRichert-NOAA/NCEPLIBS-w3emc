@@ -7,11 +7,6 @@ C> latitude/longitude position for each data point, these data
 C> values are printed at their approximate latitude/longitude
 C> positions on a polar stereographic projection.
 C>
-C> PROGRAM HISTORY LOG:
-C> - J. Horodeck 1980-01-15
-C> - Ralph Jones 1985-07-31 Change to cdc fortran 200
-C> - Ralph Jones 1990-08-15 Change to cray cft77 fortran
-C>
 C> @param[in] IFLD Real or integer fullword array of data points.
 C> @param[in] ALAT Real array of latitude positions (>0 for nh,
 C> <0 for sh) for the data to be plotted.

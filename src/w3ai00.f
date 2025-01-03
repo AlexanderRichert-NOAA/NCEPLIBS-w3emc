@@ -6,17 +6,6 @@ C> Converts IEEE floating point numbers to 16 bit
 C> packed office note 84 format. The floating point number are
 C> converted to 16 bit signed scaled integers.
 C>
-C> Program history log:
-C> - Ralph Jones 1989-10-20 Convert cyber 205 version of w3ai00 to cray.
-C> - Ralph Jones 1990-03-18 Change to use cray integer*2 packer.
-C> - Ralph Jones 1990-10-11 Special version to pack grids larger than
-C> 32743 words. Will do old and new version.
-C> - Ralph Jones 1991-02-16 Changes so equivalence of pack and real8
-C> arrays will work.
-C> - Ralph Jones 1993-06-10 Changes for array size (512,512) 262144 words.
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive.
-C> - Stephen Gilbert 1998-11-18 Changed to pack IEEE values for the IBM SP
-C>
 C> @param[in] REAL8 Array of cray floating point numbers.
 C> @param[in] LABEL Six 8-byte integer words. Must have first 8 of 12 32 bit
 C> word office note 84 label. word 6 must have in bits 31-00 the number of
@@ -247,14 +236,6 @@ C
 C> Convert IEEE 32 bit task 754 floating point numbers
 C> to IBM370 32 bit floating point numbers.
 C>
-C> Program history log:
-C> - Ralph Jones 1990-06-04 Convert to sun fortran 1.3.
-C> - Ralph Jones 1990-07-14 Change ishft to lshift or lrshft.
-C> - Ralph Jones 1991-03-28 Change to silicongraphics 3.3 fortran 77.
-C> - Ralph Jones 1992-07-20 Change to ibm aix xl fortran.
-C> - Ralph Jones 1995-11-15 Add save statement.
-C> - Stepen Gilbert 1998-11-18 Specified 4-byte Integer values.
-C>
 C> @param[in] A - Real*4 array of IEEE 32 bit floating point numbers.
 C> @param[in] N - Number of words to convert to IBM370 32 bit F.P.
 C> @param[out] B - Real*4 array of IBM370 32 bit floating point numbers.
@@ -346,10 +327,6 @@ C
 
 C> Convert ieee 32 bit task 754 floating point numbers
 C> to ibm370 64 bit floating point numbers.
-C>
-C> Program history log:
-C> - Ralph Jones 1992-08-02
-C> - Ralph Jones 1995-11-15 Add save statement.
 C>
 C> @param[in] A Real*4 array of IEEE 32 bit floating point numbers.
 C> @param[in] N Number of words to convert to IBM370 64 bit F.P.

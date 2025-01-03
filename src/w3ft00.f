@@ -5,12 +5,6 @@ C> @author J. McDonell @date 1974-09-01
 C> Transforms data contained in a grid array by translation, rotation about a
 C> common point and dilatation to a new grid array.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1974-09-01 | J. McDonell | Initial.
-C> 1984-06-27 | Ralph Jones | Change to ibm vs fortran.
-C>
 C> @param[in] IA (Integer) i-dimension of the input array fa
 C> @param[in] JA (Integer) j-dimension of the input array fa
 C> @param[in] IB (Integer) i-dimension of the output array fb

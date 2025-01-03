@@ -6,12 +6,6 @@ C> For a given grid coordinate in a data array, estimates
 C> a data value for that point using either a linear or quadratic
 C> interpolation method.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Commment
-C> -----|------------|---------
-C> 1984-06-27 | James McDonell | Initial
-C> 1989-11-01 | Ralph Jones | Change to cray cft77 fortran
-C>
 C> @param[in] STI Real*4 i grid coordinate of the point for which
 C> an interpolated value is desired.
 C> @param[in] STJ Real*4 j grid coordinate of the point for which

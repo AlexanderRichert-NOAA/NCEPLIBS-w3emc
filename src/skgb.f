@@ -9,12 +9,6 @@ C> If found, the length of the message is decoded from bytes 5-7.
 C> The search is done over a given section of the file.
 C> The search is terminated if an eof or i/o error is encountered.
 C>
-C> Program history log:
-C> - Mark Iredell 1993-11-22
-C> - Mark Iredell 1995-10-31 Add call to baread.
-C> - Mark Iredell 1997-03-14 Check for '7777'.
-C> - Stephen Gilbert 2001-12-05 Modified to also look for grib2 messages.
-C>
 C> @param[in] LUGB Integer logical unit of input grib file.
 C> @param[in] ISEEK Integer number of bytes to skip before search.
 C> @param[in] MSEEK Integer maximum number of bytes to search.

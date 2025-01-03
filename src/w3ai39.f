@@ -7,11 +7,6 @@ C> special charcaters, fill scatter, brocken< clear, overcast, bell,
 C> ht and vt (for AFOS). space, '6D' to '5E' conversion (hdrology),
 C> changers were made to W3AI38 to give reverse table translation
 C>
-C> Program history log:
-C> - Ralph Jones 1993-10-06 Convert ibm370 assebler version to fortran.
-C> - Ralph Jones 1994-04-28 Changes for cray.
-C> - Stephen Gilbert 1998-12-21 Replaced Function ICHAR with mova2i.
-C>
 C> @param[inout] NFLD Character*1 array of (in) ASCII data (out) EBCDIC data.
 C> @param[in] N Integer, contains character count to convert.
 C>

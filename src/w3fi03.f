@@ -5,10 +5,6 @@ C> @author Dennis Keyser @date 1992-06-29
 C> Transfers an array of numbers from default integer
 C> words to 16 bit (IBM integer*2) IBM half-words.
 C>
-C> Program history log:
-C> - Dennis Keyser 1992-06-29
-C> - Stephen Gilbert 1998-11-17 Removed Cray references.
-C>
 C> @param[in] IN Starting address for array of default integers
 C> @param[in] NUM Number of numbers in 'IN' to transfer.
 C> @param[out] IDEST Starting address for array of 16 bit IBM half-words

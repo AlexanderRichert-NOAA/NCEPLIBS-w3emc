@@ -8,10 +8,6 @@ C> The grib message request specifies the number of messages to skip
 c> and the unpacked pds and gds parameters. (A requested parameter
 c> of -1 means to allow any value of this parameter to be found.)
 C>
-C> Program history log:
-C> - Mark Iredell 1995-10-31
-C> - Mark Iredell 2001-06-05 Apply linux port by ebisuzaki.
-C>
 C> @param[in] CBUF Character*1 (nlen*nnum) buffer containing index data.
 C> @param[in] NLEN Integer length of each index record in bytes.
 C> @param[in] NNUM Integer number of index records.

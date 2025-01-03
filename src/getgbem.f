@@ -15,11 +15,6 @@ C> the unpacked pds and gds parameters, the unpacked bitmap (if any),
 C> and the unpacked data. if the grib message is not found, then the
 C> return code will be nonzero.
 C>
-C> Program history log:
-C> - Mark Iredell 1994-04-01
-C> - Mark Iredell 1995-10-31 Modularized portions of code into subprograms
-C> and allowed for unspecified index file.
-C>
 C> @param[in] LUGB Integer unit of the unblocked grib data file.
 C> @param[in] LUGI Integer unit of the unblocked grib index file
 C> (=0 to get index buffer from the grib file).

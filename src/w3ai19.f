@@ -4,18 +4,6 @@ C> @author Robert Allard @date 1997-04-15
 
 C> Fills a record block with logical records or lines of information.
 C>
-C> Program history log:
-C> - Robeert Allard 1974-02-01
-C> - Ralph Jones 1990-09-15 Convert from ibm370 assembler to microsoft
-C> fortran 5.0.
-C> - Ralph Jones 1990-10-07 Convert to sun fortran 1.3.
-C> - Ralph Jones 1991-07-20 Convert to silicongraphics 3.3 fortran 77.
-C> - Ralph Jones 1993-03-29 Add save statement.
-C> - Ralph Jones 1994-04-22 Add xmovex and xstore to move and
-C> store character data faster on the cray.
-C> - Bob Hollern 1997-04-15 Corrected the problem of iniializing nblk
-C> to @'s instead of blanks.
-C>
 C> @param[in] LINE Array address of logical record to be blocked.
 C> @param[in] L Number of characters in line to be blocked.
 C> @param[in] N Maximum character size of nblk.

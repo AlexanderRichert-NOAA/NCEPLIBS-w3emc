@@ -10,12 +10,6 @@ C> atmosphere to 54.7487 mb (20 km) and the proposed extension to
 C> 8.68 mb (32 km). For potential temperature a value of 2/7 is
 C> used for rd/cp.
 C>
-C> Program history log:
-C> - James McDonell 1974-06-01
-C> - Ralph Jones 1984-06-01 Change to ibm vs fortran.
-C> - Dennis Keyser 1992-06-29 Convert to cray cft77 fortran.
-C> - Ralph Jones 1994-09-13 Vectorized version to do array instead of one word.
-C>
 C> @param[in] PRESS Pressure array in millibars.
 C> @param[out] HEIGHT Height array in meters.
 C> @param[out] TEMP Temperature array in degrees kelvin.

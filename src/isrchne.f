@@ -2,9 +2,6 @@ C> @file
 C> @brief Searches a vector for the first element not equal to a target
 C> @author Stephen Gilbert @date 1999-02-11
 
-C> Program history log:
-C> - Stephen Gilbert 1999-02-11
-C>
 C> @param[in] n Number of elements to be searched.
 C> @param[in] x Real or integer array of dimension (n-1) * |incx| + 1.
 C> Array x contains the vector to be searched.

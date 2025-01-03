@@ -13,31 +13,6 @@ C> input character type which are generally specified as blanks.
 C> This library is similar to w3ai03() except w3ai03() was written in
 C> assembler.
 C>
-C> Program history log:
-C> - L. Marx 1990-01 Converted code from assembler
-C> to vs fortran.
-C> - Dennis Keyser 1991-08-23 Use same arguments as w3ai03() ;
-C> Streamlined code; Docblocked and commented.
-C> - Dennis Keyser 1992-06-29 Convert to cray cft77 fortran.
-C> - Dennis Keyser 1992-07-09 Checks the number of characters
-C> used by each variable prior to conversion from
-C> integer to character format; If this number is
-C> greater than the number of characters allocated for
-C> the variable the variable is packed as "missing"
-C> (i.e., stores as all 9's).
-C> - Dennis Keyser 1993-06-28 Initializes number of words in
-C> report to 42 in case "strange" report with no data
-C> in any category encountered (used to be zero, but
-C> such "strange" reports caused code to fail).
-C> - Dennis Keyser 1993-12-22 Corrected error which resulted
-C> in storage of 0's in place of actual data in a
-C> category when that category was the only one with
-C> data.
-C> - Dennis Keyser 1998-08-07 Fortran 90-compliant - split an
-C> if statement into 2-parts to prevent f90 floating
-C> point exception error that can now occur in some
-C> cases (did not occur in f77).
-C>
 C> @param[in] LOCRPT Integer array containing one unpacked report.
 C> LOCRPT must begin on a fullword boundary. Format
 C> is mixed, user must equivalence real and character

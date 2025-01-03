@@ -7,20 +7,6 @@ C> message, isolate the bit map and make the values of the product
 C> description sec (pds) and the grid description sec (gds)
 C> available in return arrays.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-01-20
-C> - Bill Cavanaugh 1990-05-11  To assure that all u.s. grids in the grib decoder
-C> comply with size changes in the december 1989 revisions.
-C> - Bill Cavanaugh 1990-05-24 Corrects searching an improper location for grib
-c> version number in grib messages.
-C> - William Bostelman 1990-07-15 Modiifed sub. ai084 so that it will test
-C> the grib bds byte size to determine what ecmwf grid array size is
-C> to be specified.
-C> - Ralph Jones 1990-09-14 Change's for ansi fortran, and pds version 1.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
-C> - Boi Vuong 2002-10-15 Replaced function ichar with mova2i.
-C>
 C> @param[in] msga grib field - "grib" thru "7777"   char*1
 C> @param[out] data array containing data elements
 C> @note (version 0):
@@ -522,11 +508,6 @@ C>byte following 'grib'. If they exist extract counts from gds and
 C>bms. Extract count from bds. determine if sum of counts actually
 C>places terminator '7777' at the correct location.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-01-20
-C> - Ralph Jones 1990-09-01 Change's for ansi fortran.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C>
 C> @param[in] msga grib field - "grib" thru "7777".``
 C> @param[inout] kptr array containing storage for following parameters.
 C> - 1: Unused.
@@ -699,12 +680,6 @@ C> Extract information from the product description
 C> sec, and generate label information to permit storage
 C> in office note 84 format.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-01-20
-C> - Ralph Jones 1990-09-01 Change's for ansi fortran.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
-C>
 C> @param[in] msga Array containing grib message.
 C> @param[inout] kptr Array containing storage for following parameters.
 C> - 1: Unused.
@@ -857,12 +832,6 @@ C  ----------- TEST FOR NEW GRID
       END
 
 C> Extract information from the product description section (version 1).
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1989-11-20
-C> - Ralph Jones 1990-09-01 Change's for ansi fortran.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
 C>
 C> @param[in] MSGA Array containing grib message.
 C> @param[inout] KPTR Array containing storage for following parameters.
@@ -1052,13 +1021,6 @@ C  ----------- TEST FOR NEW GRID
       END
 
 C> Extract information on unlisted grid to allow conversion to office note 84 format.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-01-20
-C> - Bill Cavanaugh 1989-03-16 Added mercator & lambert conformal processing.
-C> - Bill Cavanaugh 1989-07-12 Corrected change entered 89-03-16 reordering
-C> processing for lambert conformal and mercator grids.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
 C>
 C> @param[in] MSGA Array containing grib message.
 C> @param[inout] KPTR Array containing storage for following parameters.
@@ -1506,15 +1468,6 @@ C  -------------------
 
 C> If bit map sec is available in grib message,extract
 C> for program use, otherwise generate an appropriate bit map.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-01-20
-C> - Bill Cavanaugh 1989-02-24 Increment of position in bit map when bit map was included was handled improperly. corrected this data.
-C> - Bill Cavanaugh 1989-07-12 Altered method of calculating nr of bits in a bit map contained in grib message.
-C> - Bill Cavanaugh 1990-05-07 Brings all u.s. grids to revised values as of dec 89.
-C> - William Bostelman 1990-07-15 Modiifed to test the grib bds byte size to determine what ecmwf grid array size is to be specified.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
 C>
 C> @param[in] MSGA BUFR message.
 C> @param[inout] KPTR Array containing storage for following parameters.
@@ -2016,12 +1969,6 @@ C                   ----- U.S. GRID 103 - MAP SIZE 3640  (65 X 56)
 
 C> Extract grib data and place into output arry in proper position.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-01-20
-C> - Ralph Jones 1990-09-01 Change's for ansi fortran.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
-C>
 C> @param[in] MSGA Array containing grib message.
 C> @param[inout] KPTR Array containing storage for following parameters.
 C> - 1: Unused.
@@ -2300,12 +2247,6 @@ C  --------------
 
 
 C> Extract grib data (version 1) and place into proper position in output array.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1989-11-20
-C> - Ralph Jones 1990-09-01 Change's for ansi fortran.
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
 C>
 C> @param[in] MSGA Array containing grib message.
 C> @param[inout] KPTR Array containing storage for following parameters.
@@ -2611,11 +2552,6 @@ C
 
 C> To test when gds is available to see if size mismatch
 C> on existing grids (by center) is indicated.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1988-02-08
-C> - Ralph Jones 1990-09-23 Change's for cray cft77 fortran.
-C> - Ralph Jones 1990-12-05 Change's for grib nov. 21,1990.
 C>
 C> @param[in] J Size for indicated grid.
 C> @param[in] KPDS

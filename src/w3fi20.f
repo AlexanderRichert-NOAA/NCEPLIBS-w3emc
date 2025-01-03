@@ -5,14 +5,6 @@ C> @author Ralph Jones @date 1984-07-02
 C> Extracts the NMC 1977 point octagon grid points out of
 C> a 65x65 (4225 point) array.
 C>
-C> Program history log:
-C> - Ralph Jones 1973-06-15
-C> - Ralph Jones 1984-07-02 Convert to vs fortran
-C> - Ralph Jones 1989-02-02 Convert to microsoft fortran 4.10
-C> - Ralph Jones 1990-08-22 Convert to sun fortran 1.3
-C> - Ralph Jones 1991-03-29 Convert to silicongraphics fortran
-C> - Ralph Jones 1993-03-29 Add save statement
-C>
 C> @param[in] A REAL*4 (65 x 65 grid, 4225 point) array
 C> grid is office note 84 type 27 or 1b hex.
 C> @param[out] B 1977 point array (octagon) office note 84 type

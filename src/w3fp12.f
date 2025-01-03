@@ -7,23 +7,6 @@ C> specifications set by WMO. Using o.n. 84 id's (1st 8 words)
 C> as the input data. New subroutine corresponds to the revision
 C> #1 of the WMO GRIB standards made march 15, 1991.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1991-07-30 | A.J. McClees | New subroutine which formats the pds section from the o.n. 84 id's from the GRIB edition 1 dated march 15, 1991.
-C> 1992-01-06 | A.J. McClees | Delete paramater 202 (accumulated evap) and make parameter 57 (evaporation) the equivalent of o.n.84 117.
-C> 1992-11-02 | Ralph Jones | Correction at same level as w3fp12() in v77w3lib on hds
-C> 1993-03-29 | Ralph Jones | Add save statement
-C> 1993-04-16 | Ralph Jones | Add 176, 177 lat, lon to tables
-C> 1993-08-03 | Ralph Jones | Add 156 (cin), 204 (dswrf), 205 (dlwrf) 211 (uswrf), 212 (ulwrf)  to tables
-C> 1995-02-07 | Ralph Jones | Change pds byte 4, version number to 2.
-C> 1995-07-14 | Ralph Jones | Correction for sfc lft x
-C> 1998-03-10 | Boi Vuong | Remove the cdir$ integer=64 directive
-C> 1998-12-21 | Stephen Gilbert | Replaced Function ICHAR with mova2i().
-C> 1999-02-15 | B. Facey | Replace w3fs04 with w3movdat().
-C> 1999-03-15 | Stephen Gilbert | Specified 8-byte integer array explicitly for ID8
-C> 1999-03-22 | B. Facey | Remove the date recalculation for mean charts.  this includes the previous change to w3movdat.
-C>
 C> @param[in] ID8 First 8 id workds (o.n.84) integer*4
 C> @param[in] ICENT Century, 2 digits, for 1991 it is 20.
 C> @param[in] IFLAG Indication of inclusion or omission of grid definition and/or bit map code character*1

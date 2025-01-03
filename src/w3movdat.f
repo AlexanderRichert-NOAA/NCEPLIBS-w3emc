@@ -6,11 +6,6 @@
 !> NCEP relative time interval from an NCEP absolute date and time.
 !> The output is in the NCEP absolute date and time data structure.
 !>
-!> ### Program History Log:
-!> Date | Programmer | Comment
-!> -----|------------|--------
-!> 1998-01-05 | Mark Iredell | Initial.
-!>
 !> @param[in] RINC NCEP relative time interval (days, hours, minutes, seconds
 !> milliseconds)
 !> @param[in] IDAT NCEP absolute date and time (year, month, day, time zone,

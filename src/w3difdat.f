@@ -8,9 +8,6 @@
 !> The output time interval is in one of seven canonical forms
 !> of the ncep relative time interval data structure.
 !>
-!> Program history log:
-!> - Mark Iredell 1998-01-05
-!>
 !> @param[in] JDAT Integer (8) ncep absolute date and time
 !> (year, month, day, time zone, hour, minute, second, millisecond)
 !> @param[in] IDAT Integer (8) ncep absolute date and time

@@ -5,20 +5,6 @@ C> @author Ralph Jones @date 1991-05-14
 C> Converts an edition 1 grib produce definition section (pds)
 C> to a 25, or 27 word integer array.
 C>
-C> Program history log:
-C> - Ralph Jones 1991-05-14
-C> - Ralph Jones 1992-09-25 Change level to use one or two words
-C> - Ralph Jones 1993-01-08 Change for time range indicator if 10
-C> - Ralph Jones 1993-03-29 Add save statement
-C> - Ralph Jones 1993-10-21 Changes for on388 rev. oct 9,1993, new
-C> levels 125, 200, 201.
-C> - Ralph Jones 1994-04-14 Changes for on388 rev. mar 24,1994, new
-C> levels 115, 116.
-C> - Ralph Jones 1994-12-04 Changes for 27 word integer array if
-C> pds is greater than 28 bytes.
-C> - Ralph Jones 1995-09-07 Changes for level 117, 119.
-C> - Stephen Gilbert 1998-12-21 Replaced Function ICHAR with mova2i.
-C>
 C> @param[in] PDS 28 to 100 character product definition section (pds) .
 C> @param[out] ID 25, or 27 word integer array.
 C>

@@ -8,10 +8,6 @@ C> Julian day number can be used to compute day of week, day of
 C> year, record numbers in an archive, replace day of century,
 C> find the number of days between two dates.
 C>
-C> Program history log:
-C> - Ralph Jones 1987-03-29
-C> - Ralph Jones 1989-10-25 Convert to cray cft77 fortran.
-C>
 C> @param[in] IYEAR Integer year (4 Digits)
 C> @param[in] MONTH Integer month of year (1 - 12)
 C> @param[in] IDAY Integer day of month (1 - 31)

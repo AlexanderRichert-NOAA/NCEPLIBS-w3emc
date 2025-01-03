@@ -5,12 +5,6 @@ C> @author Zoltan Toth and Mark Iredell @date DATE: 1995-03-14
 C> Unpacks grib pds extension starting on byte 41 for ensemble
 C> forecast products. for format of pds extension, see nmc office note 38
 C>
-C> Program history log:
-C> - Zoltan Toth and Mark Iredell 1995-03-14
-C> - Mark Iredell 1995-10-31 Removed saves and prints.
-C> - Richard Wobus 1998-09-28 Corrected member extraction.
-C> - Mark Iredell 2001-06-05 Apply linux port by ebisuzaki.
-C>
 C> @param[out] KENS (5) Bytes 41-45 (general section, always present.).
 C> @param[out] KPROB (2) Bytes 46-47 (probability section, present only if neede.
 C> @param[out] XPROB (2) Bytes 48-51&52-55 (probability section, if needed.).

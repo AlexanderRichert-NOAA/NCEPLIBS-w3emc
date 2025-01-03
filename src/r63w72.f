@@ -6,14 +6,6 @@ C> Determines the integer PDS and GDS parameters
 C> for the GRIB1 packing routine w3fi72() given the parameters
 C> returned from the GRIB1 unpacking routine w3fi63().
 C>
-C> Program history log:
-C> - Mark Iredell 1991-10-31
-C> - Mark Iredell 1996-05-03 Corrected some level types and
-C> some data representation types
-C> - Mark Iredell 1997-02-14 Only altered ipds(26:27) for extended pds
-C> - Chris Caruso 1998-06-01 Y2K fix for year of century
-C> - Diane Stoken 2005-05-06 Recognize level 236
-C>
 C> @note kgds and igds extend beyond their dimensions here
 C> if pl parameters are present.
 C>

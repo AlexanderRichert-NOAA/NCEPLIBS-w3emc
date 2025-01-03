@@ -7,17 +7,6 @@ C> packed data to ieee real floating point numbers. The
 C> office note 84 data is bit for bit the same on the nas-9050 and
 C> the cray.
 C>
-C> Program history log:
-C> - Ralph Jones 1989-10-20
-C> - Ralph Jones 1990-02-02 Change to cray function for integer*2, f.p.
-C> - Ralph Jones 1990-10-11 Special version of w3ai01 to unpack records
-c> packed by big version of w3ai00. Will do old and new version.
-C> - Ralph Jones 1991-03-19 Make special version of w3ai01 to unpack
-c> big records the operational version.
-C> - Ralph Jones 1993-06-10 Increace array size to 262144 words.
-C> - Boi Vuong 1998-03-10 Remove the cdir$ integer=64 directive.
-C> - Stephen Gilbert 1998-11-17 Changed to unpack into IEEE reals for the IBM SP.
-C>
 C> @param[in] PACK Integer array with data in office note 84 format to be unpacked.
 C> @param[out] REAL8 Real array of n words. where n is given in word 6 of pack.
 c> Word 6 of pack must contain center and scaling values.

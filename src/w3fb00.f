@@ -8,10 +8,6 @@ C> coordinate system overlaid on the polar stereographic map pro-
 C> jection true at 60 n. a preferable, more flexible subroutine to
 C> use is w3fb04(). w3fb00() is the reverse of w3fb01().
 C>
-C> Program history log:
-C> - A. Heermann 1969-08-01
-C> - Ralph Jones 1990-08-31 Convert to cray cft77 fortran
-C>
 C> @param[in] ALAT Latitude in deg. (-20.0 (s. hemis)) alat) 90.0).
 C> @param[in] ALONG West longitude in degrees.
 C> @param[in] XMESHL Mesh length of grid in kilometers at 60n.

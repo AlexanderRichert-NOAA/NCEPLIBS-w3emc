@@ -5,16 +5,6 @@ C> @author James Howcroft @date 1979-02-15
 C> Do either bilinear or biquadratic interpolation for a
 C> point within a two-dimensional data array.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1979-02-15 | James Howcroft | Initial.
-C> 1989-01-25 | Ralph Jones | Change to microsoft fortran 4.10.
-C> 1990-06-12 | Ralph Jones | Change to sun fortran 1.3.
-C> 1991-03-30 | Ralph Jones | Convert to silicongraphics fortran.
-C> 1993-03-29 | Ralph Jones | Add save statement.
-C> 1996-07-01 | Ralph Jones | Compile on cray.
-C>
 C> @param[in] FL Real*4 two-dimensional cartesian array of data.
 C> @param[in] MAXI Integer*4 i-dimension of fl.
 C> @param[in] MAXJ Integer*4 j-dimension of fl.

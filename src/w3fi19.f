@@ -6,14 +6,6 @@ C> Relates the I,J coordinate point in a 65x65 grid-point
 C> array as being either inside, outside, or on the boundary of the
 C> 53x57 NMC rectangle centered in the 65x65 array.
 C>
-C> Program history log:
-C> - James Howcroft 1973-10-15
-C> - Ralph Jones 1984-07-02 Convert to fortran 77.
-C> - Ralph Jones 1989-02-02 Convert to microsoft fortran 4.10.
-C> - Ralph Jones 1990-06-12 Convert to sun fortran 1.3.
-C> - Ralph Jones 1991-03-16 Convert to silicongraphics 3.3 fortran 77.
-C> - Ralph Jones 1993-03-29 Add save statement.
-C>
 C> @param[in] I Coordinate identification of a point in the 65x65 array.
 C> @param[in] J Coordinate identification of a point in the 65x65 array.
 C> @param[out] NW Integer return code.

@@ -5,12 +5,6 @@ C> @author Ralph Jones @date 1987-03-29
 C> Computes year (4 digits), month, day, day of week, day of year from julian
 C> day number. this subroutine will work from 1583 a.d. to 3300 a.d.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1987-03-29 | Ralph Jones |
-C> 1989-10-25 | Ralph Jones | Convert to cray cft77 fortran
-C>
 C> @param[in] JLDAYN (INT) Julian day number
 C> @param[out] IYEAR (INT) Year (4 digits)
 C> @param[out] MONTH (INT) Month

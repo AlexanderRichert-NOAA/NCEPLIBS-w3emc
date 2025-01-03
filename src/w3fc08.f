@@ -10,11 +10,6 @@ C> the 'WMO' standards for reporting winds at the north pole, with
 C> the output components computed relative to the X-Y axes on the
 C> grid. (see office note 241 for WMO definition.)
 C>
-C> Program history log:
-C> - John Stackpole 1981-12-30
-C> - P. Chase 1988-10-18 Let output variables overlay input.
-C> - Ralph Jones 1991-03-06 Change to cray cft77 fortran.
-C>
 C> @param[in] FFID REAL I-displacement from point to north pole in
 C> grid units.
 C> @param[in] FFJD REAL J-displacement from point to north pole in

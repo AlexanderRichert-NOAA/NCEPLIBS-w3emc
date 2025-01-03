@@ -6,15 +6,6 @@ C> Build 80 character queue descriptor using information
 C> supplied by user, placing the completed queue descriptor in the
 C> location specified by the user. (based on office note 295).
 C>
-C> PROGRAM HISTORY LOG:
-C> - Bill Cavanaugh 1991-06-21
-C> - Bill Cavanaugh 1994-03-08 Modified to allow for bulletin sizes that
-C> exceed 20000 bytes
-C> - Ralph Jones 1994-04-28 Change for cray 64 bit word size and
-C> for ASCII character set computers
-C> - Ralph Jones 1996-01-29 Preset IERR to zero
-C> - Boi Vuong 2002-10-15 Replaced function ichar with mova2i
-C>
 C> @param[in] TTAAII First 6 characters of WMO header
 C> @param[inout] KARY Integer array containing user information
 C> - (1) = Day of month

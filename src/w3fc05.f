@@ -9,13 +9,6 @@ C> conventions, with the output direction computed in accordance
 C> with WMO standards for reporting winds at the pole.
 C> (see office note 241 for WMO definition.)
 C>
-C> Program history log:
-C> - John Stackpole 1981-12-30
-C> - P. Chase 1988-10-19 Allow output values to overlay input
-C> - Ralph Jones 1991-03-05 Changes for cray cft77 fortran
-C> - Dennis Keyser 1992-10-21 Added 1.e-3 to direction to allow truncation
-C> to nearest whole degree to be correct (keeps agreement between cray & nas versions)
-C>
 C> @param[in] U REAL Earth-oriented U-component.
 C> @param[in] V REAL Earth-oriented V-component.
 C> @param[out] DIR REAL Wind direction, degrees. Values will

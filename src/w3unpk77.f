@@ -7,44 +7,6 @@ C> in a jbufr-type data file. Currently wind profiler, nexrad (vad)
 C> wind and goes sounding/radiance data types are valid. Report is
 C> returned in quasi-office note 29 unpacked format (see remarks 4.).
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-12-16 | Dennis Keyser | Original author (based on w3lib routine w3fi77)
-C> 1997-06-02 | Dennis Keyser | Added nexrad (vad) wind data type
-C> 1997-06-16 | Dennis Keyser | Added goes sounding/radiance data type
-C> 1997-09-18 | Dennis Keyser | Added instrument data used in processing,
-C> solar zenith angle, and satellite zenith angle
-C> to list of parameters returned from goes
-C> sounding/radiance data type
-C> 1998-07-09 | Dennis Keyser | Modified wind profiler cat. 11 (height, horiz.
-C> significance, vert. significance) to account
-C> for updates to bufrtable mnemonics in /dcom;
-C> changed char. 6 of goes stnid to be unique for
-C> two different even or odd satellite id's
-C> (every other even or odd sat. id now gets same
-C> char. 6 tag)
-C> 1998-08-19 | Dennis Keyser | Subroutine now y2k and fortran 90 compliant
-C> 1999-03-16 | Dennis Keyser | Incorporated bob kistler's changes needed
-C> to port the code to the ibm sp
-C> 1999-05-17 | Dennis Keyser | Made changes necessary to port this routine to
-C> the ibm sp
-C> 1999-09-26 | Dennis Keyser | Changes to make code more portable
-C> 2002-03-05 | Dennis Keyser | Accounts for changes in input proflr (wind
-C> profiler) bufr dump file after 3/2002: cat. 10
-C> surface data now all missing (mnemonics "pmsl",
-C> "wdir1","wspd1", "tmdb", "rehu", "reqv" no
-C> longer available); cat. 11 mnemonics "acavh",
-C> "acavv", "spp0", and "nphl" no longer
-C> available; header mnemonic "npsm" is no longer
-C> available, header mnemonic "tpse" replaces
-C> "tpmi" (avg. time in minutes still output);
-C> number of upper-air levels incr. from 43 to up
-C> to 64 (size of output "rdata" array incr. from
-C> 600 to 1200 to account for this) (will still
-C> work properly for input proflr dump files prior
-C> to 3/2002)
-C>
 C> @param[in] IDATE 4-word array holding "central" date to process (yyyy, mm, dd, hh)
 C> @param[in] IHE Number of whole hours relative to "idate" for date of
 C> earliest bufr message that is to be decoded; earliest date is "idate" +
@@ -634,11 +596,6 @@ C> @author Dennis Keyser @date 1996-12-16
 C> Calls bufrlib routines to read in a bufr message and then read a single
 C> report (subset) out of the message.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-12-16 | Dennis Keyser NP22 | Initial.
-C>
 C> @param[in] LUNIT Fortran unit number for input data file.
 C> @param[out] ITP The type of report that has been decoded {=1 - wind profiler,
 C> =2 - goes sndg, =3 - nexrad(vad) wind}
@@ -788,10 +745,6 @@ C> @author Dennis Keyser @date 1996-12-16
 C> Initializes the output array which holds a single report in the quasi-office
 C> note 29 unpacked format to all missing.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-12-16 | Dennis Keyser NP22 | Initial.
 C> @param[in] ITP the type of report that has been decoded {=1 - wind profiler, =2 - goes sndg, =3 - nexrad(vad) wind}
 C> @param[out] RDATA single report returned an a quasi-office note 29 unpacked format; all data are missing
 C>
@@ -880,12 +833,6 @@ C> internally via bufrlib storage), calls bufrlib routine to decode
 C> header data for wind profiler report.  header is then filled into
 C> the output array which holds a single wind profiler report in the
 C> quasi-office note 29 unpacked format.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-12-16 | Dennis Keyser NP22 | Initial.
-C> 2002-03-05 | Dennis Keyser | Accounts for changes in input proflr (wind profiler) bufr dump file after 3/2002: mnemonic "npsm" is no longer available, mnemonic "tpse" replaces "tpmi" (avg. time in minutes still output) (will still work properly for input proflr dump files prior to 3/2002)
 C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing
@@ -1100,12 +1047,6 @@ C> filled into the output array as category 10. The ouput array
 C> holds a single wind profiler report in the quasi-office note 29
 C> unpacked format.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-12-16 | Dennis Keyser NP22 | Initial.
-C> 2002-03-05 | Dennis Keyser | Accounts for changes in input proflr (wind profiler) bufr dump file after 3/2002: surface data now all missing (mnemonics "pmsl", "wdir1","wspd1", "tmdb", "rehu", "reqv" no longer available) (will still work properly for input proflr dump files prior to 3/2002)
-C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing
 C>
@@ -1206,13 +1147,6 @@ C> upper-air data for wind profiler report.  upper-air data are then
 C> filled into the output array as category 11.  the ouput array
 C> holds a single wind profiler report in the quasi-office note 29
 C> unpacked format.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1996-12-16 | Dennis Keyser NP22 | Initial.
-C> 1998-07-09 | Dennis Keyser | Modified wind profiler cat. 11 (height, horiz. significance, vert. significance) processing to account for updates to bufrtable mnemonics in /dcom
-C> 2002-03-05 | Dennis Keyser | Accounts for changes in input proflr (wind profiler) bufr dump file after 3/2002: mnemonics "acavh", "acavv", "spp0", and "nphl" no longer available; (will still work properly for input proflr dump files prior to 3/2002)
 C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing
@@ -1437,11 +1371,6 @@ C> header data for nexrad (vad) wind report. Header is then filled
 C> into the output array which holds a single vad wind report in the
 C> quasi-office note 29 unpacked format.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1997-06-02 | Dennis Keyser NP22 | Initial.
-C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing
 C> @param[out] IRET Return code as described in w3unpk77 docblock
@@ -1600,11 +1529,6 @@ C> upper-air data for nexrad (vad) wind report. Upper-air data are
 C> then filled into the output array as category 4. The ouput array
 C> holds a single vad wind report in the quasi-office note 29
 C> unpacked format.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1997-06-02 | Dennis Keyser NP22 | Initial.
 C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing
@@ -1777,12 +1701,6 @@ C> internally via bufrlib storage), calls bufrlib routine to decode
 C> header data for goes sounding report. Header is then filled into
 C> the output array which holds a single goes sounding report in the
 C> quasi-office note 29 unpacked format.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1997-06-05 | Dennis Keyser NP22 | Initial.
-C> 1998-07-09 | Dennis Keyser | Changed char. 6 of goes stnid to be unique for two different even or odd satellite id's (every other even or odd sat. id now gets same char. 6 tag)
 C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing
@@ -2006,11 +1924,6 @@ C> air data are then filled into the output array as category 12
 C> (satellite sounding) and additional data are filled as category 8.
 C> The ouput array holds a single goes sounding in the quasi-office
 C> note 29 unpacked format.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1997-06-05 | Dennis Keyser NP22 | Initial.
 C>
 C> @param[in] LUNIT Fortran unit number for input data file
 C> @param[inout] RDATA Single wind profiler report in a quasi-office note 29 unpacked format with [out] header information filled in [in] all data initialized as missing

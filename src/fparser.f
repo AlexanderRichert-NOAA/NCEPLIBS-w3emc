@@ -5,9 +5,6 @@ C> @author Mark Iredell @date 1998-09-03
 C> This subprogram extracts real numbers from a free-format
 C> character string. It is useful for parsing command arguments.
 C>
-C> Program history log:
-C> - 1998-09-03  Mark Iredell
-C>
 C> @param[in] CARG character*(*) string of ascii digits to parse.
 C> Real numbers may be separated by a comma or by blanks.
 C> @param[in] MARG integer maximum number of real numbers to parse.

@@ -8,11 +8,6 @@ C> coordinate system overlaid on a lambert conformal tangent cone
 C> projection true at a given n or s latitude. w3fb11() is the reverse
 C> of w3fb12(). uses grib specification of the location of the grid
 C>
-C> Program history log:
-C> - John Stackpole 1988-11-25
-C> - Ralph Jones 1990-04-12 Convert to cft77 fortran.
-C> - Ralph Jones 1994-04-28 Add save statement.
-C>
 C> @param[in] ALAT Latitude in degrees (negative in southern hemis).
 C> @param[in] ELON East longitude in degrees, real*4.
 C> @param[in] ALAT1 Latitude of lower left point of grid (point (1,1)).

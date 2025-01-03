@@ -2,19 +2,6 @@ C> @file
 C> @brief This subroutine converts ascii to ebcdic, or ebcdic to ascii
 C> @author desmarais @date 11-29-1982
 
-C>   Program history log:
-C>   - 11-29-1982  Desmarais
-C>   - 03-31-1988  R. E. Jones
-C>      - change logic so it works like a ibm370 translate instruction.
-C>   - 08-22-1988  R. E. Jones
-C>      - changes for microsoft fortran 4.10
-C>   - 09-04-1988  R. E. Jones
-C>      - change tables to 128 character set
-C>   - 01-31-1990  R. E. Jones
-C>      - convert to cray cft77 fortran cray does not allow char*1 to be set to hex
-C>   - 12-21-1998  Stephen Gilbert
-C>      - replaced function ichar with mova2i.
-C>
 C>   @param[in, out] IA character*1 array of ascii data  if nc < 0
 C>   @param[in, out] IE character*1 array of ebcdic data if nc > 0
 C>   @param[in] NC integer, contains character count to convert.

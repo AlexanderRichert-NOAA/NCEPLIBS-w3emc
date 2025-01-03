@@ -4,11 +4,6 @@ C> @author M. Farley @date 1992-07-01
 
 C> This subroutine constructs a grib bit map section.
 C>
-C> Program history log:
-C> - M. Farley 1992-07-01
-C> - Bill Cavanaugh 1994-02-14 Recoded
-C> - Ebisuzaki 1998-06-30 Linux port
-C>
 C> @param[in] IBFLAG
 C> - 0, if bit map supplied by user
 C> - #, Number of predefined center bit map

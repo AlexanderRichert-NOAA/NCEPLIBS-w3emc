@@ -426,10 +426,6 @@ C> byte following 'grib'. If they exist extract counts from gds and
 C> bms. Extract count from bds. Determine if sum of counts actually
 C> places terminator '7777' at the correct location.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-09-13
-C> - Mark Iredell 1995-10-31 Removed saves and prints.
-C>
 C> @param[in] MSGA Grib field - "grib" thru "7777"
 C> @param[inout] KPTR Array containing storage for following parameters
 C> - 1 Total length of grib message
@@ -574,13 +570,6 @@ C> @author Bill Cavanaugh @date 1991-09-13
 C> Extract information from the product description
 C> sec  , and generate label information to permit storage
 C> in office note 84 format.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-09-13
-C> - Bill Cavanaugh 1993-12-08 Corrected test for edition number instead
-C> of version number.
-C> - Mark Iredell 1995-10-31 Removed saves and prints.
-C> - M. Baldwin 1999-01-20 Modified to handle grid 237.
 C>
 C> @param[in] MSGA Array containing grib message.
 C> @param[inout] KPTR Array containing storage for following parameters.
@@ -855,15 +844,6 @@ C> @author Bill Cavanaugh @date 1991-09-13
 
 C> Extract information on unlisted grid to allow
 C> conversion to office note 84 format.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-09-13
-C> - M. Baldwin 1995-03-20 fi633 modification to get
-C> data rep types [kgds(1)] 201 and 202 to work.
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - M. Baldwin 1998-09-08 Add data rep type [kgds(1)] 203
-C> - Boi Vuong 2007-04-24 Add data rep type [kgds(1)] 204
-C> - George Gayno 2010-07-20 Add data rep type [kgds(1)] 205
 C>
 C> @param[in] MSGA Array containing grib message
 C> @param[inout] KPTR Array containing storage for following parameters
@@ -1364,30 +1344,6 @@ C> @author Bill Cavanaugh @date 1991-09-13
 
 C> If bit map sec is available in grib message, extract
 C> for program use, otherwise generate an appropriate bit map.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-09-13
-C> - Bill Cavanaugh 1991-11-12 Modified size of ecmwf grids 5 - 8.
-C> - Mark Iredell 1995-10-31 removed saves and prints
-C> - W. Bostelman 1997-02-12 corrects ecmwf us grid 2 processing
-C> - Mark Iredell 1997-09-19 vectorized bitmap decoder
-C> - Stephen Gilbert 1998-09-02 corrected error in map size for u.s. grid 92
-C> - M. Baldwin 1998-09-08 add grids 190,192
-C> - M. Baldwin 1999-01-20 add grids 236,237
-C> - Eric Rogers 2001-10-02 redefined grid #218 for 12 km eta
-C> redefined grid 192 for new 32-km eta grid
-C> - Stephen Gilbert 2003-06-30 added grids 145 and 146 for cmaq
-C> and grid 175 for awips over guam.
-C> - Boi Vuong 2004-09-02 Added awips grids 147, 148, 173 and 254
-C> - Boi Vuong 2006-12-12 Added awips grids 120
-C> - Boi Vuong 2007-04-20 Added awips grids 176
-C> - Boi Vuong 2007-06-11 Added awips grids 11 to 18 and 122 to 125
-C> and 180 to 183
-C> - Boi Vuong 2010-08-05 Added new grid 184, 199, 83 and
-C> redefined grid 90 for new rtma conus 1.27-km
-C> redefined grid 91 for new rtma alaska 2.976-km
-C> redefined grid 92 for new rtma alaska 1.488-km
-C> - Boi Vuong 2012-02-28 Added new grid 200
 C>
 C> @param[in] MSGA Bufr message
 C> @param[inout] KPTR Array containing storage for following parameters
@@ -2496,9 +2452,6 @@ C> @author Mark Iredell @date 1997-09-19
 
 C> Extract the packed bitmap into a logical array.
 C>
-C> Program history log:
-C>   97-09-19 Vectorized bitmap decoder.
-C>
 C> @param[in] NPTS XInteger number of points in the bitmap field
 C> @param[in] NSKP Integer number of bits to skip in grib message
 C> @param[in] MSGA Character*1 grib message
@@ -2525,16 +2478,6 @@ C> @author Bill Cavanaugh @date 1991-09-13
 
 C> Extract grib data from binary data section and place
 C> into output array in proper position.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-09-13
-C> - Bill Cavanaugh 1994-04-01 Modified code to include decimal scaling when
-C> calculating the value of data points specified
-C> as being equal to the reference value
-C> - Farley 1994-11-10 Increased mxsize from 72960 to 260000
-C> for .5 degree sst analysis fields.
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - Mark Iredell 1998-08-31 Eliminated need for mxsize
 C>
 C> @param[in] MSGA Array containing grib message
 C> @param[inout] KPTR Array containing storage for following parameters
@@ -3200,14 +3143,6 @@ C> @author Bill Cavanaugh @date 1992-09-22
 C> Process second order packing from the binary data section
 C> (bds) for single data items grid point data.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-06-08
-C> - Bill Cavanaugh 1993-12-15 Modified second order pointers to first order
-C> values and second order values correctly.
-C> - Ralph Jones 1995-04-26 Fi636 corection for 2nd order complex
-C> Unpacking.
-C> - Mark Iredell 1995-10-31 Saves and prints.
-C>
 C> @param[in] MSGA Array containing grib message
 C> @param[in] REFNCE Reference value
 C> @param[in] KPTR Work array
@@ -3575,14 +3510,6 @@ C> @author Bill Cavanaugh @date 1991-09-13
 
 C> To test when gds is available to see if size mismatch
 C> on existing grids (by center) is indicated.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1991-09-13
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - M. Bostelman 1997-02-12 Corrects ecmwf us grid 2 processing
-C> - Mark Iredell 1998-06-17 Removed alternate return
-C> - M. Baldwin 1999-01-20 Modify to handle grid 237
-C> - Boi Vuong 1909-05-21 Modify to handle grid 45
 C>
 C> @param[inout] J Size for indicated grid modified for ecmwf-us 2
 C> @param[in] KPDS

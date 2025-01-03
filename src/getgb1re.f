@@ -4,10 +4,6 @@ C> @author Mark Iredell @date 1995-10-31
 
 C> Reads and unpacks a grib message.
 C>
-C> PROGRAM HISTORY LOG:
-C>   Mark Iredell 1995-10-31
-C>   Y. Zhu 1997-02-11 Included probability and cluster arguments.
-C>
 C> @param[in] LUGB Integer unit of the unblocked grib data file.
 C> @param[in] LSKIP Integer number of bytes to skip.
 C> @param[in] LGRIB Integer number of bytes to read.

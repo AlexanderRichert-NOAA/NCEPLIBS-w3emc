@@ -6,17 +6,6 @@ C> Transforms data contained in a given grid array
 C> by translation, rotation about a common point and dilatation
 C> in order to create a new grid array according to specs.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1974-09-01 | J. McDonell, J.Howcroft | Initial.
-C> 1984-06-27 | Ralph Jones | Change to ibm vs fortran
-C> 1989-01-24 | Ralph Jones | Change to microsoft fortran 4.10
-C> 1989-03-31 | Ralph Jones | Change to vax-11 fortran
-C> 1993-03-16 | D. Shimomura | Renamed from w3ft00() to w3ft07()
-C> in order to make minor mods while doing f77. Changes to call sequence;
-C> changes to vrbl names; added comments.
-C>
 C> @param[in] FLDA Real*4 original source grid-point data field
 C> @param[in] IA (Input for FLDA)
 C> @param[in] JA (Input for FLDA)

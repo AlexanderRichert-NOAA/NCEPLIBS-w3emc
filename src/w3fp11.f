@@ -6,60 +6,6 @@ C> Converts GRIB formatted product definition section version
 C> 1 to a one line readable title. GRIB section 0 is also tested to
 C> verify that GRIB data is being deciphered.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1991-06-19 | Ralph Jones |  Initial
-C> 1992-05-29 | Ralph Jones |  Add water temp to tables
-C> 1993-01-19 | Ralph Jones |  Add montgomary stream function to tables. add code for surface value 113. add condensation pressure to tables
-C> 1993-02-19 | Ralph Jones |  Add cape and tke (157 & 158) to tables
-C> 1993-02-24 | Ralph Jones |  Add GRIB type pmsle (130) to tables
-C> 1993-03-26 | Ralph Jones |  Add GRIB type sglyr (175) to tables
-C> 1993-03-27 | Ralph Jones |  Changes for revised o.n.388 mar. 3,1993
-C> 1993-03-29 | Ralph Jones |  Add save statement
-C> 1993-04-16 | Ralph Jones |  Add GRIB type lat, lon (176,177) to tables
-C> 1993-04-25 | Ralph Jones |  Add GRIB type 204, 205, 211, 212, 218
-C> 1993-05-18 | Ralph Jones |  Add test for model 70
-C> 1993-06-26 | Ralph Jones |  Add GRIB type 128, 129, take out test for MODEL 86.
-C> 1993-08-07 | Ralph Jones |  Add GRIB type 156 (cin), 150 (cbmzw), 151 (cbtzw), 152 (cbtmw) to tables.
-C> 1993-10-14 | Ralph Jones |  Change for o.n. 388 rev. oct. 8,1993
-C> 1993-10-29 | Ralph Jones |  Change for 'l cdc' 'm cdc' 'h cdc'
-C> 1993-10-14 | Ralph Jones |  Change for o.n. 388 rev. nov. 19,1993
-C> 1994-02-05 | Ralph Jones |  Change for o.n. 388 rev. dec. 14,1993. add model number 86 and 87.
-C> 1994-03-24 | Ralph Jones |  Add GRIB type 24 (toto3), 206 (uvpi)
-C> 1994-06-04 | Ralph Jones |  Change uvpi to uvi
-C> 1994-06-16 | Ralph Jones |  Add GRIB type 144,145,146,147,148,149 soilw,pevpr,cwork,u-gwd,v-gwd,pv to tables.
-C> 1994-06-22 | Ralph Jones |  Add ncar (60) to centers
-C> 1994-07-25 | Ralph Jones |  Correction for 71, 72, 213 (t cdc), (cdcon), (cdlyr)
-C> 1994-10-27 | Ralph Jones |  Add GRIB type 191 (prob), 192 (probn), add test for model 90, 91, 92, 93, add sub center 2.
-C> 1995-02-09 | Ralph Jones |  Correction for century for fnoc
-C> 1995-04-11 | Ralph Jones |  Correction for lmh and lmv
-C> 1995-06-20 | Ralph Jones |  Add GRIB type 189 (vstm), 190 (hlcy), 193 (pop), 194 (cpofp), 195 (cpozp), 196 (ustm), 197 (vstm) to tables.
-C> 1995-08-07 | Ralph Jones |  Add GRIB type 153 (clwmr), 154 (o3mr), 221 (hpbl), 237 (o3tot).
-C> 1995-09-07 | Ralph Jones |  Take out GRIB type 24 (toto3), change to GRIB type 10 (tozne). add level 117, potential vortiticity (pv) level, add eta
-C>      ^     |     ^      |  Level 119, add 120 layer betwwen two eta levels. change name of level 107 to (sigl), change name of level 108 to (sigy).
-C> 1995-09-26 | Ralph Jones |  Add level 204 (htfl) highest tropsphere freezing level.
-C> 1995-10-19 | Ralph Jones |  Change some of the level abreviations.
-C> 1995-12-13 | Ralph Jones |  Add 8 sub-centers to tables
-C> 1996-03-04 | Ralph Jones |  Changes for o.n. 388 jan 2, 1996
-C> 1996-03-22 | Ralph Jones |  Change scusf to csusf
-C> 1996-10-01 | Mark Iredell |  Recognize forecast time units 1 to 12 and correct for year 2000
-C> 1996-10-31 | Ralph Jones |  Change array and table for ics1 to 10.
-C> 1996-10-01 | Mark Iredell |  Allow parameter table version up to 127
-C> 1998-05-26 | Stephen Gilbert |  Added 17 new parameters ( GRIB table 2 ). added 6 new special levels for clouds. added subcenter 11 (tdl) under center 7 (ncep)
-C> 1998-12-21 | Stephen Gilbert |  Replaced function ichar with mova2i.
-C> 1901-01-05 | Boi Vuong |  Add level 247 (ehlt) equilibrium level
-C> 1902-05-01 | Boi Vuong |  Changes for o.n. 388   mar 21, 2002
-C> 1902-03-25 | Boi Vuong |  Add GRIB table version 129 and 130
-C> 1903-07-02 | Stephen Gilbert |  Added 5 new params to table version 129
-C> 1904-14-04 | Boi Vuong |  Add GRIB table version 131 and added 12 new parameter to table version 129
-C> 1904-08-09 | Boi Vuong |  Add parameter (thflx) to table version 129
-C> 1905-02-08 | Cooke |  Corrected entry for freezing rain, crfzr to cfrzr in the hhnam1 array
-C> 1906-08-11 | Boi Vuong |  Add levels (235,236,237,238,240,245) and added new parameters to table version 129 and added
-C>    ^       |     ^      |  One parameter 154 to table version 130 and added table version 128
-C> 1907-04-05 | Boi Vuong |  Add parameters to table version 128, 129 and 130
-C> 1907-05-15 | Boi Vuong |  Added time range indicator 51 and new table 140
-C>
 C> @param[in] IPDS0 GRIB section 0 read as character*8
 C> @param[in] IPDS GRIB pds section read as character*28
 C> @param[out] TITL Character*86 output print line

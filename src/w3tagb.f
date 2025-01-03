@@ -10,23 +10,6 @@ C> line it prints the starting date-time. Called at the
 C> end of a job, entry routine, w3tage prints a line with the
 C> ending date-time and a 2nd line stating the program name
 C> and that it has ended.
-C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1985-10-29 | J. Newell | Initial.
-C> 1989-10-20 | Ralph Jones | Convert to cray cft77 fortran
-C> 1991-03-01 | Ralph Jones | Add machine name to ending line
-C> 1992-12-02 | Ralph Jones | Add start-ending time-date
-C> 1993-11-16 | Ralph Jones | Add day of year, day of week, and julian day number.
-C> 1997-12-24 | M. Farley | Print statements modified for 4-digit yr
-C> 1998-03-17 | M. Farley | Replaced datimx with calls to w3locdat/w3doxdat
-C> 1999-01-29 | B. Vuong | Converted to ibm rs/6000 sp
-C> 1999-06-17 | A. Spruill | Adjusted the size of program name to accommodate
-C> the 20 character name convention on the ibm sp.
-C> 1999-08-24 | Gilbert | added call to start() in w3tagb and a call to summary() in w3tage to print out a  resource summary list for the program using w3tags.
-C> 2012-10-18 | Vuong | Remove print statement 604
-C> 2013-02-06 | Vuong | Modified print statement 604
 c>
 C> @param[in] PROG Program name character*1
 C> @param[in] KYR Year of compilation integer

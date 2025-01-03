@@ -7,12 +7,6 @@ C> gridded quantitative precipitation forecasts to a specific
 C> interior point. One point (e.g. an observation station)
 C> per call to w3ft02().
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1979-08-05 | Robert Hirano | Initial.
-C> 1996-06-23 | Farley | Converted to cray fortran 77
-C>
 C> @param[in] RAIN Real*4 grid field of (forecast) precipitation.
 C> @param[in] IMAX Integer*4 i-dimension of rain field.
 C> @param[in] JMAX Integer *4 j-dimension of rain field.

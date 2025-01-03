@@ -5,11 +5,6 @@ C> @author P. Chase @date 1975-04-01
 C> Smooths data on a rectangular grid using a nine-point
 C> smoothing operator.
 C>
-C> Program history log:
-C> P. Chase 1975-04-01
-C> Ralph Jones 1984-07-01 Change to ibm vs fortran
-C> Ralph Jones 1991-04-24 Change to cray cft77 fortran
-C>
 C> @param[in] FIN - Real size(ncol*nrow) array of data to be smoothed
 C> @param[in] CWORK - Real size(2*ncol*(nrow+2)) work array
 C> @param[in] GAMMA - Complex smoothing parameter. The imaginary part must

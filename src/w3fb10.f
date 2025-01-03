@@ -14,12 +14,6 @@ C> 1e-6 radians of the antipode of point (1), the bearing will be
 C> set to zero. If point (1) and point (2) are within 1e-10 radians
 C> of each other, both bearing and distance will be set to zero.
 C>
-C> Program history log:
-C> - Peter Chase 1988-08-29
-C> - Peter Chase 1988-09-23 Fix dumb south pole error.
-C> - Peter Chase 1988-10-05 Fix bearing ambiguity.
-C> - Ralph Jones 1990-04-12 Convert to cft77 fortran.
-C>
 C> @param[in] DLAT1 REAL Latitude of point (1) in degrees north.
 C> @param[in] DLON1 REAL Longitude of point (1) in degrees east.
 C> @param[in] DLAT2 REAL Latitude of point (2) in degrees north.

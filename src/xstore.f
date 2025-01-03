@@ -5,12 +5,6 @@ C> @author Dennis Keyser @date 1992-07-02
 C> Stores an 8-byte (fullword) value through consecutive storage locations.
 C> (moving is accomplished with a do loop.)
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1992-07-02 | Dennis Keyser (W/NMC22) | Initial.
-C> 1995-10-31 | Mark Iredell | Removed saves and prints.
-C>
 C> @param[in] CON Constant to be stored into "mwords" consecutive
 C> fullwords beginning with "cout" array
 C> @param[in] MWORDS Number of fullwords in "cout" array to store "con";

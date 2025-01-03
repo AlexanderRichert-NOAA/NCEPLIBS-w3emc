@@ -10,14 +10,6 @@ C> standards for reporting winds at the north pole.
 C> (see office note 241 for wmo definition). Output direction
 C> will follow wmo convention.
 C>
-C> Program history log:
-C> - John Stackpole 1981-12-30
-C> - Ralph Jones 1989-01-20 Convert to microsoft fortran 4.10.
-C> - Ralph Jones 1990-06-11 Convert to sun fortran 1.3.
-C> - Ralph Jones 1991-03-30 Convert to silicongraphics fortran.
-C> - Ralph Jones 1993-03-29 Add save statement.
-C> - Ralph Jones 1995-08-09 Compile on cray.
-C>
 C> @param[in] FFID REAL*4 I(north pole) - i(point).
 C> @param[in] FFJD REAL*4 J(north pole) - j(point).
 C> @param[in] FGU REAL*4 Grid-oriented u-component.

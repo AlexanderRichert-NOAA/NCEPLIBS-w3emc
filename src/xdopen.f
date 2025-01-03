@@ -11,11 +11,6 @@ C> fore this subroutine is a "dummy". ft06 print is provided to
 C> alert the user that the call to the subroutine results in an
 C> immediate return with no function.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1992-07-02 | Dennis Keyser (W/NMC22) | Initial.
-C>
 C> @author Dennis Keyser @date 1992-07-02
       SUBROUTINE XDOPEN
 C

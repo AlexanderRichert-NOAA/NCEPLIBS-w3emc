@@ -8,14 +8,6 @@ C> cannot span two records; If there is not enough room to fit
 C> the current report in the record, the subroutine returns to
 C> the calling program without any movement of data.
 C>
-C> Program history log:
-C> - L. Marx 1990-01 Converted code from assembler
-C> to vs fortran; Expanded error return codes in 'NFLAG'.
-C> - Dennis Keyser 1991-08-23 Use same arguments as w3ai05();
-C> streamlined code; Docblocked and commented; diag-
-C> nostic print for errors.
-C> - Dennis Keyser 1992-06-29 Convert to cray cft77 fortran.
-C>
 C> @param[in] COCBUF Array containing a single packed report
 C> in office note 29/124 format.
 C> @param[in] NFLAG Marker indicating relative location (in bytes)

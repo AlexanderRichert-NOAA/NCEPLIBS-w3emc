@@ -8,13 +8,6 @@ C> option of supplying the pds or an integer array that will be
 C> used to create a pds (with w3fi68()). The user must also
 C> supply other necessary info; see usage section below.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comment
-C> -----|------------|--------
-C> 1997-02-24 | M. Farley | Modified w3fi72() - this routine allows for no gds (errors in w3fi71 for grib grids 21-26, 61-64 forced the need for this routine).
-C> 1998-06-24 | Stephen Gilbert | Added number of gridpoint values for grids 61-64, needed when igflag=2 ( no gds ).
-C> 1998-12-21 | Stephen Gilbert | Replaced function ichar with mova2i.
-C>
 C> @param[in] ITYPE 0 = Floating point data supplied in array 'fld'
 C> 1 = Data supplied in array 'ifld'
 C> @param[in] FLD Array of data (at proper gridpoints) to be

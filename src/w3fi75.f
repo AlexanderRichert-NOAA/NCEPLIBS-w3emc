@@ -5,38 +5,6 @@ C> @author M. Farley @date 1992-07-10
 C> This routine packs a grib field and forms octets(1-11)
 C> of the binary data section (bds).
 C>
-C> Program history log:
-C> - M. Farley 1992-07-10 Original author
-C> - Ralph Jones 1992-10-01 Correction for field of constant data
-C> - Ralph Jones 1992-10-16 Get rid of arrays fp and int
-C> - Bill Cavanaugh 1993-08-06 Added routines fi7501, fi7502, fi7503
-C> To allow second order packing in pds.
-C> - John Stackpole 1993-07-21 Assorted repairs to get 2nd diff pack in
-C> - Bill Cavanaugh 1993-10-28 Commented out nonoperational prints and
-C> Write statements
-C> - Bill Cavanaugh 1993-12-15 Corrected location of start of first order
-C> Values and start of second order values to
-C> Reflect a byte location in the bds instead
-C> Of an offset in subroutine fi7501().
-C> - Bill Cavanaugh 1994-01-27 Added igds as input argument to this routine
-C> And added pds and igds arrays to the call to
-C> W3fi82 to provide information needed for
-C> Boustrophedonic processing.
-C> - Bill Cavanaugh 1994-05-25 Subroutine fi7503 has been added to provide
-C> For row by row or column by column second
-C> Order packing.  this feature can be activated
-C> By setting ibdsfl(7) to zero.
-C> - Bill Cavanaugh 1994-07-08 Commented out print statements used for debug
-C> - M. Farley 1994-11-22 Enlarged work arrays to handle .5degree grids
-C> - Ralph Jones 1995-06-01 Correction for number of unused bits at end
-C> Of section 4, in bds byte 4, bits 5-8.
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - Stephen Gilbert 2001-06-06 Changed gbyte/sbyte calls to refer to
-C> Wesley ebisuzaki's endian independent
-C> versions gbytec/sbytec.
-C> Use f90 standard routine bit_size to get
-C> number of bits in an integer instead of w3fi01.
-C>
 C> @param[in] IBITL
 C> - 0, computer computes packing length from power of 2 that best fits the data.
 C> - 8, 12, etc. computer rescales data to fit into set number of bits.
@@ -510,13 +478,6 @@ C> @author Bill Cavanaugh @date 1993-08-06
 
 C> Perform secondary packing on grid point data, generating all BDS information.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-08-06
-C> - Bill Cavanaugh 1993-12-15 Corrected location of start of first order
-C> values and start of second order values to reflect a byte location in the
-C> BDS instead of an offset.
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C>
 C> @param[in] IWORK Integer source array
 C> @param[in] NPTS Number of points in iwork
 C> @param[in] IBDSFL Flags
@@ -841,10 +802,6 @@ C> @author Bill Cavanaugh @date 1993-06-23
 C> Collect sequential same values for processing
 C> as second order value for grib messages.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-06-23
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C>
 C> @param[in] IWORK Array containing source data
 C> @param[in] ISTART Starting location for this test
 C> @param[in] NPTS Number of points in iwork
@@ -876,10 +833,6 @@ C> @author Bill Cavanaugh @date 1993-08-06
 
 C> Perform row by row or column by column packing
 C> generating all bds information.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-08-06
-C> - Mark Iredell 1995-10-31 Removed saves and prints
 C>
 C> @param[in] IWORK Integer source array
 C> @param[in] NPTS Number of points in iwork
@@ -1194,10 +1147,6 @@ C> @author Bill Cavanaugh @date 1993-06-23
 
 C> Calculate number of bits to contain value n, with a maximum of 32 bits.
 C>
-C> Program history log:
-C> - Bill Cavanaugh 1993-06-23
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C>
 C> @param[in] N Integer value
 C> @param[out] NBITS Number of bits to contain n
 C>
@@ -1228,10 +1177,6 @@ C> @brief Select block of data for packing.
 C> @author Bill Cavanaugh @date 1994-01-21
 
 C> Select a block of data for packing
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1994-01-21
-C> - Mark Iredell 1995-10-31 Removed saves and prints
 C>
 C> - Return address if encounter set of same values
 C> @param[in] IWORK
@@ -1350,10 +1295,6 @@ C> by encountering a set of identical values, by reaching
 C> the number of points selected or by reaching the end
 C> of data.
 C>
-C> Program history log:
-C> - Bill Cavavnaugh 1994-01-21
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C>
 C> - Return address if encounter set of same values
 C> @param[in] IWORK Data array
 C> @param[in] NPTS Number of points in data array
@@ -1411,11 +1352,6 @@ C> @brief Scan backward.
 C> @author Bill Cavanaugh @date 1994-01-21
 
 C> Scan backwards until a value exceeds range of group b this may shorten group a
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1994-01-21
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - Mark Iredell 1998-06-17 Removed alternate return
 C>
 C> @param[in] IWORK
 C> @param[in] ISTRTB
@@ -1487,11 +1423,6 @@ C> Scan forward from start of block b towards end of block b
 C> if next point under test forces a larger maxvala then
 C> terminate indicating last point tested for inclusion
 C> into block a.
-C>
-C> Program history log:
-C> - Bill Cavanaugh 1994-01-21
-C> - Mark Iredell 1995-10-31 Removed saves and prints
-C> - Mark Iredell 1998-06-17 Removed alternate return
 C>
 C> @param IWORK
 C> @param ISTRTA

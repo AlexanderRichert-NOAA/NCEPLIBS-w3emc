@@ -6,11 +6,6 @@ C> Converts a office note 85 label in IBM370 format
 C> to office note 85 cray format. All EBCDIC characters are
 C> converted to ASCII. Converts binary or coded label.
 C>
-C> Program history log:
-C> - Ralph Jones 1985-07-31
-C> - Ralph Jones 1989-10-24 Convert to cray cft77 fortran
-C> - Boi Vuong 2002-10-15 Replaced function ichar with mova2i
-C>
 C> @param[in] ILABEL 4 words (32 bytes) characters are in EBCDIc or
 C> binary.
 C> @param[out] NLABEL 4 words (32 bytes), characters are in ASCII or

@@ -7,14 +7,6 @@ C> positive differences (number(s) - minimum value) and packs the
 C> magnitude of each difference right-adjusted into the least
 C> number of bits that holds the largest difference.
 C>
-C> Program history log:
-C> - Robert Allard 1987-09-02
-C> - Ralph Jones 1988-10-02 Converted to cdc cyber 205 ftn200 fortran.
-C> - Ralph Jones 1990-05-17 Converted to cray cft77 fortran.
-C> - Ralph Jones 1990-05-18 Change name vbimpk to w3lib name w3fi58()
-C> - Mark Iredell 1996-05-14 Generalized computation of nbits.
-C> - Ebisuzaki 1998-06-30 Linux port.
-C>
 C> @param[in] IFIELD Array of integer data for processing.
 C> @param[in] NPTS Number of data values to process in IFIELD (and nwork)
 C> where, npts > 0.

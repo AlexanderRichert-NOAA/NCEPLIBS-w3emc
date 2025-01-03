@@ -13,11 +13,6 @@ C> grib file. Its message number is returned along with the unpacked
 C> pds and gds parameters and the packed grib message. If the grib
 C> message is not found, then the return code will be nonzero.
 C>
-C> Program history log:
-C> - Mark Iredell 1994-04-01  iredell
-C> - Mark Iredell 1995-10-31  iredell Modularized portions of code into subprograms
-C> and allowed for unspecified index file.
-C>
 C> @param[in] lugb integer unit of the unblocked grib data file.
 C> @param[in] lugi integer unit of the unblocked grib index file
 C> (=0 to get index buffer from the grib file).

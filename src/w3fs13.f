@@ -4,12 +4,6 @@ C> @author Ralph Jones @date 1985-08-31
 
 C> 0converts year, month and day to day of year.
 C>
-C> ### Program History Log:
-C> Date | Programmer | Comments
-C> -----|------------|---------
-C> 1985-07-31 | Ralph Jones | Initial.
-C> 1989-11-02 | Ralph Jones | Convert to cray cft77 fortran.
-C>
 C> @param[in] IYR Year of century, 00-99 or year of era, 1901-2099
 C> @param[in] IMO Month of year, 1-12
 C> @param[in] IDA Day of month, 1-31
