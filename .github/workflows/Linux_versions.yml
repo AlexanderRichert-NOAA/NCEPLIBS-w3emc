@@ -17,8 +17,8 @@ jobs:
   Linux_versions:
     runs-on: ubuntu-latest
     env:
-      FC: gfortran-11
-      CC: gcc-11
+      FC: gfortran
+      CC: gcc
     strategy:
       matrix:
         bacio-version: [2.4.1, 2.5.0, 2.6.0]
