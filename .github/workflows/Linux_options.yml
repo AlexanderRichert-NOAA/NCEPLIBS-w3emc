@@ -14,7 +14,7 @@ on:
 
 jobs:
   Linux_options:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         options: ['-DBUILD_D=OFF -DBUILD_8=ON', '-DBUILD_4=OFF -DBUILD_DEPRECATED=ON -DBUILD_WITH_BUFR=ON', '-DBUILD_SHARED_LIBS=ON']
