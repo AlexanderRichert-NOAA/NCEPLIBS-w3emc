@@ -58,24 +58,18 @@ The NCEPLIBS-w3emc library depends on
 bacio library does binary file I/O.
 
 NCEPLIBS-w3emc also optionally depends on the
-[NCEPLIBS-bufr](https://github.com/NOAA-EMC/NCEPLIBS-bufr)
-library. The bufr library encodes and decodes messages in the WMO BUFR
-format.
+[NCEPLIBS-bufr](https://github.com/NOAA-EMC/NCEPLIBS-bufr) library (when
+`-DBUILD_WITH_BUFR=ON'). The bufr library encodes and decodes messages in the
+WMO BUFR format.
 
 ## Installing
 
-Download latest release from
-https://github.com/NOAA-EMC/NCEPLIBS-w3emc/releases. Untar the release
-and do:
-
-```
-cd NCEPLIBS-w3emc
-mkdir build
-cd build
-cmake -DCMAKE_INSTALL_PREFIX=/install/location/myw3emc -DCMAKE_PREFIX_PATH="/location/of/bacio;/location/of/bufr"  ..
-make -j2
-make install
-
+```console
+git clone https://github.com/NOAA-EMC/NCEPLIBS-w3emc
+cmake -S NCEPLIBS-w3emc -B NCEPLIBS-w3emc/build -DCMAKE_INSTALL_PREFIX=/install/location/myw3emc -DCMAKE_PREFIX_PATH="/path/to/bacio" # <add'l CMake options>
+cmake --build NCEPLIBS-w3emc/build --parallel 4
+ctest --test-dir NCEPLIBS-w3emc/build --parallel 4 # <add'l CTest options>
+cmake --install NCEPLIBS-w3emc/build
 ```
 
 ## Disclaimer
