@@ -72,6 +72,8 @@ ctest --test-dir NCEPLIBS-w3emc/build --parallel 4 # <add'l CTest options>
 cmake --install NCEPLIBS-w3emc/build
 ```
 
+NCEPLIBS-w3emc is also available through Spack as '[w3emc](https://github.com/spack/spack/tree/develop/var/spack/repos/builtin/packages/w3emc)'.
+
 ## Disclaimer
 
 The United States Department of Commerce (DOC) GitHub project code is
