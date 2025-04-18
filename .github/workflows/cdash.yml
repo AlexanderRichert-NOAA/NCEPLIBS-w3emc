@@ -1,0 +1,27 @@
+name: cdash
+on:
+  push:
+    branches:
+    - develop
+    - add_cdash
+
+jobs:
+  cdash:
+    runs-on: ubuntu-latest
+
+    env:
+      FC: gfortran
+      CC: gcc
+      CDASH_TOKEN: ${{ secrets.CDASH_TOKEN }}
+
+    steps:
+
+    - name: "Build dependencies"
+      uses: NOAA-EMC/ci-build-nceplibs@oneinstalldir
+      with:
+        bacio-version: develop
+
+    - name: CDash
+      uses: NOAA-EMC/ci-cdash@develop
+      with:
+        extra-cmake-options: -DBUILD_8=ON -DCMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/nceplibs

@@ -8,6 +8,32 @@ edition 1.
 This library also contains a module mersenne_twister, a random number
 generator that uses the Mersenne twister (aka MT19937).
 
+## Installation
+
+```console
+git clone https://github.com/NOAA-EMC/NCEPLIBS-w3emc
+cmake -S NCEPLIBS-w3emc -B NCEPLIBS-w3emc/build -DCMAKE_INSTALL_PREFIX=/install/location/myw3emc -DCMAKE_PREFIX_PATH="/path/to/bacio" # <add'l CMake options>
+cmake --build NCEPLIBS-w3emc/build --parallel 4
+ctest --test-dir NCEPLIBS-w3emc/build --parallel 4 # <add'l CTest options>
+cmake --install NCEPLIBS-w3emc/build
+```
+
+The following CMake build options can be used to configure the build by setting them with `-D<OPTION>=<VALUE>`.
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| CMAKE_INSTALL_PREFIX | Installation path | /usr/local |
+| ENABLE_DOCS | Enable generation of doxygen-based documentation. | OFF |
+| BUILD_SHARED_LIBS | Build shared libraries | OFF |
+| BUILD_4 | Build the 4-byte real version of the library, libw3emc_4.a | ON |
+| BUILD_D | Build the 8-byte real version of the library, libw3emc_d.a | ON |
+| BUILD_8 | Build the 8-byte integer version of the library, libsp_8.a | OFF |
+| BUILD_DEPRECATED | Build deprecated routines | OFF |
+| BUILD_WITH_BUFR | Build deprecated routines that call NCEPLIBS-bufr | OFF |
+
+NCEPLIBS-bacio is a dependency of NCEPLIBS-w3emc, and NCEPLIBS-bufr is needed
+if configuring `-DBUILD_WITH_BUFR=ON`.
+
 ## GRIB1 Parameters
 
 * idsdef()
