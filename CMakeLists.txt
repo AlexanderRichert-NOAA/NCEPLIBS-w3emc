@@ -76,7 +76,7 @@ elseif(CMAKE_Fortran_COMPILER_ID MATCHES "^(LLVMFlang)$")
   set(CMAKE_Fortran_FLAGS
       "-g -funroll-loops ${CMAKE_Fortran_FLAGS}")
   set(CMAKE_Fortran_FLAGS_RELEASE "-O2")
-  set(CMAKE_Fortran_FLAGS_DEBUG "-O0 -Wall")
+  set(CMAKE_Fortran_FLAGS_DEBUG "-O0")
   set(fortran_d_flags "-fdefault-real-8")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fuse-ld=lld")
   set(CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} -fuse-ld=lld")
