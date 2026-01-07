@@ -164,7 +164,7 @@ program test_gbytec
   nskip = 0
   num = 1
   r_in(1) = 1
-  in = transfer(r_in, in)
+  in = transfer(r_in, in, size(in))
   call sbytesc(out4, in, iskip, nbits, nskip, num)
   ! Note that the 32-bit IEEE representation of 1.0 is 3f800000. The
   ! decimal for 3f is 63, the decimal for 80 is 128.
@@ -197,7 +197,7 @@ program test_gbytec
   num = 2
   r_in2(1) = 1 
   r_in2(2) = 1 
-  in = transfer(r_in2, in2)
+  in2 = transfer(r_in2, size(in2))
   call sbytesc(out8, in2, iskip, nbits, nskip, num)
   ! Note that the 32-bit IEEE representation of 1.0 is 3f800000. The
   ! decimal for 3f is 63, the decimal for 80 is 128.
