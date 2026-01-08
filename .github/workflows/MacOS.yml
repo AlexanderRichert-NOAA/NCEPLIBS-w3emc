@@ -11,6 +11,10 @@ on:
   pull_request:
     branches:
     - develop
+  schedule:
+    # Run monthly
+    - cron: '0 0 1 * *'
+  workflow_dispatch:
 
 jobs:
   MacOS:
@@ -19,7 +23,7 @@ jobs:
       FC: ${{ matrix.compiler }}
     strategy:
       matrix:
-        compiler: [gfortran-12]
+        compiler: [gfortran-14]
         bacio-version: [2.4.1, 2.5.0, 2.6.0]
 
     steps:

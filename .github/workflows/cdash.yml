@@ -4,6 +4,7 @@ on:
     branches:
     - develop
     - add_cdash
+  workflow_dispatch:
 
 jobs:
   cdash:
