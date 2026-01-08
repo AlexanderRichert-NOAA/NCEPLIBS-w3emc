@@ -1,7 +1,8 @@
-# Copyright 2013-2023 Lawrence Livermore National Security, LLC and other
-# Spack Project Developers. See the top-level COPYRIGHT file for details.
+# Copyright Spack Project Developers. See COPYRIGHT file for details.
 #
 # SPDX-License-Identifier: (Apache-2.0 OR MIT)
+
+from spack_repo.builtin.build_systems.cmake import CMakePackage
 
 from spack.package import *
 
@@ -38,7 +39,7 @@ class W3emc(CMakePackage):
         description="Set precision (_4/_d/_8 library versions)",
         when="@2.10:",
     )
-    variant("shared", default=False, description="Build shared library", when="@2.10:")
+    variant("shared", default=False, description="Build shared library", when="@2.10: +pic")
     variant(
         "extradeps",
         default=False,
@@ -53,17 +54,19 @@ class W3emc(CMakePackage):
     )
 
     conflicts("+shared +extradeps", msg="Shared library cannot be built with unknown dependencies")
-    conflicts("+shared ~pic", msg="Shared library requires PIC")
+
+    depends_on("c", type="build")
+    depends_on("fortran", type="build")
 
     depends_on("bufr", when="@2.10: +bufr")
-    depends_on("bacio", when="@2.9.2:")
+    depends_on("bacio@2.4:", when="@2.9.2:")
 
     # w3emc 2.7.3 contains gblevents which has these dependencies
     depends_on("nemsio", when="@2.7.3")
     depends_on("sigio", when="@2.7.3")
     depends_on("netcdf-fortran", when="@2.7.3")
 
-    def setup_run_environment(self, env):
+    def setup_run_environment(self, env: EnvironmentModifications) -> None:
         if self.spec.satisfies("@:2.9"):
             suffixes = ("4", "d", "8")
             shared = False
