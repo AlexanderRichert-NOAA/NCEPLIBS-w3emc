@@ -49,7 +49,7 @@ program test_w3fi73
   call w3fi73(ibflag, ibmap, iblen, bms, lenbms, ierr)
   if (ierr .ne. 0) stop 4
   if (lenbms .ne. 8) stop 5
-  cbms = transfer(bms, cbms)
+  cbms = transfer(bms, cbms, size(cbms))
   do i = 1, 8
      print *, ichar(cbms(i))
      if (ichar(cbms(i)) .ne. expected_cbms(i)) stop 100
