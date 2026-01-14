@@ -99,7 +99,31 @@ foreach(kind ${kinds})
   if(BUILD_WITH_BUFR)
     target_link_libraries(${lib_name} PUBLIC bufr::bufr_4)
   endif()
-
+  
+  # Generate the module source with appropriate preprocessing defines
+  if(kind STREQUAL "4")
+    set(kind_define "KIND_4")
+  elseif(kind STREQUAL "d")
+    set(kind_define "KIND_D")
+  elseif(kind STREQUAL "8")
+    set(kind_define "KIND_8")
+  endif()
+  
+  # Create an object library for the module
+  add_library(${lib_name}_module_obj OBJECT w3emc_mod.F90)
+  target_compile_definitions(${lib_name}_module_obj PRIVATE ${kind_define})
+  set_target_properties(${lib_name}_module_obj PROPERTIES 
+    COMPILE_FLAGS "${fortran_${kind}_flags}")
+  set_target_properties(${lib_name}_module_obj PROPERTIES 
+    Fortran_MODULE_DIRECTORY ${module_dir})
+  if(BUILD_SHARED_LIBS)
+    set_property(TARGET ${lib_name}_module_obj PROPERTY POSITION_INDEPENDENT_CODE 1)
+  endif()
+  
+  # Link the module object into the library
+  target_sources(${lib_name} PRIVATE $<TARGET_OBJECTS:${lib_name}_module_obj>)
+  
+  # Install the module directory with all .mod files
   install(DIRECTORY ${module_dir} DESTINATION ${CMAKE_INSTALL_PREFIX})
 endforeach()
 

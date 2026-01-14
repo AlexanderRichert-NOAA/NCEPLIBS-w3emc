@@ -1,5 +1,15 @@
 ! This program tests getgbemh().
 program test_getgbemh
+#ifdef USE_W3EMC_MODULE
+#  ifdef KIND_4
+#    define W3EMC_MODULE w3emc_4
+#  elif defined(KIND_D)
+#    define W3EMC_MODULE w3emc_d
+#  elif defined(KIND_8)
+#    define W3EMC_MODULE w3emc_8
+#  endif
+  use W3EMC_MODULE, only: getgbemh
+#endif
   implicit none
   character*256 cg1
   integer karg(100)

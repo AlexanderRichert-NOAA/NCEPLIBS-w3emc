@@ -4,6 +4,15 @@
 !
 ! Ed Hartnett, 2/28/23
 program test_w3fi74
+#ifdef USE_W3EMC_MODULE
+#ifdef KIND_4
+  use w3emc_4, only: w3fi71
+#elif defined(KIND_D)
+  use w3emc_d, only: w3fi71
+#elif defined(KIND_8)
+  use w3emc_8, only: w3fi71
+#endif
+#endif
   implicit none
   integer igrid
   integer igds(200)

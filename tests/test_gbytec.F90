@@ -9,6 +9,16 @@
 !
 ! Ed Hartnett, 9/27/23
 program test_gbytec
+#ifdef USE_W3EMC_MODULE
+#  ifdef KIND_4
+#    define W3EMC_MODULE w3emc_4
+#  elif defined(KIND_D)
+#    define W3EMC_MODULE w3emc_d
+#  elif defined(KIND_8)
+#    define W3EMC_MODULE w3emc_8
+#  endif
+  use W3EMC_MODULE, only: sbytec, gbytec, sbytesc, gbytesc
+#endif
   implicit none
 
   character*1 :: out(1)

@@ -4,6 +4,16 @@
 !
 ! Ed Hartnett, 2/28/23
 program test_w3fi72
+#ifdef USE_W3EMC_MODULE
+#  ifdef KIND_4
+#    define W3EMC_MODULE w3emc_4
+#  elif defined(KIND_D)
+#    define W3EMC_MODULE w3emc_d
+#  elif defined(KIND_8)
+#    define W3EMC_MODULE w3emc_8
+#  endif
+  use W3EMC_MODULE, only: w3fi72
+#endif
   implicit none
   integer :: i, iret
   integer :: kf, nbit

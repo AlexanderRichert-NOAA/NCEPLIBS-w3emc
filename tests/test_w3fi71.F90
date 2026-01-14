@@ -4,6 +4,16 @@
 !
 ! George Gayno
  program test_w3fi71
+#ifdef USE_W3EMC_MODULE
+#  ifdef KIND_4
+#    define W3EMC_MODULE w3emc_4
+#  elif defined(KIND_D)
+#    define W3EMC_MODULE w3emc_d
+#  elif defined(KIND_8)
+#    define W3EMC_MODULE w3emc_8
+#  endif
+  use W3EMC_MODULE, only: w3fi71
+#endif
 
 ! Call routine w3fi71 for all defined grids.
 ! Compare the Grib1 grid description section

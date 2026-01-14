@@ -3,7 +3,17 @@
 ! Test the mkfldsep subroutine. This is used in grip_utils utilities tocgrib2 and tocgrib2super.
 !
 ! Edward Hartnett, 6/3/24
-program test_mkflsep
+program test_mkfldsep
+#ifdef USE_W3EMC_MODULE
+#  ifdef KIND_4
+#    define W3EMC_MODULE w3emc_4
+#  elif defined(KIND_D)
+#    define W3EMC_MODULE w3emc_d
+#  elif defined(KIND_8)
+#    define W3EMC_MODULE w3emc_8
+#  endif
+  use W3EMC_MODULE, only: mkfldsep
+#endif
   implicit none
   
   character * 1   csep(80), lenbull_cin(4)
@@ -93,5 +103,5 @@ program test_mkflsep
   print *, 'OK!'
   
   print *, "SUCCESS"
-end program test_mkflsep
+end program test_mkfldsep
 

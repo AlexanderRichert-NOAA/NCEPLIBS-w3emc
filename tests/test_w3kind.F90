@@ -3,10 +3,17 @@
 
 program w3kind_test
     use, intrinsic :: iso_fortran_env, only: error_unit
+#ifdef USE_W3EMC_MODULE
+#  ifdef KIND_4
+#    define W3EMC_MODULE w3emc_4
+#  elif defined(KIND_D)
+#    define W3EMC_MODULE w3emc_d
+#  elif defined(KIND_8)
+#    define W3EMC_MODULE w3emc_8
+#  endif
+  use W3EMC_MODULE, only: w3kind
+#endif
     implicit none
-    
-    ! External subroutine declaration
-    external :: w3kind
     
     ! Variables for test results
     integer :: test_kindreal, test_kindint
