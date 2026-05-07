@@ -9,8 +9,6 @@
 name: Spack
 on:
   push:
-    branches:
-    - develop
   pull_request:
     branches:
     - develop
@@ -28,11 +26,12 @@ jobs:
         variants: ["+shared precision=d", "~pic precision=4", "~shared precision=8"]
 
     runs-on: ${{ matrix.os }}
+    container: ghcr.io/noaa-emc/ci-common-build-cache/nceplibs-develop-ubuntu-24.04-gcc-13-mpich-x:latest
 
     steps:
 
     - name: "Build Spack package"
-      uses: NOAA-EMC/ci-test-spack-package@develop
+      uses: NOAA-EMC/ci-test-spack-package@container-support-2
       with:
         package-name: w3emc
         package-variants: ${{ matrix.variants }}
