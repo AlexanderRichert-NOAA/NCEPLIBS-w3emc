@@ -235,18 +235,14 @@ void cputim (usr, sys)
 double *usr;
 double *sys;
 {
-    double real;
     typedef struct { int tms_utime;
         int tms_stime;
         int tms_cutime;
         int tms_cstime; } tms;
 
     struct tms Time_buffer;
-    int ret;
 
-    ret = times (&Time_buffer);
-
-    real = ((double) ret) * 0.01;
+    (void) times (&Time_buffer);
 
     *usr = ((double) Time_buffer.tms_utime) * 0.01;
     *sys = ((double) Time_buffer.tms_stime) * 0.01;
@@ -299,8 +295,6 @@ struct time_data *time;
 void resource ()
 
 {
-    double usr, sys;
-    long data[14];
 #ifdef _AIX
     typedef struct {
         int             tv_sec;         /* seconds */
@@ -353,22 +347,6 @@ void resource ()
 #endif
     printf("*****************END OF RESOURCE STATISTICS*************************\n\n");
 
-    usr = user;
-    sys = system;
-    data[0] = RU.ru_maxrss;
-    data[1] = RU.ru_ixrss;
-    data[2] = RU.ru_idrss;
-    data[3] = RU.ru_isrss;
-    data[4] = RU.ru_minflt;
-    data[5] = RU.ru_majflt;
-    data[6] = RU.ru_nswap;
-    data[7] = RU.ru_inblock;
-    data[8] = RU.ru_oublock;
-    data[9] = RU.ru_msgsnd;
-    data[10] = RU.ru_msgrcv;
-    data[11] = RU.ru_nsignals;
-    data[12] = RU.ru_nvcsw;
-    data[13] = RU.ru_nivcsw;
     return;
 }
 
@@ -401,9 +379,9 @@ struct time_data *time;
 
     /* Print the distribution of the message lengths */
     if (time->c_calls > 0) {
-        int i, j1, j2;
+        int i, j2;
 
-        j1 = 0; j2 = 0;
+        j2 = 0;
         fprintf (fp, "       AVG. Length    # of Calls    MB/WALL Sec.  MB/CPU Sec.   WALL Secs.     CPU Secs.   \n");
         if (time->c_buckets[0] >0) {
             fprintf (fp, " %13.2f %13d    %13.3f %13.3f %13.4f %13.4f \n",
@@ -413,7 +391,7 @@ struct time_data *time;
                      time->b_wall[0], time->b_cpu[0]);
         }
         time->c_buckets[3] = time->c_buckets[1] + time->c_buckets[2] + time->c_buckets[3];
-        j1 = 1; j2 = 4;
+        j2 = 4;
         for (i =3; i < 31; ++i) {
             if (time->c_buckets[i] > 0) {
                 fprintf (fp, " %13.2f %13d    %13.3f %13.3f %13.4f %13.4f \n",
@@ -422,7 +400,6 @@ struct time_data *time;
                          ((double) time->c_sum[i] * 0.000001)/time->b_cpu[i],
                          time->b_wall[i], time->b_cpu[i]);
             }
-            j1 = j2 +1;
             j2 = j2 + j2;
         }
 
@@ -436,9 +413,6 @@ struct time_data *time;
  */
 void summary_ (int *returnVal)
 {
-    double temp, temp1;
-    char trace_file[255], processor[8];
-
 /*
   MPI_Finalize - prototyping replacement for MPI_Finalize
 */
@@ -457,12 +431,6 @@ void summary_ (int *returnVal)
  */
 void start_ ()
 {
-    int stateid;
-    int  Argc;
-    char **Argv;
-
-    char *answer;
-
     trace_flag=1;
 
     profile = 0;
