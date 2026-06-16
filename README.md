@@ -72,7 +72,7 @@ ctest --test-dir NCEPLIBS-w3emc/build --parallel 4 # <add'l CTest options>
 cmake --install NCEPLIBS-w3emc/build
 ```
 
-NCEPLIBS-w3emc is also available through [Spack](https://spack.io) as '[w3emc](https://github.com/spack/spack/tree/develop/var/spack/repos/builtin/packages/w3emc)'.
+NCEPLIBS-w3emc is also available through [Spack](https://spack.io) as '[w3emc](https://github.com/spack/spack-packages/blob/develop/repos/spack_repo/builtin/packages/w3emc)'.
 
 ## Disclaimer
 
@@ -91,4 +91,5 @@ logo of a DOC bureau, shall not be used in any manner to imply
 endorsement of any commercial product or activity by DOC or the United
 States Government.
 
-
+Generative AI tools are used to assist with developing this code.
+The code has been reviewed, edited, and validated by NWS staff.
