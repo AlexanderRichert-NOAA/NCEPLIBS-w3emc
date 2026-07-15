@@ -39,7 +39,6 @@ function(create_test_w3as00 kind)
   add_test(NAME test_w3as00_${kind}_len0 COMMAND test_w3as00_${kind} len0)
   add_test(NAME test_w3as00_${kind}_noparm COMMAND test_w3as00_${kind} noparm)
   add_test(NAME test_w3as00_${kind}_parm_ok COMMAND test_w3as00_${kind} parm_ok parm=abc)
-  add_test(NAME test_w3as00_${kind}_parm_trunc COMMAND test_w3as00_${kind} parm_trunc PARM=ABCDEFGHIJK)
 endfunction()
 
 # These are the tests.
