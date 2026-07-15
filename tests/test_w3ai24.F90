@@ -4,7 +4,7 @@ PROGRAM TEST_W3AI24
   IMPLICIT NONE
   
   INTEGER :: status
-  LOGICAL :: W3AI24
+  LOGICAL, EXTERNAL :: W3AI24
   
   status = 0
   
