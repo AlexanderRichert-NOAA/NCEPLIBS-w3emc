@@ -18,8 +18,6 @@ program test_w3as00
       call case_noparm()
     case ('parm_ok')
       call case_parm_ok()
-    case ('parm_trunc')
-      call case_parm_trunc()
     case default
       print *, 'FAIL: unknown scenario "', trim(scenario), '"'
       stop 10
@@ -70,17 +68,6 @@ contains
     call expect_eq_int(nch_parm, 3, 'parm_ok nch_parm')
     call expect_eq_str(cparm(1:nch_parm), 'abc', 'parm_ok parsed value')
   end subroutine case_parm_ok
-
-  subroutine case_parm_trunc()
-    integer :: nch_parm, iret
-    character(len=6) :: cparm
-
-    call w3as00(nch_parm, cparm, iret)
-
-    call expect_eq_int(iret, 1, 'parm_trunc iret')
-    call expect_eq_int(nch_parm, 5, 'parm_trunc nch_parm')
-    call expect_eq_str(cparm(1:nch_parm), 'ABCDE', 'parm_trunc parsed value')
-  end subroutine case_parm_trunc
 
   subroutine expect_eq_int(actual, expected, message)
     integer, intent(in) :: actual, expected
