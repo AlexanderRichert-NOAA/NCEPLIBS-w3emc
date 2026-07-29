@@ -321,9 +321,134 @@ PROGRAM test_w3fi63
   IF (kptr(5) /= bms_length) STOP 205   ! BMS length
   IF (kptr(6) /= bds_length) STOP 206   ! BDS length
   
+  CALL test_international_grids()
+
   PRINT *, "All test_w3fi63 checks passed successfully"
   
   ! Cleanup
   DEALLOCATE(msga, kpds, kgds, kbms, data_array, kptr)
   
 END PROGRAM test_w3fi63
+
+SUBROUTINE test_international_grids()
+  IMPLICIT NONE
+  
+  CHARACTER(1), ALLOCATABLE :: msga(:)
+  INTEGER, ALLOCATABLE :: kpds(:), kgds(:), kptr(:)
+  LOGICAL*1, ALLOCATABLE :: kbms(:)
+  REAL, ALLOCATABLE :: data_array(:)
+  
+  INTEGER, PARAMETER :: PDS_SIZE = 100
+  INTEGER, PARAMETER :: GDS_SIZE = 100 
+  INTEGER, PARAMETER :: PTR_SIZE = 20
+  
+  INTEGER :: is_start, pds_start, gds_start, bds_start, es_start
+  INTEGER :: msg_length, kret, i
+  INTEGER :: grid_ids(19), map_sizes(19)
+  
+  grid_ids = (/ 21, 22, 23, 24, 25, 26, 37, 38, 39, 40, 41, 42, 43, 44, 50, 61, 62, 63, 64 /)
+  map_sizes = (/ 1369, 1369, 1369, 1369, 1368, 1368, 3447, 3447, 3447, 3447, 3447, 3447, 3447, 3447, 1188, 4186, 4186, 4186, 4186 /)
+  
+  ALLOCATE(kpds(PDS_SIZE))
+  ALLOCATE(kgds(GDS_SIZE))
+  ALLOCATE(kptr(PTR_SIZE))
+  
+  DO i = 1, 19
+    ! Calculate total message length (No BMS)
+    msg_length = 8 + 50 + 32 + 11 + map_sizes(i) + 4
+    
+    is_start = 1
+    pds_start = is_start + 8
+    gds_start = pds_start + 50
+    bds_start = gds_start + 32
+    es_start = bds_start + 11 + map_sizes(i)
+    
+    IF (ALLOCATED(msga)) DEALLOCATE(msga)
+    IF (ALLOCATED(kbms)) DEALLOCATE(kbms)
+    IF (ALLOCATED(data_array)) DEALLOCATE(data_array)
+    
+    ALLOCATE(msga(msg_length))
+    ALLOCATE(kbms(map_sizes(i)))
+    ALLOCATE(data_array(map_sizes(i)))
+    
+    kpds = 0
+    kgds = 0
+    kbms = .TRUE.
+    data_array = 0.0
+    kptr = 0
+    msga = CHAR(0)
+    
+    ! Section 0
+    msga(is_start:is_start+3) = (/ 'G', 'R', 'I', 'B' /)
+    msga(is_start+4) = CHAR(0)
+    msga(is_start+5) = CHAR(msg_length / 256)
+    msga(is_start+6) = CHAR(MOD(msg_length, 256))
+    msga(is_start+7) = CHAR(1)
+    
+    ! Section 1 (PDS)
+    msga(pds_start) = CHAR(0)
+    msga(pds_start+1) = CHAR(0)
+    msga(pds_start+2) = CHAR(50)
+    msga(pds_start+3) = CHAR(1)
+    msga(pds_start+4) = CHAR(7)  ! NCEP (required for grid 50)
+    msga(pds_start+5) = CHAR(2)
+    msga(pds_start+6) = CHAR(grid_ids(i)) ! GRID ID
+    msga(pds_start+7) = CHAR(128) ! 10000000 binary = GDS present, NO BMS
+    msga(pds_start+8) = CHAR(11)
+    msga(pds_start+9) = CHAR(100)
+    msga(pds_start+10) = CHAR(1)
+    msga(pds_start+11) = CHAR(244)
+    msga(pds_start+12) = CHAR(23)
+    msga(pds_start+13) = CHAR(3)
+    msga(pds_start+14) = CHAR(10)
+    msga(pds_start+15) = CHAR(12)
+    msga(pds_start+16) = CHAR(0)
+    msga(pds_start+17) = CHAR(1)
+    msga(pds_start+18) = CHAR(6)
+    msga(pds_start+19) = CHAR(0)
+    msga(pds_start+20) = CHAR(0)
+    msga(pds_start+21) = CHAR(0)
+    msga(pds_start+22) = CHAR(0)
+    msga(pds_start+23) = CHAR(0)
+    msga(pds_start+24) = CHAR(21)
+    msga(pds_start+25) = CHAR(0)
+    msga(pds_start+26) = CHAR(0)
+    msga(pds_start+27) = CHAR(2)
+    
+    ! Section 2 (GDS)
+    msga(gds_start) = CHAR(0)
+    msga(gds_start+1) = CHAR(0)
+    msga(gds_start+2) = CHAR(32)
+    msga(gds_start+3) = CHAR(0)
+    msga(gds_start+4) = CHAR(255)
+    msga(gds_start+5) = CHAR(0)
+    
+    msga(gds_start+6) = CHAR(map_sizes(i) / 256)
+    msga(gds_start+7) = CHAR(MOD(map_sizes(i), 256))
+    msga(gds_start+8) = CHAR(0)
+    msga(gds_start+9) = CHAR(1)
+    
+    msga(gds_start+10:gds_start+15) = CHAR(0)
+    msga(gds_start+16) = CHAR(128)
+    msga(gds_start+17:gds_start+31) = CHAR(0)
+    
+    ! Section 4 (BDS) - simple packing
+    msga(bds_start) = CHAR(0)
+    msga(bds_start+1) = CHAR((11 + map_sizes(i)) / 256)
+    msga(bds_start+2) = CHAR(MOD(11 + map_sizes(i), 256))
+    msga(bds_start+3) = CHAR(0)
+    msga(bds_start+4:bds_start+9) = CHAR(0)
+    msga(bds_start+10) = CHAR(8)
+    
+    msga(es_start:es_start+3) = (/ '7', '7', '7', '7' /)
+    
+    CALL W3FI63(msga, kpds, kgds, kbms, data_array, kptr, kret)
+    
+    IF (kret /= 0) THEN
+      PRINT *, "Failed test_international_grids for grid ", grid_ids(i), " with kret = ", kret
+      STOP 1
+    END IF
+  END DO
+  
+  DEALLOCATE(msga, kpds, kgds, kbms, data_array, kptr)
+END SUBROUTINE test_international_grids
