@@ -328,6 +328,8 @@ PROGRAM test_w3fi63
   CALL test_lambert_conformal()
   CALL test_grids_with_pl()
   CALL test_predefined_bitmap()
+  CALL test_predefined_bitmap_sh()
+  CALL test_predefined_bitmap_grid50()
 
   PRINT *, "All test_w3fi63 checks passed successfully"
   
@@ -1690,3 +1692,234 @@ SUBROUTINE test_predefined_bitmap()
   
   DEALLOCATE(msga, kpds, kgds, kbms, data_array, kptr)
 END SUBROUTINE test_predefined_bitmap
+SUBROUTINE test_predefined_bitmap_sh()
+  IMPLICIT NONE
+  
+  CHARACTER(1), ALLOCATABLE :: msga(:)
+  INTEGER, ALLOCATABLE :: kpds(:), kgds(:), kptr(:)
+  LOGICAL*1, ALLOCATABLE :: kbms(:)
+  REAL, ALLOCATABLE :: data_array(:)
+  
+  INTEGER, PARAMETER :: PDS_SIZE = 100
+  INTEGER, PARAMETER :: GDS_SIZE = 100 
+  INTEGER, PARAMETER :: PTR_SIZE = 20
+  
+  INTEGER :: is_start, pds_start, gds_start, bms_start, bds_start, es_start
+  INTEGER :: msg_length, kret
+  
+  INTEGER :: map_size, ibits
+  
+  ! For Grid 26, base bitmap has 1296 bits.
+  ! KADD for Grid 26 is 72. 1296 + 72 - 1 = 1367
+  ibits = 1296
+  map_size = 1367
+  
+  ! BMS length: 6 bytes header + ceil(1296 / 8) bytes for bitmap = 6 + 162 = 168 bytes
+  
+  msg_length = 8 + 50 + 0 + 168 + 11 + map_size + 4
+  
+  ALLOCATE(kpds(PDS_SIZE))
+  ALLOCATE(kgds(GDS_SIZE))
+  ALLOCATE(kptr(PTR_SIZE))
+  ALLOCATE(msga(msg_length))
+  ALLOCATE(kbms(map_size))
+  ALLOCATE(data_array(map_size))
+  
+  kpds = 0
+  kgds = 0
+  kbms = .TRUE.
+  data_array = 0.0
+  kptr = 0
+  msga = CHAR(0)
+  
+  is_start = 1
+  pds_start = is_start + 8
+  ! NO GDS
+  bms_start = pds_start + 50
+  bds_start = bms_start + 168
+  es_start = bds_start + 11 + map_size
+  
+  ! Section 0
+  msga(is_start:is_start+3) = (/ 'G', 'R', 'I', 'B' /)
+  msga(is_start+4) = CHAR(0)
+  msga(is_start+5) = CHAR(msg_length / 256)
+  msga(is_start+6) = CHAR(MOD(msg_length, 256))
+  msga(is_start+7) = CHAR(1)
+  
+  ! Section 1 (PDS)
+  msga(pds_start) = CHAR(0)
+  msga(pds_start+1) = CHAR(0)
+  msga(pds_start+2) = CHAR(50)
+  msga(pds_start+3) = CHAR(1)
+  msga(pds_start+4) = CHAR(7)  
+  msga(pds_start+5) = CHAR(2)
+  msga(pds_start+6) = CHAR(26) ! Grid 26 (Southern Hemisphere)
+  msga(pds_start+7) = CHAR(64) ! BMS present, NO GDS
+  msga(pds_start+8) = CHAR(11)
+  msga(pds_start+9) = CHAR(100)
+  msga(pds_start+10) = CHAR(1)
+  msga(pds_start+11) = CHAR(244)
+  msga(pds_start+12) = CHAR(23)
+  msga(pds_start+13) = CHAR(3)
+  msga(pds_start+14) = CHAR(10)
+  msga(pds_start+15) = CHAR(12)
+  msga(pds_start+16) = CHAR(0)
+  msga(pds_start+17) = CHAR(1)
+  msga(pds_start+18) = CHAR(6)
+  msga(pds_start+19) = CHAR(0)
+  msga(pds_start+20) = CHAR(0)
+  msga(pds_start+21) = CHAR(0)
+  msga(pds_start+22) = CHAR(0)
+  msga(pds_start+23) = CHAR(0)
+  msga(pds_start+24) = CHAR(21)
+  msga(pds_start+25) = CHAR(0)
+  msga(pds_start+26) = CHAR(0)
+  msga(pds_start+27) = CHAR(2)
+  
+  ! Section 3 (BMS)
+  msga(bms_start) = CHAR(0)
+  msga(bms_start+1) = CHAR(0)
+  msga(bms_start+2) = CHAR(168) ! length
+  msga(bms_start+3) = CHAR(0)   ! unused bits at end
+  msga(bms_start+4) = CHAR(0)   ! table reference = 0 (bitmap follows)
+  msga(bms_start+5) = CHAR(0)
+  
+  ! Fill bitmap with 1s (0xFF)
+  msga(bms_start+6:bms_start+167) = CHAR(255)
+  
+  ! Section 4
+  msga(bds_start) = CHAR(0)
+  msga(bds_start+1) = CHAR((11 + map_size) / 256)
+  msga(bds_start+2) = CHAR(MOD(11 + map_size, 256))
+  msga(bds_start+3) = CHAR(0)
+  msga(bds_start+10) = CHAR(8)
+  
+  msga(es_start:es_start+3) = (/ '7', '7', '7', '7' /)
+  
+  CALL W3FI63(msga, kpds, kgds, kbms, data_array, kptr, kret)
+  
+  IF (kret /= 0) THEN
+    PRINT *, "Failed test_predefined_bitmap_sh with kret = ", kret
+    STOP 1
+  END IF
+  
+  IF (kptr(10) /= 1367) STOP 803
+  
+  DEALLOCATE(msga, kpds, kgds, kbms, data_array, kptr)
+END SUBROUTINE test_predefined_bitmap_sh
+
+SUBROUTINE test_predefined_bitmap_grid50()
+  IMPLICIT NONE
+  
+  CHARACTER(1), ALLOCATABLE :: msga(:)
+  INTEGER, ALLOCATABLE :: kpds(:), kgds(:), kptr(:)
+  LOGICAL*1, ALLOCATABLE :: kbms(:)
+  REAL, ALLOCATABLE :: data_array(:)
+  
+  INTEGER, PARAMETER :: PDS_SIZE = 100
+  INTEGER, PARAMETER :: GDS_SIZE = 100 
+  INTEGER, PARAMETER :: PTR_SIZE = 20
+  
+  INTEGER :: is_start, pds_start, gds_start, bms_start, bds_start, es_start
+  INTEGER :: msg_length, kret
+  
+  INTEGER :: map_size, ibits
+  
+  ! For grid 50, the parsing logic consumes blocks to create a 1188 bits grid
+  ! KIN = 22, KPAD=7 down to 3, etc. Total bits output = 1188.
+  ! The source bitmap just provides enough bits to fill KIN.
+  ! The algorithm extracts 22+24+26+28+30+32+34 bits * 4 times + 5 more = ...
+  ! Let's provide an empty source bitmap, as W3FI63 just reads it.
+  
+  ibits = 36  ! random small bitmap to unpack, since Grid 50 reconstructs fully
+  map_size = 1188
+  
+  msg_length = 8 + 50 + 0 + 20 + 11 + map_size + 4
+  
+  ALLOCATE(kpds(PDS_SIZE))
+  ALLOCATE(kgds(GDS_SIZE))
+  ALLOCATE(kptr(PTR_SIZE))
+  ALLOCATE(msga(msg_length))
+  ALLOCATE(kbms(map_size))
+  ALLOCATE(data_array(map_size))
+  
+  kpds = 0
+  kgds = 0
+  kbms = .TRUE.
+  data_array = 0.0
+  kptr = 0
+  msga = CHAR(0)
+  
+  is_start = 1
+  pds_start = is_start + 8
+  bms_start = pds_start + 50
+  bds_start = bms_start + 20
+  es_start = bds_start + 11 + map_size
+  
+  ! Section 0
+  msga(is_start:is_start+3) = (/ 'G', 'R', 'I', 'B' /)
+  msga(is_start+4) = CHAR(0)
+  msga(is_start+5) = CHAR(msg_length / 256)
+  msga(is_start+6) = CHAR(MOD(msg_length, 256))
+  msga(is_start+7) = CHAR(1)
+  
+  ! Section 1 (PDS)
+  msga(pds_start) = CHAR(0)
+  msga(pds_start+1) = CHAR(0)
+  msga(pds_start+2) = CHAR(50)
+  msga(pds_start+3) = CHAR(1)
+  msga(pds_start+4) = CHAR(7)  
+  msga(pds_start+5) = CHAR(2)
+  msga(pds_start+6) = CHAR(50) ! Grid 50
+  msga(pds_start+7) = CHAR(64) ! BMS present, NO GDS
+  msga(pds_start+8) = CHAR(11)
+  msga(pds_start+9) = CHAR(100)
+  msga(pds_start+10) = CHAR(1)
+  msga(pds_start+11) = CHAR(244)
+  msga(pds_start+12) = CHAR(23)
+  msga(pds_start+13) = CHAR(3)
+  msga(pds_start+14) = CHAR(10)
+  msga(pds_start+15) = CHAR(12)
+  msga(pds_start+16) = CHAR(0)
+  msga(pds_start+17) = CHAR(1)
+  msga(pds_start+18) = CHAR(6)
+  msga(pds_start+19) = CHAR(0)
+  msga(pds_start+20) = CHAR(0)
+  msga(pds_start+21) = CHAR(0)
+  msga(pds_start+22) = CHAR(0)
+  msga(pds_start+23) = CHAR(0)
+  msga(pds_start+24) = CHAR(21)
+  msga(pds_start+25) = CHAR(0)
+  msga(pds_start+26) = CHAR(0)
+  msga(pds_start+27) = CHAR(2)
+  
+  ! Section 3 (BMS)
+  msga(bms_start) = CHAR(0)
+  msga(bms_start+1) = CHAR(0)
+  msga(bms_start+2) = CHAR(20) ! length
+  msga(bms_start+3) = CHAR(0)   ! unused bits at end
+  msga(bms_start+4) = CHAR(0)   ! table reference = 0 (bitmap follows)
+  msga(bms_start+5) = CHAR(0)
+  msga(bms_start+6:bms_start+19) = CHAR(255)
+  
+  ! Section 4
+  msga(bds_start) = CHAR(0)
+  msga(bds_start+1) = CHAR((11 + map_size) / 256)
+  msga(bds_start+2) = CHAR(MOD(11 + map_size, 256))
+  msga(bds_start+3) = CHAR(0)
+  msga(bds_start+10) = CHAR(8)
+  
+  msga(es_start:es_start+3) = (/ '7', '7', '7', '7' /)
+  
+  CALL W3FI63(msga, kpds, kgds, kbms, data_array, kptr, kret)
+  
+  IF (kret /= 0) THEN
+    PRINT *, "Failed test_predefined_bitmap_grid50 with kret = ", kret
+    STOP 1
+  END IF
+  
+  ! Verify KBMS structure for grid 50 matches specification
+  IF (kbms(1)) STOP 805 ! First bit should be padded FALSE
+  
+  DEALLOCATE(msga, kpds, kgds, kbms, data_array, kptr)
+END SUBROUTINE test_predefined_bitmap_grid50
