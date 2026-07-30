@@ -1,97 +1,144 @@
 program test_w3fb07
   implicit none
-  real :: xi, xj, alat1, alon1, dx, alonv, alat, alon
-  real :: polei, polej, rmll, alo1, ala1
-  real :: rerth, pi, ss60, h, dxl, reflon, radpd, rebydx
-  integer :: num_fails
-  real, parameter :: tol = 1e-3
 
-  num_fails = 0
-  rerth = 6.3712E+6
-  pi = 3.1416
-  ss60 = 1.86603
-  radpd = pi / 180.0
-
-  ! Test 1: (1,1) in Northern Hemisphere (YY > 0 or YY < 0 depending on ALO1)
-  ! Here ALAT1=40, ALON1=100. ALONV=255.
-  ! REFLON = 255 - 270 = -15.
-  ! ALO1 = (100 - (-15)) = 115 deg. sin(115) > 0, so YY > 0.
-  xi = 1.0
-  xj = 1.0
-  alat1 = 40.0
-  alon1 = 100.0
-  dx = 190500.0
-  alonv = 255.0
-  call w3fb07(xi,xj,alat1,alon1,dx,alonv,alat,alon)
-  print *, "Test 1:", alat, alon
-  if (abs(alat - alat1) > tol .or. abs(alon - alon1) > tol) then
-     print *, "FAILED Test 1"
-     num_fails = num_fails + 1
-  end if
-
-  ! Test 2: (1,1) in Southern Hemisphere (H = -1)
-  ! ALAT1=-40, ALON1=100, ALONV=255.
-  ! REFLON = 255 - 90 = 165.
-  ! ALO1 = 100 - 165 = -65. sin(-65) < 0.
-  ! POLEJ = 1 - (-1) * RMLL * sin(-65) = 1 + RMLL * sin(-65)
-  ! YY = (1 - POLEJ)*(-1) = - RMLL * sin(-65) > 0.
-  ! So YY > 0 again.
-  xi = 1.0
-  xj = 1.0
-  alat1 = -40.0
-  alon1 = 100.0
-  dx = -190500.0
-  alonv = 255.0
-  call w3fb07(xi,xj,alat1,alon1,dx,alonv,alat,alon)
-  print *, "Test 2:", alat, alon
-  if (abs(alat - alat1) > tol .or. abs(alon - alon1) > tol) then
-     print *, "FAILED Test 2"
-     num_fails = num_fails + 1
-  end if
-
-  ! Test 3: Force YY < 0
-  ! We need YY < 0. For NH, YY = RMLL * sin(ALO1) if XI=1, XJ=1.
-  ! We need sin(ALO1) < 0.
-  ! ALO1 = ALON1 - REFLON = ALON1 - (-15) = ALON1 + 15.
-  ! If ALON1 = 200, ALO1 = 215. sin(215) < 0. So YY < 0.
-  xi = 1.0
-  xj = 1.0
-  alat1 = 40.0
-  alon1 = 200.0
-  dx = 190500.0
-  alonv = 255.0
-  call w3fb07(xi,xj,alat1,alon1,dx,alonv,alat,alon)
-  print *, "Test 3:", alat, alon
-  if (abs(alat - alat1) > tol .or. abs(alon - alon1) > tol) then
-     print *, "FAILED Test 3"
-     num_fails = num_fails + 1
-  end if
-
-  ! Test 4: R2 == 0 (Pole)
-  h = 1.0
-  dxl = 190500.0
-  reflon = 255.0 - 270.0
-  rebydx = rerth / dxl
-  ala1 = alat1 * radpd
-  rmll = rebydx * cos(ala1) * ss60 / (1.0 + h * sin(ala1))
-  alo1 = (alon1 - reflon) * radpd
-  polei = 1.0 - rmll * cos(alo1)
-  polej = 1.0 - h * rmll * sin(alo1)
-
-  xi = polei
-  xj = polej
-  call w3fb07(xi,xj,alat1,alon1,dx,alonv,alat,alon)
-  ! At North Pole, alat should be 90.0, alon should be REFLON + 360 (since REFLON=-15 < 0)
-  ! Wait, in w3fb07: ALAT = H*90. = 90.0. ALON = REFLON. IF (ALON < 0) ALON = ALON + 360.
-  ! So ALON = -15 + 360 = 345.0.
-  print *, "Test 4:", alat, alon
-  if (abs(alat - 90.0) > tol .or. abs(alon - 345.0) > tol) then
-     print *, "FAILED Test 4"
-     num_fails = num_fails + 1
-  end if
+  real :: alat_in, alon_in
+  real :: xi, xj, alat1, alon1, dx, alonv
+  real :: alat_out, alon_out
+  integer :: fail_count = 0
+  real :: tol = 1e-3
+  real :: diff_lon
   
-  if (num_fails > 0) then
-     stop 1
+  real :: PI, RADPD, DXL, REFLON, ALA1, RMLL, ALO1, POLEI, POLEJ, H, RERTH, SS60
+
+  PI = 3.1416
+  RADPD = PI / 180.0
+  RERTH = 6.3712E+6
+  SS60 = 1.86603
+
+  print *, "Starting test_w3fb07..."
+
+  ! Case 1: Northern Hemisphere, YY > 0
+  alat1 = 45.0
+  alon1 = -100.0
+  dx = 381000.0
+  alonv = -105.0
+  alat_in = 60.0
+  alon_in = -90.0
+
+  call w3fb06(alat_in, alon_in, alat1, alon1, dx, alonv, xi, xj)
+  call w3fb07(xi, xj, alat1, alon1, dx, alonv, alat_out, alon_out)
+  diff_lon = abs(mod(alon_out - alon_in + 3600.0, 360.0))
+  if (diff_lon > 180.0) diff_lon = 360.0 - diff_lon
+  
+  if (abs(alat_out - alat_in) > tol .or. diff_lon > tol) then
+    print *, "FAIL Case 1: Expected ALAT, ALON=", alat_in, alon_in, " got ", alat_out, alon_out
+    fail_count = fail_count + 1
+  end if
+
+  ! Case 2: Southern Hemisphere, YY < 0
+  alat1 = -45.0
+  alon1 = 100.0
+  dx = -381000.0
+  alonv = 105.0
+  alat_in = -60.0
+  alon_in = 110.0
+
+  call w3fb06(alat_in, alon_in, alat1, alon1, dx, alonv, xi, xj)
+  call w3fb07(xi, xj, alat1, alon1, dx, alonv, alat_out, alon_out)
+  diff_lon = abs(mod(alon_out - alon_in + 3600.0, 360.0))
+  if (diff_lon > 180.0) diff_lon = 360.0 - diff_lon
+  
+  if (abs(alat_out - alat_in) > tol .or. diff_lon > tol) then
+    print *, "FAIL Case 2: Expected ALAT, ALON=", alat_in, alon_in, " got ", alat_out, alon_out
+    fail_count = fail_count + 1
+  end if
+
+  ! Case 3: North Pole (R2 == 0 exactly)
+  alat1 = 45.0
+  alon1 = -100.0
+  dx = 381000.0
+  alonv = -105.0
+  
+  ! Compute exactly POLEI and POLEJ
+  H = 1.0
+  DXL = dx
+  REFLON = alonv - 270.0
+  ALA1 = alat1 * RADPD
+  RMLL = (RERTH/DXL) * COS(ALA1) * SS60/(1. + H * SIN(ALA1))
+  ALO1 = (alon1 - REFLON) * RADPD
+  POLEI = 1.0 - RMLL * COS(ALO1)
+  POLEJ = 1.0 - H * RMLL * SIN(ALO1)
+  
+  xi = POLEI
+  xj = POLEJ
+  alat_in = 90.0
+  alon_in = REFLON ! Because the subroutine sets it to REFLON when R2 == 0
+
+  call w3fb07(xi, xj, alat1, alon1, dx, alonv, alat_out, alon_out)
+  
+  diff_lon = abs(mod(alon_out - alon_in + 3600.0, 360.0))
+  if (diff_lon > 180.0) diff_lon = 360.0 - diff_lon
+  
+  if (abs(alat_out - alat_in) > tol .or. diff_lon > tol) then
+    print *, "FAIL Case 3: Expected ALAT, ALON=", alat_in, alon_in, " got ", alat_out, alon_out
+    fail_count = fail_count + 1
+  end if
+
+  ! Case 4: South Pole (R2 == 0 exactly)
+  alat1 = -45.0
+  alon1 = 100.0
+  dx = -381000.0
+  alonv = 105.0
+  
+  H = -1.0
+  DXL = -dx
+  REFLON = alonv - 90.0
+  ALA1 = alat1 * RADPD
+  RMLL = (RERTH/DXL) * COS(ALA1) * SS60/(1. + H * SIN(ALA1))
+  ALO1 = (alon1 - REFLON) * RADPD
+  POLEI = 1.0 - RMLL * COS(ALO1)
+  POLEJ = 1.0 - H * RMLL * SIN(ALO1)
+
+  xi = POLEI
+  xj = POLEJ
+  alat_in = -90.0
+  alon_in = REFLON
+
+  call w3fb07(xi, xj, alat1, alon1, dx, alonv, alat_out, alon_out)
+  
+  diff_lon = abs(mod(alon_out - alon_in + 3600.0, 360.0))
+  if (diff_lon > 180.0) diff_lon = 360.0 - diff_lon
+  
+  if (abs(alat_out - alat_in) > tol .or. diff_lon > tol) then
+    print *, "FAIL Case 4: Expected ALAT, ALON=", alat_in, alon_in, " got ", alat_out, alon_out
+    fail_count = fail_count + 1
+  end if
+
+  ! Case 5: Force ALON < 0 inside w3fb07 to test the IF (ALON.LT.0) branch
+  ! Just run a regular point that produces a very negative ALON before the IF
+  alat1 = 45.0
+  alon1 = 10.0
+  dx = 381000.0
+  alonv = 0.0
+  alat_in = 60.0
+  alon_in = -10.0
+  
+  call w3fb06(alat_in, alon_in, alat1, alon1, dx, alonv, xi, xj)
+  call w3fb07(xi, xj, alat1, alon1, dx, alonv, alat_out, alon_out)
+  
+  diff_lon = abs(mod(alon_out - alon_in + 3600.0, 360.0))
+  if (diff_lon > 180.0) diff_lon = 360.0 - diff_lon
+  
+  if (abs(alat_out - alat_in) > tol .or. diff_lon > tol) then
+    print *, "FAIL Case 5: Expected ALAT, ALON=", alat_in, alon_in, " got ", alat_out, alon_out
+    fail_count = fail_count + 1
+  end if
+
+  if (fail_count > 0) then
+    print *, fail_count, " test(s) failed."
+    stop 1
+  else
+    print *, "All tests passed successfully."
   end if
 
 end program test_w3fb07
