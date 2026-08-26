@@ -125,7 +125,9 @@ foreach(kind ${kinds})
   create_test(test_w3ft26 ${kind})
 endforeach()
 
-# C test for summary.c functions
-add_executable(test_summary_c test_summary_c.c)
-target_link_libraries(test_summary_c PRIVATE w3emc_4)
-add_test(NAME test_summary_c COMMAND test_summary_c)
+if(BUILD_4)
+  # C test for summary.c functions
+  add_executable(test_summary_c test_summary_c.c)
+  target_link_libraries(test_summary_c PRIVATE w3emc_4)
+  add_test(NAME test_summary_c COMMAND test_summary_c)
+endif()
