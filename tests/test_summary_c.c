@@ -62,9 +62,6 @@ extern void print_timing(char *string, struct time_data *time);
 extern void summary_(int *returnVal);
 extern void start_(void);
 
-/* Setter function for FILE pointer used by print_timing - defined in summary.c */
-extern void set_profile_file(FILE *file);
-
 int test_count = 0;
 int pass_count = 0;
 
@@ -167,9 +164,9 @@ int main(int argc, char *argv[]) {
         assert_nonnegative(timer1, "elapse() returns non-negative value");
         
         /* Small delay to ensure time difference */
-        volatile int i, j;
+        volatile int i;
         for (i = 0; i < 1000000; i++) {
-            j = i * 2;
+            /* Busy loop for timing measurement */
         }
         
         /* Get second time reading */
@@ -275,8 +272,6 @@ int main(int argc, char *argv[]) {
         assert_true(test_output != NULL, "Temporary test file opened successfully");
         
         if (test_output) {
-            /* Set the FILE pointer so print_timing can write to our test file */
-            set_profile_file(test_output);
             
             /* Test Case 1: print_timing with c_calls=0 (should skip first fprintf) */
             memset(&timer, 0, sizeof(struct time_data));
@@ -349,7 +344,6 @@ int main(int argc, char *argv[]) {
             
             /* Close file and read back contents for verification */
             fclose(test_output);
-            set_profile_file(NULL);
             
             /* Verify output file contents */
             memset(file_buffer, 0, sizeof(file_buffer));
