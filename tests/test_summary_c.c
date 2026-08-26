@@ -9,7 +9,6 @@
  * - end_timer()
  * - resource()
  * - bucket()
- * - print_timing()
  *
  * @author Test Suite
  */
@@ -58,7 +57,6 @@ extern void cputim(double *usr, double *sys);
 extern void start_timer(struct time_data *time);
 extern void end_timer(struct time_data *time);
 extern void resource(void);
-extern void print_timing(char *string, struct time_data *time);
 extern void summary_(int *returnVal);
 extern void start_(void);
 
